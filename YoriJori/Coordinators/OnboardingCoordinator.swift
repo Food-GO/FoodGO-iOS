@@ -11,7 +11,7 @@ protocol OnboardingCoordinatorDelegate {
     func moveTonext(_ coorDinator: OnboardingCoordinator)
 }
 
-class OnboardingCoordinator: Coordinator, OnboardingViewControllerDelegate {
+class OnboardingCoordinator: Coordinator, OnboardingContainerViewControllerDelegate {
     var childCoordinators: [Coordinator] = []
     private var navigationViewController: UINavigationController!
     var delegate: OnboardingCoordinatorDelegate?
@@ -21,7 +21,8 @@ class OnboardingCoordinator: Coordinator, OnboardingViewControllerDelegate {
     }
     
     func start() {
-        let viewController = OnboardingViewController()
+        let viewController = OnboardingContainerViewController()
+        viewController.delegate = self
         self.navigationViewController.viewControllers = [viewController]
     }
     

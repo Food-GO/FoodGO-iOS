@@ -65,6 +65,7 @@ extension AppCoordinator: LoginCoordinatorDelegate {
 // MARK: - 온보딩
 extension AppCoordinator: OnboardingCoordinatorDelegate {
     func moveTonext(_ coorDinator: OnboardingCoordinator) {
+//        UserDefaultsManager.shared.isFirstLaunched = false
         self.childCoordinators = self.childCoordinators.filter { $0 !== coorDinator}
         self.showLoginViewController()
     }
