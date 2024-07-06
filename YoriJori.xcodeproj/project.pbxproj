@@ -16,6 +16,16 @@
 		9CABC7AE2C38EB8E0096D384 /* YoriJoriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7AD2C38EB8E0096D384 /* YoriJoriTests.swift */; };
 		9CABC7B82C38EB8E0096D384 /* YoriJoriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7B72C38EB8E0096D384 /* YoriJoriUITests.swift */; };
 		9CABC7BA2C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7B92C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift */; };
+		9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C72C39070B0096D384 /* SceneDelegate.swift */; };
+		9CABC7CA2C390E680096D384 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C92C390E680096D384 /* MainViewController.swift */; };
+		9CABC7CE2C3911FC0096D384 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7CD2C3911FC0096D384 /* Coordinator.swift */; };
+		9CABC7D12C3912410096D384 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D02C3912410096D384 /* AppCoordinator.swift */; };
+		9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */; };
+		9CABC7D52C3917B00096D384 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D42C3917B00096D384 /* LoginCoordinator.swift */; };
+		9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D82C3918D30096D384 /* LoginViewController.swift */; };
+		9CABC7DB2C391CC30096D384 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DA2C391CC30096D384 /* OnboardingCoordinator.swift */; };
+		9CABC7DD2C391D440096D384 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DC2C391D440096D384 /* OnboardingViewController.swift */; };
+		9CABC7E02C391F940096D384 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DF2C391F940096D384 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +58,17 @@
 		9CABC7B32C38EB8E0096D384 /* YoriJoriUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoriJoriUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CABC7B72C38EB8E0096D384 /* YoriJoriUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoriJoriUITests.swift; sourceTree = "<group>"; };
 		9CABC7B92C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoriJoriUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9CABC7C62C3906730096D384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9CABC7C72C39070B0096D384 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9CABC7C92C390E680096D384 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9CABC7CD2C3911FC0096D384 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9CABC7D02C3912410096D384 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		9CABC7D42C3917B00096D384 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		9CABC7D82C3918D30096D384 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9CABC7DA2C391CC30096D384 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		9CABC7DC2C391D440096D384 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		9CABC7DF2C391F940096D384 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +119,17 @@
 		9CABC7962C38EB8C0096D384 /* YoriJori */ = {
 			isa = PBXGroup;
 			children = (
-				9CABC7972C38EB8C0096D384 /* AppDelegate.swift */,
+				9CABC7D62C3918B70096D384 /* Presentation */,
+				9CABC7CB2C3911690096D384 /* App */,
+				9CABC7CF2C3912380096D384 /* Coordinators */,
+				9CABC7CC2C3911EA0096D384 /* Protocol */,
+				9CABC7C62C3906730096D384 /* Info.plist */,
 				9CABC7992C38EB8C0096D384 /* art.scnassets */,
 				9CABC79B2C38EB8C0096D384 /* ViewController.swift */,
 				9CABC79D2C38EB8C0096D384 /* Main.storyboard */,
 				9CABC7A02C38EB8D0096D384 /* Assets.xcassets */,
 				9CABC7A22C38EB8D0096D384 /* LaunchScreen.storyboard */,
+				9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */,
 			);
 			path = YoriJori;
 			sourceTree = "<group>";
@@ -123,6 +149,60 @@
 				9CABC7B92C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift */,
 			);
 			path = YoriJoriUITests;
+			sourceTree = "<group>";
+		};
+		9CABC7CB2C3911690096D384 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7C72C39070B0096D384 /* SceneDelegate.swift */,
+				9CABC7972C38EB8C0096D384 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9CABC7CC2C3911EA0096D384 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7CD2C3911FC0096D384 /* Coordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		9CABC7CF2C3912380096D384 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7D02C3912410096D384 /* AppCoordinator.swift */,
+				9CABC7D42C3917B00096D384 /* LoginCoordinator.swift */,
+				9CABC7DA2C391CC30096D384 /* OnboardingCoordinator.swift */,
+				9CABC7DF2C391F940096D384 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		9CABC7D62C3918B70096D384 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7C92C390E680096D384 /* MainViewController.swift */,
+				9CABC7DE2C391F040096D384 /* Onboarding */,
+				9CABC7D72C3918C40096D384 /* Login */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9CABC7D72C3918C40096D384 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7D82C3918D30096D384 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9CABC7DE2C391F040096D384 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7DC2C391D440096D384 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +337,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */,
+				9CABC7E02C391F940096D384 /* MainCoordinator.swift in Sources */,
+				9CABC7D12C3912410096D384 /* AppCoordinator.swift in Sources */,
 				9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */,
 				9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */,
+				9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */,
+				9CABC7CE2C3911FC0096D384 /* Coordinator.swift in Sources */,
+				9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */,
+				9CABC7D52C3917B00096D384 /* LoginCoordinator.swift in Sources */,
+				9CABC7CA2C390E680096D384 /* MainViewController.swift in Sources */,
+				9CABC7DD2C391D440096D384 /* OnboardingViewController.swift in Sources */,
+				9CABC7DB2C391CC30096D384 /* OnboardingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +532,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YL7ZX6U88Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YoriJori/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -475,6 +566,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YL7ZX6U88Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YoriJori/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
