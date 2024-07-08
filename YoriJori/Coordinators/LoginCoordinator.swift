@@ -44,7 +44,4 @@ extension LoginCoordinator: RegisterCoordinatorDelegate {
         self.delegate?.didCompleteRegister(self)
     }
     
-    
-    
-    
 }
