@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RegisterCoordinatorDelegate {
-    func didCompleteRegistation()
+    func didCompleteRegistration()
 }
 
 
