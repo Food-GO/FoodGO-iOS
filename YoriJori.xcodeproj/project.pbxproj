@@ -31,6 +31,14 @@
 		9CABC7E82C392D5F0096D384 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9CABC7E72C392D5F0096D384 /* SnapKit */; };
 		9CABC7ED2C395A060096D384 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9CABC7EC2C395A060096D384 /* RxCocoa */; };
 		9CABC7EF2C395A060096D384 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9CABC7EE2C395A060096D384 /* RxSwift */; };
+		9CABC7F32C399CAA0096D384 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7F22C399CAA0096D384 /* LoginRequestModel.swift */; };
+		9CABC7F82C399D410096D384 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 9CABC7F72C399D410096D384 /* Then */; };
+		9CABC7FA2C399EF70096D384 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7F92C399EF70096D384 /* LoginViewModel.swift */; };
+		9CABC7FD2C3C12330096D384 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7FC2C3C12330096D384 /* RegisterCoordinator.swift */; };
+		9CABC8012C3C175D0096D384 /* FirstRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8002C3C175D0096D384 /* FirstRegistViewController.swift */; };
+		9CABC8032C3C17B60096D384 /* SecondRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8022C3C17B60096D384 /* SecondRegistViewController.swift */; };
+		9CABC8052C3C17CD0096D384 /* ThirdRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8042C3C17CD0096D384 /* ThirdRegistViewController.swift */; };
+		9CABC8072C3C17DD0096D384 /* LastRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8062C3C17DD0096D384 /* LastRegistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +84,13 @@
 		9CABC7DF2C391F940096D384 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		9CABC7E22C392B990096D384 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
 		9CABC7E42C392BAE0096D384 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
+		9CABC7F22C399CAA0096D384 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
+		9CABC7F92C399EF70096D384 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9CABC7FC2C3C12330096D384 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
+		9CABC8002C3C175D0096D384 /* FirstRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRegistViewController.swift; sourceTree = "<group>"; };
+		9CABC8022C3C17B60096D384 /* SecondRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRegistViewController.swift; sourceTree = "<group>"; };
+		9CABC8042C3C17CD0096D384 /* ThirdRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdRegistViewController.swift; sourceTree = "<group>"; };
+		9CABC8062C3C17DD0096D384 /* LastRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastRegistViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +101,7 @@
 				9CABC7EF2C395A060096D384 /* RxSwift in Frameworks */,
 				9CABC7ED2C395A060096D384 /* RxCocoa in Frameworks */,
 				9CABC7E82C392D5F0096D384 /* SnapKit in Frameworks */,
+				9CABC7F82C399D410096D384 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +197,7 @@
 		9CABC7CF2C3912380096D384 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				9CABC7FC2C3C12330096D384 /* RegisterCoordinator.swift */,
 				9CABC7D02C3912410096D384 /* AppCoordinator.swift */,
 				9CABC7D42C3917B00096D384 /* LoginCoordinator.swift */,
 				9CABC7DA2C391CC30096D384 /* OnboardingCoordinator.swift */,
@@ -192,6 +209,7 @@
 		9CABC7D62C3918B70096D384 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				9CABC7FB2C3C12240096D384 /* Register */,
 				9CABC7E12C3929FB0096D384 /* Main */,
 				9CABC7DE2C391F040096D384 /* Onboarding */,
 				9CABC7D72C3918C40096D384 /* Login */,
@@ -202,7 +220,9 @@
 		9CABC7D72C3918C40096D384 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9CABC7F12C399C9D0096D384 /* Model */,
 				9CABC7D82C3918D30096D384 /* LoginViewController.swift */,
+				9CABC7F92C399EF70096D384 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -225,6 +245,25 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		9CABC7F12C399C9D0096D384 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7F22C399CAA0096D384 /* LoginRequestModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9CABC7FB2C3C12240096D384 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC8002C3C175D0096D384 /* FirstRegistViewController.swift */,
+				9CABC8022C3C17B60096D384 /* SecondRegistViewController.swift */,
+				9CABC8042C3C17CD0096D384 /* ThirdRegistViewController.swift */,
+				9CABC8062C3C17DD0096D384 /* LastRegistViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,6 +284,7 @@
 				9CABC7E72C392D5F0096D384 /* SnapKit */,
 				9CABC7EC2C395A060096D384 /* RxCocoa */,
 				9CABC7EE2C395A060096D384 /* RxSwift */,
+				9CABC7F72C399D410096D384 /* Then */,
 			);
 			productName = YoriJori;
 			productReference = 9CABC7942C38EB8C0096D384 /* YoriJori.app */;
@@ -321,6 +361,7 @@
 			packageReferences = (
 				9CABC7E62C392D5F0096D384 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				9CABC7EB2C395A060096D384 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				9CABC7F62C399D410096D384 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 9CABC7952C38EB8C0096D384 /* Products */;
 			projectDirPath = "";
@@ -366,17 +407,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CABC8052C3C17CD0096D384 /* ThirdRegistViewController.swift in Sources */,
 				9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */,
 				9CABC7E02C391F940096D384 /* MainCoordinator.swift in Sources */,
 				9CABC7D12C3912410096D384 /* AppCoordinator.swift in Sources */,
 				9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */,
 				9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */,
 				9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */,
+				9CABC7F32C399CAA0096D384 /* LoginRequestModel.swift in Sources */,
 				9CABC7CE2C3911FC0096D384 /* Coordinator.swift in Sources */,
 				9CABC7E32C392B990096D384 /* FirstOnboardingViewController.swift in Sources */,
 				9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */,
+				9CABC8072C3C17DD0096D384 /* LastRegistViewController.swift in Sources */,
+				9CABC7FA2C399EF70096D384 /* LoginViewModel.swift in Sources */,
+				9CABC8012C3C175D0096D384 /* FirstRegistViewController.swift in Sources */,
 				9CABC7D52C3917B00096D384 /* LoginCoordinator.swift in Sources */,
+				9CABC7FD2C3C12330096D384 /* RegisterCoordinator.swift in Sources */,
 				9CABC7CA2C390E680096D384 /* MainViewController.swift in Sources */,
+				9CABC8032C3C17B60096D384 /* SecondRegistViewController.swift in Sources */,
 				9CABC7E52C392BAE0096D384 /* SecondOnboardingViewController.swift in Sources */,
 				9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */,
 				9CABC7DB2C391CC30096D384 /* OnboardingCoordinator.swift in Sources */,
@@ -756,6 +804,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		9CABC7F62C399D410096D384 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -773,6 +829,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CABC7EB2C395A060096D384 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		9CABC7F72C399D410096D384 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CABC7F62C399D410096D384 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

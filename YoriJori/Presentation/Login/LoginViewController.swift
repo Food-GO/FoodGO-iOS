@@ -13,6 +13,7 @@ import RxCocoa
 
 protocol LoginViewControllerDelegate {
     func login()
+    func moveToRegister()
 }
 
 class LoginViewController: UIViewController {
@@ -39,6 +40,14 @@ class LoginViewController: UIViewController {
         $0.isEnabled = false
     }
     
+    private lazy var registerLabel = UILabel().then {
+        $0.text = "회원가입"
+        $0.textColor = .black
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(registerDidTap))
+        $0.addGestureRecognizer(gesture)
+        $0.isUserInteractionEnabled = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +58,7 @@ class LoginViewController: UIViewController {
     }
     
     private func setUI() {
-        [idTextField, passwordTextField, loginButton].forEach({self.view.addSubview($0)})
+        [idTextField, passwordTextField, loginButton, registerLabel].forEach({self.view.addSubview($0)})
         
         idTextField.snp.makeConstraints({
             $0.center.equalToSuperview()
@@ -67,6 +76,11 @@ class LoginViewController: UIViewController {
             $0.top.equalTo(self.passwordTextField.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(15)
             $0.height.equalTo(54)
+        })
+        
+        registerLabel.snp.makeConstraints({
+            $0.top.equalTo(self.loginButton.snp.bottom).offset(16)
+            $0.trailing.equalToSuperview().offset(-15)
         })
     }
     
@@ -114,6 +128,10 @@ class LoginViewController: UIViewController {
 
     @objc private func loginSucceed() {
         self.delegate?.login()
+    }
+    
+    @objc private func registerDidTap() {
+        self.delegate?.moveToRegister()
     }
 
 }

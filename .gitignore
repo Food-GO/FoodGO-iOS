@@ -1,6 +1,14 @@
 # Created by https://www.toptal.com/developers/gitignore/api/swift,swiftpackagemanager,swiftpm,xcode
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,swiftpackagemanager,swiftpm,xcode
 
+#User-specific files
+*.swp
+*.swo
+*.DS_Store
+*.idea/
+*.swm
+*.lock
+
 ### Swift ###
 # Xcode
 #

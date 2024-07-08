@@ -45,6 +45,13 @@ class AppCoordinator: Coordinator {
         self.childCoordinators.append(coordinator)
     }
     
+    private func showRegistViewController() {
+        let coordinator = LoginCoordinator(navigationController: self.navigationController)
+        coordinator.delegate = self
+        coordinator.start()
+        self.childCoordinators.append(coordinator)
+    }
+    
     private func showOnboardingViewController() {
         let coordinator = OnboardingCoordinator(navigationController: self.navigationController)
         coordinator.delegate = self
@@ -54,9 +61,14 @@ class AppCoordinator: Coordinator {
     
 }
 
-// MARK: - 로그인
+// MARK: - 로그인, 회원가입
 extension AppCoordinator: LoginCoordinatorDelegate {
     func didLoggedIn(_ coordinator: LoginCoordinator) {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator}
+        self.showMainViewController()
+    }
+    
+    func didCompleteRegister(_ coordinator: LoginCoordinator) {
         self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator}
         self.showMainViewController()
     }
