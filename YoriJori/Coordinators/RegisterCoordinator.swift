@@ -72,6 +72,6 @@ extension RegisterCoordinator: ThirdRegistViewControllerDelegate {
 
 extension RegisterCoordinator: LastRegistViewControllerDelegate {
     func didCompleteLastStep() {
-        self.delegate?.didCompleteRegistation()
+        self.delegate?.didCompleteRegistration()
     }
 }

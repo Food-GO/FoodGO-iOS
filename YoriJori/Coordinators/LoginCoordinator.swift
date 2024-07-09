@@ -40,7 +40,8 @@ class LoginCoordinator: Coordinator, LoginViewControllerDelegate {
 }
 
 extension LoginCoordinator: RegisterCoordinatorDelegate {
-    func didCompleteRegistation() {
+    
+    func didCompleteRegistration() {
         self.delegate?.didCompleteRegister(self)
     }
     
