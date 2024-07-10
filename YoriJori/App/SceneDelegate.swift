@@ -18,7 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         let navigationController = UINavigationController()
-//        let loginVC = FirstRegistViewController()
+        let loginVC = SecondRegistViewController()
+        
         self.window?.rootViewController = navigationController
 //        self.window?.rootViewController = loginVC
         

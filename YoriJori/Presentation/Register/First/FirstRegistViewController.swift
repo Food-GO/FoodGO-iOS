@@ -86,8 +86,6 @@ class FirstRegistViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
