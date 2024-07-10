@@ -17,6 +17,8 @@ protocol FirstRegistViewControllerDelegate {
 
 class FirstRegistViewController: UIViewController {
     
+    var delegate: FirstRegistViewControllerDelegate?
+    
     private let viewModel = FirstRegistViewModel()
     private let disposeBag = DisposeBag()
     
@@ -84,7 +86,7 @@ class FirstRegistViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
-    var delegate: FirstRegistViewControllerDelegate?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
