@@ -8,6 +8,8 @@
 import UIKit
 import Then
 import SnapKit
+import RxSwift
+import RxCocoa
 
 protocol SecondRegistViewControllerDelegate {
     func didCompleteSecondStep()
@@ -16,6 +18,8 @@ protocol SecondRegistViewControllerDelegate {
 class SecondRegistViewController: UIViewController {
     
     var delegate: SecondRegistViewControllerDelegate?
+    private let viewModel = SecondRegistViewModel()
+    private var disposeBag = DisposeBag()
     
     private let progressBar = UISlider().then {
         $0.thumbTintColor = .clear
@@ -71,6 +75,7 @@ class SecondRegistViewController: UIViewController {
         self.view.backgroundColor = .white
         
         setUI()
+        bindViewModel()
     }
     
     private func setUI() {
@@ -122,6 +127,35 @@ class SecondRegistViewController: UIViewController {
         })
     }
     
+    private func bindViewModel() {
+        nicknameTextField.rx.text.orEmpty
+            .bind(to: viewModel.nicknameRelay)
+            .disposed(by: disposeBag)
+        
+        nicknameValidateButton.rx.tap
+            .bind { [weak self] in
+                self?.viewModel.requestNicknameDuplicated()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.isValidateButtonEnabled
+            .bind(to: nicknameValidateButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.isValidateButtonEnabled
+            .map { $0 ? .red : .gray}
+            .bind(to: nicknameValidateButton.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        viewModel.isValidateNextButtonEnabled
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.isValidateNextButtonEnabled
+            .map { $0 ? .red : .gray }
+            .bind(to: nextButton.rx.backgroundColor)
+            .disposed(by: disposeBag)
+    }
 
     @objc private func nextButtonTapped() {
         self.delegate?.didCompleteSecondStep()
