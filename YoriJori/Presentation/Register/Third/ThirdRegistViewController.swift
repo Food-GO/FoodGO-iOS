@@ -55,6 +55,44 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     
     private var diseaseCollectionView: UICollectionView!
     
+    private let diseaseTextField = UITextField().then {
+        $0.placeholder = "기타 입력..."
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = .gray
+        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        $0.leftViewMode = .always
+    }
+    
+    private let lifestyleHabitLabel = UILabel().then {
+        $0.text = "생활습관"
+        $0.textColor = DesignSystemColor.textColor
+        $0.font = DesignSystemFont.semiBold14
+    }
+    
+    private var lifestyleHabitCollectionView: UICollectionView!
+    
+    private let lifestyleHabitTextField = UITextField().then {
+        $0.placeholder = "기타 입력..."
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = .gray
+        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        $0.leftViewMode = .always
+    }
+    
+    private let allergyLabel = UILabel().then {
+        $0.text = "알레르기"
+        $0.textColor = DesignSystemColor.textColor
+        $0.font = DesignSystemFont.semiBold14
+    }
+    
+    private let allergyTextField = UITextField().then {
+        $0.placeholder = "알레르기를 입력해 주세요"
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = .gray
+        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        $0.leftViewMode = .always
+    }
+    
     private lazy var nextButton = UIButton().then {
         $0.backgroundColor = .blue.withAlphaComponent(0.5)
         $0.setTitle("다음", for: .normal)
@@ -107,11 +145,20 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         self.diseaseCollectionView.register(DiseaseCategoryCell.self, forCellWithReuseIdentifier: DiseaseCategoryCell.identifier)
         self.diseaseCollectionView.isScrollEnabled = false
         self.diseaseCollectionView.isUserInteractionEnabled = true
+        
+        let lifestyleHabitCollectionlayout = UICollectionViewFlowLayout()
+        lifestyleHabitCollectionlayout.minimumInteritemSpacing = 8
+        lifestyleHabitCollectionlayout.sectionInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+        self.lifestyleHabitCollectionView = UICollectionView(frame: .zero, collectionViewLayout: lifestyleHabitCollectionlayout)
+        self.lifestyleHabitCollectionView.delegate = self
+        self.lifestyleHabitCollectionView.register(LifestyleHabitCategoryCell.self, forCellWithReuseIdentifier: LifestyleHabitCategoryCell.identifier)
+        self.lifestyleHabitCollectionView.isScrollEnabled = false
+        self.lifestyleHabitCollectionView.isUserInteractionEnabled = true
     }
     
     private func setUI() {
         
-        [progressBar, usageLabel, usageCollectionView, diseaseLabel, diseaseCollectionView, nextButton].forEach({self.contentView.addSubview($0)})
+        [progressBar, usageLabel, usageCollectionView, diseaseLabel, diseaseCollectionView, diseaseTextField, lifestyleHabitLabel, lifestyleHabitCollectionView, lifestyleHabitTextField, allergyLabel, allergyTextField, nextButton].forEach({self.contentView.addSubview($0)})
         
         progressBar.snp.makeConstraints({
             $0.top.equalToSuperview().offset(12)
@@ -142,11 +189,45 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
             $0.height.equalTo(40)
         })
         
+        diseaseTextField.snp.makeConstraints({
+            $0.top.equalTo(self.diseaseCollectionView.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.height.equalTo(40)
+        })
+        
+        lifestyleHabitLabel.snp.makeConstraints({
+            $0.top.equalTo(self.diseaseTextField.snp.bottom).offset(22)
+            $0.leading.equalToSuperview().offset(15)
+        })
+        
+        lifestyleHabitCollectionView.snp.makeConstraints({
+            $0.top.equalTo(self.lifestyleHabitLabel.snp.bottom).offset(6)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.height.equalTo(144)
+        })
+        
+        lifestyleHabitTextField.snp.makeConstraints({
+            $0.top.equalTo(self.lifestyleHabitCollectionView.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.height.equalTo(40)
+        })
+        
+        allergyLabel.snp.makeConstraints({
+            $0.top.equalTo(self.lifestyleHabitTextField.snp.bottom).offset(22)
+            $0.leading.equalToSuperview().offset(15)
+        })
+        
+        allergyTextField.snp.makeConstraints({
+            $0.top.equalTo(self.allergyLabel.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.height.equalTo(40)
+        })
+        
         nextButton.snp.makeConstraints({
-            $0.top.equalTo(self.diseaseCollectionView.snp.bottom).offset(300)
+            $0.top.equalTo(self.allergyTextField.snp.bottom).offset(80)
+            $0.bottom.equalToSuperview().offset(-30)
             $0.leading.trailing.equalToSuperview().inset(15)
             $0.height.equalTo(54)
-            $0.bottom.equalToSuperview().offset(-50)
         })
         
         self.scrollView.updateContentSize()
@@ -194,6 +275,27 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
                 
             }
             .disposed(by: disposeBag)
+        
+        Observable.just(viewModel.lifestyleHabitCategories)
+            .bind(to: lifestyleHabitCollectionView.rx.items(cellIdentifier: LifestyleHabitCategoryCell.identifier, cellType: LifestyleHabitCategoryCell.self)) { [weak self] index, text, cell in
+                guard let self = self else {return}
+                cell.button.rx.tap
+                    .map { index }
+                    .subscribe(onNext: { [weak self] index in
+                        self?.viewModel.lifestyleSelectedButtonIndex.accept(index)
+                    })
+                    .disposed(by: cell.disposeBag)
+                
+                
+                self.viewModel.lifestyleSelectedButtonIndex
+                    .map { $0 == index }
+                    .subscribe(onNext: { isSelected in
+                        cell.configure(text: text, isSelected: isSelected)
+                    })
+                    .disposed(by: cell.disposeBag)
+                
+            }
+            .disposed(by: disposeBag)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -203,6 +305,8 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
             let width = textSize.width + 24
             let height = textSize.height + 22
             return CGSize(width: width, height: height)
+        } else if collectionView == self.lifestyleHabitCollectionView {
+            return CGSize(width: self.lifestyleHabitCollectionView.frame.width, height: 40)
         } else {
             let text = viewModel.diseaseCategories[indexPath.item]
             let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.medium12])
