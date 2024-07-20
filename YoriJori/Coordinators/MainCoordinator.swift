@@ -11,19 +11,21 @@ protocol MainCoordinatorDelegate {
     func didLoggedOut(_ coordinator: MainCoordinator)
 }
 
-class MainCoordinator: Coordinator, MainViewControllerDelegate {
+class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
-    private var navigationController: UINavigationController!
     var delegate: MainCoordinatorDelegate?
+    private let tabBarController: UITabBarController
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(tabBarController: UITabBarController) {
+        self.tabBarController = tabBarController
     }
     
     func start() {
-        let viewController = MainViewController()
-        viewController.delegate = self
-        self.navigationController.viewControllers = [viewController]
+        let recommendCoordinator = RecommendFoodCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(recommendCoordinator)
+        recommendCoordinator.start()
+        
+        tabBarController.viewControllers = [recommendCoordinator.navigationController]
     }
     
     func logout() {

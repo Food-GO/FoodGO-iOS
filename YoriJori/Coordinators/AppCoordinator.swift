@@ -32,10 +32,12 @@ class AppCoordinator: Coordinator {
     }
     
     private func showMainViewController() {
-        let coordinator = MainCoordinator(navigationController: self.navigationController)
+        let tabBar = TabBarController()
+        let coordinator = MainCoordinator(tabBarController: tabBar)
         coordinator.delegate = self
         coordinator.start()
         self.childCoordinators.append(coordinator)
+        navigationController.setViewControllers([tabBar], animated: true)
     }
     
     private func showLoginViewController() {
@@ -64,6 +66,7 @@ class AppCoordinator: Coordinator {
 // MARK: - 로그인, 회원가입
 extension AppCoordinator: LoginCoordinatorDelegate {
     func didLoggedIn(_ coordinator: LoginCoordinator) {
+        print("로그인 성공 - 앱 코디네이터")
         self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator}
         self.showMainViewController()
     }
