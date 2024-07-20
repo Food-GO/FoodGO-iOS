@@ -17,9 +17,14 @@ class LastRegistViewController: UIViewController {
     
     var delegate: LastRegistViewControllerDelegate?
     
-    private lazy var testButton = UIButton().then {
+    private let progressBar = UIView().then {
+        $0.backgroundColor = .red.withAlphaComponent(0.5)
+        $0.layer.cornerRadius = 2
+    }
+    
+    private lazy var nextButton = UIButton().then {
         $0.backgroundColor = .blue.withAlphaComponent(0.5)
-        $0.setTitle("4", for: .normal)
+        $0.setTitle("시작하기", for: .normal)
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
 
@@ -28,9 +33,25 @@ class LastRegistViewController: UIViewController {
 
         self.view.backgroundColor = .white
         
-        self.view.addSubview(testButton)
-        testButton.snp.makeConstraints({
-            $0.center.equalToSuperview()
+        setUI()
+        
+        
+        
+    }
+    
+    private func setUI() {
+        [progressBar, nextButton].forEach({self.view.addSubview($0)})
+        
+        progressBar.snp.makeConstraints({
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.height.equalTo(4)
+        })
+        
+        nextButton.snp.makeConstraints({
+            $0.bottom.equalToSuperview().offset(-50)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.height.equalTo(54)
         })
     }
     
