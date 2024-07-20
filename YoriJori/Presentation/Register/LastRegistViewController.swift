@@ -34,9 +34,6 @@ class LastRegistViewController: UIViewController {
         self.view.backgroundColor = .white
         
         setUI()
-        
-        
-        
     }
     
     private func setUI() {
