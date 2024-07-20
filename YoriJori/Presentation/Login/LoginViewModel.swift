@@ -37,14 +37,14 @@ class LoginViewModel {
         let id = idRelay.value
         let pw = passwordRelay.value
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            let success = (id == "test" && pw == "password")
+        DispatchQueue.global().async { [weak self] in
+            Thread.sleep(forTimeInterval: 0.0)
             
             DispatchQueue.main.async {
-                if success {
+                if id == pw {
                     self?.loginResult.onNext(.success)
                 } else {
-                    self?.loginResult.onNext(.failure(message: "Invalid credentials"))
+                    self?.loginResult.onNext(.failure(message: "실패"))
                 }
             }
         }

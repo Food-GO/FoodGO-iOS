@@ -98,8 +98,10 @@ class LoginViewController: UIViewController {
             .subscribe(onNext: { [weak self] result in
                 switch result {
                 case .success:
+                    print("로그인 성공")
                     self?.loginSucceed()
-                case .failure(let message):
+                case .failure(let errorMessage):
+                    print("로그인 실패: \(errorMessage)")
                     self?.showLoginFailedAlert()
                 }
             })
@@ -122,7 +124,7 @@ class LoginViewController: UIViewController {
     }
     
     private func showLoginFailedAlert() {
-        
+        print("로그인 실패")
     }
     
 
