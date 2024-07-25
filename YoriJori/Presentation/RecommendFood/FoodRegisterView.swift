@@ -12,17 +12,12 @@ class FoodRegisterView: UIView {
     
     private let notExistIngredientsLabel = UILabel().then {
         $0.text = "아직 등록된 식재료가 없어요"
-        $0.textColor = UIColor(hex: "#A7A7A7")
-        $0.font = DesignSystemFont.regular14
+        $0.textColor = DesignSystemColor.gray600
+        $0.font = DesignSystemFont.subTitle2
     }
     
-    private let registerButton = UIButton().then {
-        $0.setTitle("식재료 등록하기", for: .normal)
-        $0.titleLabel?.font = DesignSystemFont.medium14
-        $0.backgroundColor = DesignSystemColor.mainColor
-        $0.tintColor = .white
-        $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 4
+    private let registerButton = YorijoriButton().then {
+        $0.text = "식재료 등록하기 +"
     }
 
     override init(frame: CGRect) {
@@ -48,8 +43,8 @@ class FoodRegisterView: UIView {
         
         registerButton.snp.makeConstraints({
             $0.bottom.equalToSuperview().offset(-14)
-            $0.leading.trailing.equalToSuperview().inset(14)
-            $0.height.equalTo(41)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(42)
         })
     }
     

@@ -42,7 +42,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let usageLabel = UILabel().then {
         $0.text = "용도"
         $0.textColor = DesignSystemColor.textColor
-        $0.font = DesignSystemFont.semiBold14
+        $0.font = DesignSystemFont.title1
     }
     
     private var usageCollectionView: UICollectionView!
@@ -50,7 +50,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let diseaseLabel = UILabel().then {
         $0.text = "유병 질환"
         $0.textColor = DesignSystemColor.textColor
-        $0.font = DesignSystemFont.semiBold14
+        $0.font = DesignSystemFont.title1
     }
     
     private var diseaseCollectionView: UICollectionView!
@@ -66,7 +66,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let lifestyleHabitLabel = UILabel().then {
         $0.text = "생활습관"
         $0.textColor = DesignSystemColor.textColor
-        $0.font = DesignSystemFont.semiBold14
+        $0.font = DesignSystemFont.title1
     }
     
     private var lifestyleHabitCollectionView: UICollectionView!
@@ -82,7 +82,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let allergyLabel = UILabel().then {
         $0.text = "알레르기"
         $0.textColor = DesignSystemColor.textColor
-        $0.font = DesignSystemFont.semiBold14
+        $0.font = DesignSystemFont.title1
     }
     
     private let allergyTextField = UITextField().then {
@@ -301,7 +301,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.usageCollectionView {
             let text = viewModel.usageCategories[indexPath.item]
-            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.medium12])
+            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.subTitle1])
             let width = textSize.width + 24
             let height = textSize.height + 22
             return CGSize(width: width, height: height)
@@ -309,7 +309,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
             return CGSize(width: self.lifestyleHabitCollectionView.frame.width, height: 40)
         } else {
             let text = viewModel.diseaseCategories[indexPath.item]
-            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.medium12])
+            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.subTitle1])
             let width = textSize.width + 24
             let height = textSize.height + 22
             return CGSize(width: width, height: height)

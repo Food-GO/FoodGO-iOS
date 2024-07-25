@@ -17,20 +17,15 @@ class RecommendFoodViewController: UIViewController {
     }
     
     private let userTasteLabel = UILabel().then {
-        $0.text = "이00님은\n어떤 취향일까요?"
+        $0.text = "이00님의 음식 취향은\n어떤 취향 일까요?"
         $0.numberOfLines = 0
-        $0.font = DesignSystemFont.semiBold18
-        $0.textColor = DesignSystemColor.textColor
+        $0.font = DesignSystemFont.subTitle2
+        $0.textColor = DesignSystemColor.gray900
         $0.textAlignment = .center
     }
     
-    private let foodTasteTestButton = UIButton().then {
-        $0.setTitle("테스트 하러가기", for: .normal)
-        $0.titleLabel?.font = DesignSystemFont.medium14
-        $0.backgroundColor = DesignSystemColor.mainColor
-        $0.tintColor = .white
-        $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 4
+    private let foodTasteTestButton = YorijoriButton().then {
+        $0.text = "테스트 하러가기"
     }
     
     private let grayView = UIView().then {
@@ -39,15 +34,15 @@ class RecommendFoodViewController: UIViewController {
     
     private let myGradientLabel = UILabel().then {
         $0.text = "내 식재료"
-        $0.font = DesignSystemFont.medium18
-        $0.textColor = DesignSystemColor.textColor
+        $0.font = DesignSystemFont.subTitle2
+        $0.textColor = DesignSystemColor.gray900
     }
     
     private let registerView = FoodRegisterView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = .white
         
         setUI()
@@ -70,8 +65,9 @@ class RecommendFoodViewController: UIViewController {
         
         foodTasteTestButton.snp.makeConstraints({
             $0.top.equalTo(self.userTasteLabel.snp.bottom).offset(16)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(41)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(180)
+            $0.height.equalTo(42)
         })
         
         grayView.snp.makeConstraints({
@@ -91,5 +87,5 @@ class RecommendFoodViewController: UIViewController {
             $0.height.equalTo(190)
         })
     }
-
+    
 }

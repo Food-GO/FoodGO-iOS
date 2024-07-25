@@ -4,8 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Pretendard-Medium.otf</string>
-		<string>Pretendard-SemiBold.otf</string>
+		<string>SUIT-Medium.otf</string>
+		<string>SUIT-SemiBold.otf</string>
+		<string>SUIT-Regular.otf</string>
+		<string>SUIT-Bold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
