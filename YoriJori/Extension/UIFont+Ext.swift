@@ -8,37 +8,28 @@
 import UIKit
 
 extension UIFont {
-    enum Pretendard {
+    enum SUIT {
         
-        case black
-        case regular
-        case semiBold
         case bold
-        case light
-        case extraBold
+        case semiBold
         case medium
+        case regular
         
         var value: String {
             switch self {
-            case .black:
-                return "Pretendard-Black"
-            case .semiBold:
-                return "Pretendard-SemiBold"
             case .bold:
-                return "Pretendard-Bold"
-            case .regular:
-                return "Pretendard-Regular"
-            case .light:
-                return "Pretendard-Light"
-            case .extraBold:
-                return "Pretendard-ExtraBold"
+                return "SUIT-Bold"
+            case .semiBold:
+                return "SUIT-SemiBold"
             case .medium:
-                return "Pretendard-Medium"
+                return "SUIT-Medium"
+            case .regular:
+                return "SUIT-Regular"
             }
         }
     }
     
-    static func pretendard(_ type: Pretendard, size: CGFloat) -> UIFont {
+    static func suit(_ type: SUIT, size: CGFloat) -> UIFont {
         return UIFont(name: type.value, size: size) ?? UIFont.systemFont(ofSize: size)
     }
     
