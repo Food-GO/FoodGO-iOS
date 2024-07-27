@@ -19,9 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         var rootViewController: UIViewController?
         
-        
-        let loginVC = TabBarController()
-        rootViewController = loginVC
+        if UserDefaultsManager.shared.isFirstLaunched == true {
+            rootViewController = OnboardingContainerViewController()
+        } else {
+//            rootViewController = UINavigationController(rootViewController: LoginViewController())
+            rootViewController = TabBarController()
+        }
         
         self.window?.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()
