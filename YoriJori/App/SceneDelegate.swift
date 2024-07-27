@@ -17,15 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let navigationController = UINavigationController()
-        let loginVC = RecommendFoodViewController()
+        var rootViewController: UIViewController?
         
-//        self.window?.rootViewController = navigationController
-        self.window?.rootViewController = loginVC
         
-        let coordinator = AppCoordinator(navigationController: navigationController)
-//        coordinator.start()
+        let loginVC = TabBarController()
+        rootViewController = loginVC
         
+        self.window?.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()
     }
 

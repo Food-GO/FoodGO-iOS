@@ -9,7 +9,6 @@ import UIKit
 
 class MyProfileViewController: UIViewController {
     
-    weak var coordinator: MyProfileCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

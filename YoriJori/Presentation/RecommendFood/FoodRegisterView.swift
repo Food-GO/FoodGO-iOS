@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class FoodRegisterView: UIView {
     
@@ -16,7 +17,7 @@ class FoodRegisterView: UIView {
         $0.font = DesignSystemFont.subTitle2
     }
     
-    private let registerButton = YorijoriButton().then {
+    let registerButton = YorijoriButton().then {
         $0.text = "식재료 등록하기 +"
     }
 

@@ -19,13 +19,9 @@
 		9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C72C39070B0096D384 /* SceneDelegate.swift */; };
 		9CABC7CA2C390E680096D384 /* RecommendFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C92C390E680096D384 /* RecommendFoodViewController.swift */; };
 		9CABC7CE2C3911FC0096D384 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7CD2C3911FC0096D384 /* Coordinator.swift */; };
-		9CABC7D12C3912410096D384 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D02C3912410096D384 /* AppCoordinator.swift */; };
 		9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */; };
-		9CABC7D52C3917B00096D384 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D42C3917B00096D384 /* LoginCoordinator.swift */; };
 		9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D82C3918D30096D384 /* LoginViewController.swift */; };
-		9CABC7DB2C391CC30096D384 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DA2C391CC30096D384 /* OnboardingCoordinator.swift */; };
 		9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DC2C391D440096D384 /* OnboardingContainerViewController.swift */; };
-		9CABC7E02C391F940096D384 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DF2C391F940096D384 /* MainCoordinator.swift */; };
 		9CABC7E32C392B990096D384 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7E22C392B990096D384 /* FirstOnboardingViewController.swift */; };
 		9CABC7E52C392BAE0096D384 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7E42C392BAE0096D384 /* SecondOnboardingViewController.swift */; };
 		9CABC7E82C392D5F0096D384 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9CABC7E72C392D5F0096D384 /* SnapKit */; };
@@ -34,7 +30,6 @@
 		9CABC7F32C399CAA0096D384 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7F22C399CAA0096D384 /* LoginRequestModel.swift */; };
 		9CABC7F82C399D410096D384 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 9CABC7F72C399D410096D384 /* Then */; };
 		9CABC7FA2C399EF70096D384 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7F92C399EF70096D384 /* LoginViewModel.swift */; };
-		9CABC7FD2C3C12330096D384 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7FC2C3C12330096D384 /* RegisterCoordinator.swift */; };
 		9CABC8012C3C175D0096D384 /* FirstRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8002C3C175D0096D384 /* FirstRegistViewController.swift */; };
 		9CABC8032C3C17B60096D384 /* SecondRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8022C3C17B60096D384 /* SecondRegistViewController.swift */; };
 		9CABC8052C3C17CD0096D384 /* ThirdRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8042C3C17CD0096D384 /* ThirdRegistViewController.swift */; };
@@ -51,21 +46,17 @@
 		9CABC8262C468EF00096D384 /* DiseaseCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8252C468EF00096D384 /* DiseaseCategoryCell.swift */; };
 		9CABC8282C4946120096D384 /* LifestyleHabitCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8272C4946120096D384 /* LifestyleHabitCategoryCell.swift */; };
 		9CABC82B2C4BF5E50096D384 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC82A2C4BF5E50096D384 /* TabBarController.swift */; };
-		9CABC82D2C4BFFAE0096D384 /* RecommendFoodCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC82C2C4BFFAE0096D384 /* RecommendFoodCoordinator.swift */; };
 		9CABC8332C4C01880096D384 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8322C4C01880096D384 /* ReportViewController.swift */; };
 		9CABC8352C4C01940096D384 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8342C4C01940096D384 /* HomeViewController.swift */; };
 		9CABC8372C4C019F0096D384 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8362C4C019F0096D384 /* CommunityViewController.swift */; };
 		9CABC8392C4C01AA0096D384 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8382C4C01AA0096D384 /* MyProfileViewController.swift */; };
-		9CABC83B2C4C01DB0096D384 /* ReportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC83A2C4C01DB0096D384 /* ReportCoordinator.swift */; };
-		9CABC83D2C4C01E70096D384 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC83C2C4C01E70096D384 /* HomeCoordinator.swift */; };
-		9CABC83F2C4C01F70096D384 /* CommunityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC83E2C4C01F70096D384 /* CommunityCoordinator.swift */; };
-		9CABC8412C4C02060096D384 /* MyProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8402C4C02060096D384 /* MyProfileCoordinator.swift */; };
 		9CABC8432C4E8E090096D384 /* FoodRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8422C4E8E090096D384 /* FoodRegisterView.swift */; };
 		9CABC8472C5296130096D384 /* SUIT-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC8462C5296130096D384 /* SUIT-Bold.otf */; };
 		9CABC84A2C52961B0096D384 /* SUIT-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC8482C52961B0096D384 /* SUIT-SemiBold.otf */; };
 		9CABC84B2C52961B0096D384 /* SUIT-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC8492C52961B0096D384 /* SUIT-Medium.otf */; };
 		9CABC84D2C5296210096D384 /* SUIT-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC84C2C5296210096D384 /* SUIT-Regular.otf */; };
 		9CABC84F2C5298910096D384 /* YorijoriButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC84E2C5298910096D384 /* YorijoriButton.swift */; };
+		9CABC8522C5319C50096D384 /* RegisterFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8512C5319C50096D384 /* RegisterFoodViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,18 +93,13 @@
 		9CABC7C72C39070B0096D384 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CABC7C92C390E680096D384 /* RecommendFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFoodViewController.swift; sourceTree = "<group>"; };
 		9CABC7CD2C3911FC0096D384 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		9CABC7D02C3912410096D384 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		9CABC7D42C3917B00096D384 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		9CABC7D82C3918D30096D384 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9CABC7DA2C391CC30096D384 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		9CABC7DC2C391D440096D384 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
-		9CABC7DF2C391F940096D384 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		9CABC7E22C392B990096D384 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
 		9CABC7E42C392BAE0096D384 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
 		9CABC7F22C399CAA0096D384 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		9CABC7F92C399EF70096D384 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		9CABC7FC2C3C12330096D384 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
 		9CABC8002C3C175D0096D384 /* FirstRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRegistViewController.swift; sourceTree = "<group>"; };
 		9CABC8022C3C17B60096D384 /* SecondRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRegistViewController.swift; sourceTree = "<group>"; };
 		9CABC8042C3C17CD0096D384 /* ThirdRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdRegistViewController.swift; sourceTree = "<group>"; };
@@ -130,21 +116,17 @@
 		9CABC8252C468EF00096D384 /* DiseaseCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseCategoryCell.swift; sourceTree = "<group>"; };
 		9CABC8272C4946120096D384 /* LifestyleHabitCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifestyleHabitCategoryCell.swift; sourceTree = "<group>"; };
 		9CABC82A2C4BF5E50096D384 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		9CABC82C2C4BFFAE0096D384 /* RecommendFoodCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFoodCoordinator.swift; sourceTree = "<group>"; };
 		9CABC8322C4C01880096D384 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		9CABC8342C4C01940096D384 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9CABC8362C4C019F0096D384 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		9CABC8382C4C01AA0096D384 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
-		9CABC83A2C4C01DB0096D384 /* ReportCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCoordinator.swift; sourceTree = "<group>"; };
-		9CABC83C2C4C01E70096D384 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		9CABC83E2C4C01F70096D384 /* CommunityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCoordinator.swift; sourceTree = "<group>"; };
-		9CABC8402C4C02060096D384 /* MyProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCoordinator.swift; sourceTree = "<group>"; };
 		9CABC8422C4E8E090096D384 /* FoodRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRegisterView.swift; sourceTree = "<group>"; };
 		9CABC8462C5296130096D384 /* SUIT-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.otf"; sourceTree = "<group>"; };
 		9CABC8482C52961B0096D384 /* SUIT-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.otf"; sourceTree = "<group>"; };
 		9CABC8492C52961B0096D384 /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
 		9CABC84C2C5296210096D384 /* SUIT-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.otf"; sourceTree = "<group>"; };
 		9CABC84E2C5298910096D384 /* YorijoriButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorijoriButton.swift; sourceTree = "<group>"; };
+		9CABC8512C5319C50096D384 /* RegisterFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFoodViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +186,6 @@
 				9CABC80F2C45400A0096D384 /* Extension */,
 				9CABC7D62C3918B70096D384 /* Presentation */,
 				9CABC7CB2C3911690096D384 /* App */,
-				9CABC7CF2C3912380096D384 /* Coordinators */,
 				9CABC7CC2C3911EA0096D384 /* Protocol */,
 				9CABC7C62C3906730096D384 /* Info.plist */,
 				9CABC7992C38EB8C0096D384 /* art.scnassets */,
@@ -251,26 +232,10 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		9CABC7CF2C3912380096D384 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				9CABC7FC2C3C12330096D384 /* RegisterCoordinator.swift */,
-				9CABC7D02C3912410096D384 /* AppCoordinator.swift */,
-				9CABC7D42C3917B00096D384 /* LoginCoordinator.swift */,
-				9CABC7DA2C391CC30096D384 /* OnboardingCoordinator.swift */,
-				9CABC7DF2C391F940096D384 /* MainCoordinator.swift */,
-				9CABC82C2C4BFFAE0096D384 /* RecommendFoodCoordinator.swift */,
-				9CABC83A2C4C01DB0096D384 /* ReportCoordinator.swift */,
-				9CABC83C2C4C01E70096D384 /* HomeCoordinator.swift */,
-				9CABC83E2C4C01F70096D384 /* CommunityCoordinator.swift */,
-				9CABC8402C4C02060096D384 /* MyProfileCoordinator.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
 		9CABC7D62C3918B70096D384 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				9CABC8502C5319A40096D384 /* RegisterFood */,
 				9CABC8312C4C01630096D384 /* MyProfile */,
 				9CABC8302C4C015C0096D384 /* Community */,
 				9CABC82F2C4C01570096D384 /* Home */,
@@ -280,6 +245,7 @@
 				9CABC7E12C3929FB0096D384 /* RecommendFood */,
 				9CABC7DE2C391F040096D384 /* Onboarding */,
 				9CABC7D72C3918C40096D384 /* Login */,
+				9CABC8512C5319C50096D384 /* RegisterFoodViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -441,6 +407,13 @@
 			path = MyProfile;
 			sourceTree = "<group>";
 		};
+		9CABC8502C5319A40096D384 /* RegisterFood */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RegisterFood;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,14 +563,11 @@
 			files = (
 				9CABC80D2C453C7D0096D384 /* SecondRegistViewModel.swift in Sources */,
 				9CABC8052C3C17CD0096D384 /* ThirdRegistViewController.swift in Sources */,
-				9CABC8412C4C02060096D384 /* MyProfileCoordinator.swift in Sources */,
 				9CABC8262C468EF00096D384 /* DiseaseCategoryCell.swift in Sources */,
 				9CABC8202C4548BB0096D384 /* UIFont+Ext.swift in Sources */,
 				9CABC8282C4946120096D384 /* LifestyleHabitCategoryCell.swift in Sources */,
 				9CABC8132C4545910096D384 /* ThirdRegistViewModel.swift in Sources */,
 				9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */,
-				9CABC7E02C391F940096D384 /* MainCoordinator.swift in Sources */,
-				9CABC7D12C3912410096D384 /* AppCoordinator.swift in Sources */,
 				9CABC8112C4540180096D384 /* UIScrollView+Ext.swift in Sources */,
 				9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */,
 				9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */,
@@ -605,8 +575,8 @@
 				9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */,
 				9CABC8332C4C01880096D384 /* ReportViewController.swift in Sources */,
 				9CABC8222C4549120096D384 /* DesignSystemFont.swift in Sources */,
+				9CABC8522C5319C50096D384 /* RegisterFoodViewController.swift in Sources */,
 				9CABC7F32C399CAA0096D384 /* LoginRequestModel.swift in Sources */,
-				9CABC82D2C4BFFAE0096D384 /* RecommendFoodCoordinator.swift in Sources */,
 				9CABC8152C4546360096D384 /* UsageCategoryCell.swift in Sources */,
 				9CABC7CE2C3911FC0096D384 /* Coordinator.swift in Sources */,
 				9CABC7E32C392B990096D384 /* FirstOnboardingViewController.swift in Sources */,
@@ -617,21 +587,15 @@
 				9CABC8372C4C019F0096D384 /* CommunityViewController.swift in Sources */,
 				9CABC8352C4C01940096D384 /* HomeViewController.swift in Sources */,
 				9CABC8012C3C175D0096D384 /* FirstRegistViewController.swift in Sources */,
-				9CABC83B2C4C01DB0096D384 /* ReportCoordinator.swift in Sources */,
 				9CABC80A2C3D6BCF0096D384 /* FirstRegistViewModel.swift in Sources */,
-				9CABC7D52C3917B00096D384 /* LoginCoordinator.swift in Sources */,
 				9CABC82B2C4BF5E50096D384 /* TabBarController.swift in Sources */,
-				9CABC7FD2C3C12330096D384 /* RegisterCoordinator.swift in Sources */,
 				9CABC81A2C4546D20096D384 /* UIColor+Ext.swift in Sources */,
 				9CABC7CA2C390E680096D384 /* RecommendFoodViewController.swift in Sources */,
 				9CABC8032C3C17B60096D384 /* SecondRegistViewController.swift in Sources */,
 				9CABC7E52C392BAE0096D384 /* SecondOnboardingViewController.swift in Sources */,
 				9CABC8182C4546A60096D384 /* DesignSystemColor.swift in Sources */,
-				9CABC83D2C4C01E70096D384 /* HomeCoordinator.swift in Sources */,
 				9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */,
-				9CABC83F2C4C01F70096D384 /* CommunityCoordinator.swift in Sources */,
 				9CABC84F2C5298910096D384 /* YorijoriButton.swift in Sources */,
-				9CABC7DB2C391CC30096D384 /* OnboardingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

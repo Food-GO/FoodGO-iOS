@@ -17,13 +17,6 @@ final class YorijoriButton: UIButton {
         }
     }
     
-//    var isDisabled: Bool = false {
-//        didSet {
-//            self.isEnabled = !isDisabled
-//            setBackgroundColor()
-//        }
-//    }
-    
     // MARK: - Initializer
     
     override init(frame: CGRect) {

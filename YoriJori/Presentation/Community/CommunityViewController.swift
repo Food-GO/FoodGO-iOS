@@ -9,7 +9,6 @@ import UIKit
 
 class CommunityViewController: UIViewController {
     
-    weak var coordinator: CommunityCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

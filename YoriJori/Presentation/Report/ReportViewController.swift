@@ -9,7 +9,6 @@ import UIKit
 
 class ReportViewController: UIViewController {
     
-    weak var coordinator: ReportCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

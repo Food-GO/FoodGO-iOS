@@ -7,10 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class RecommendFoodViewController: UIViewController {
     
-    weak var coordinator: RecommendFoodCoordinator?
+    private let disposeBag = DisposeBag()
     
     private let profileImage = UIImageView().then {
         $0.backgroundColor = DesignSystemColor.mainColor
@@ -46,6 +47,7 @@ class RecommendFoodViewController: UIViewController {
         self.view.backgroundColor = .white
         
         setUI()
+        bindRegisterView()
     }
     
     private func setUI() {
@@ -86,6 +88,21 @@ class RecommendFoodViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(190)
         })
+    }
+    
+    private func bindRegisterView() {
+        registerView.isUserInteractionEnabled = true
+        registerView.registerButton.rx.tap
+            .subscribe (onNext: { [weak self] in
+                self?.moveToFoodRegister()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func moveToFoodRegister() {
+        let vc = RegisterFoodViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
