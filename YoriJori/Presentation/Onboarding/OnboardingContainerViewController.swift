@@ -8,13 +8,7 @@
 import UIKit
 import SnapKit
 
-protocol OnboardingContainerViewControllerDelegate {
-    func moveToNext()
-}
-
 class OnboardingContainerViewController: UIViewController {
-    
-    var delegate: OnboardingContainerViewControllerDelegate?
     
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
@@ -116,7 +110,11 @@ class OnboardingContainerViewController: UIViewController {
     }
     
     @objc private func nextButtonTapped() {
-        self.delegate?.moveToNext()
+        UserDefaultsManager.shared.isFirstLaunched = false
+        
+        let loginVC = LoginViewController()
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC, animated: true)
     }
     
 }

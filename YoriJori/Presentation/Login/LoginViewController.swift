@@ -11,14 +11,9 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-protocol LoginViewControllerDelegate {
-    func login()
-    func moveToRegister()
-}
 
 class LoginViewController: UIViewController {
     
-    var delegate: LoginViewControllerDelegate?
     private let loginViewModel = LoginViewModel()
     private let disposeBag = DisposeBag()
     
@@ -129,11 +124,15 @@ class LoginViewController: UIViewController {
     
 
     @objc private func loginSucceed() {
-        self.delegate?.login()
+        let mainVC = TabBarController()
+        mainVC.modalPresentationStyle = .fullScreen
+        self.present(mainVC, animated: true)
     }
     
     @objc private func registerDidTap() {
-        self.delegate?.moveToRegister()
+        let firstVC = FirstRegistViewController()
+        firstVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(firstVC, animated: true)
     }
 
 }
