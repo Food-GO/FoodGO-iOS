@@ -19,23 +19,23 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let recommendTab = UINavigationController(rootViewController: RecommendFoodViewController())
-        let recommendTabBarItem = UITabBarItem(title: "음식 추천", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        let recommendTabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_food_unselected"), selectedImage: UIImage(named: "tab_food_selected")?.withRenderingMode(.alwaysOriginal))
         recommendTab.tabBarItem = recommendTabBarItem
         
         let reportTab = UINavigationController(rootViewController: ReportViewController())
-        let reportTabBarItem = UITabBarItem(title: "리포트", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        let reportTabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_report_unselected"), selectedImage: UIImage(named: "tab_report_selected")?.withRenderingMode(.alwaysOriginal))
         reportTab.tabBarItem = reportTabBarItem
         
         let homeTab = UINavigationController(rootViewController: HomeViewController())
-        let homeTabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        let homeTabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_home_unselected"), selectedImage: UIImage(named: "tab_home_selected")?.withRenderingMode(.alwaysOriginal))
         homeTab.tabBarItem = homeTabBarItem
         
         let communityTab = UINavigationController(rootViewController: CommunityViewController())
-        let communityTabBarItem = UITabBarItem(title: "커뮤니티", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        let communityTabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_community_unselected"), selectedImage: UIImage(named: "tab_community_selected")?.withRenderingMode(.alwaysOriginal))
         communityTab.tabBarItem = communityTabBarItem
         
         let myprofileTab = UINavigationController(rootViewController: MyProfileViewController())
-        let myprofileTabBarItem = UITabBarItem(title: "내 정보", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        let myprofileTabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_profile_unselected"), selectedImage: UIImage(named: "tab_profile_selected")?.withRenderingMode(.alwaysOriginal))
         myprofileTab.tabBarItem = myprofileTabBarItem
         
         self.viewControllers = [recommendTab, reportTab, homeTab, communityTab, myprofileTab]
