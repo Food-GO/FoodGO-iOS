@@ -47,7 +47,7 @@ class RecommendFoodViewController: UIViewController {
         self.view.backgroundColor = .white
         
         setUI()
-        bindRegisterView()
+        bind()
     }
     
     private func setUI() {
@@ -90,13 +90,25 @@ class RecommendFoodViewController: UIViewController {
         })
     }
     
-    private func bindRegisterView() {
+    private func bind() {
+        foodTasteTestButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.moveToTasteTest()
+            })
+            .disposed(by: disposeBag)
+        
         registerView.isUserInteractionEnabled = true
         registerView.registerButton.rx.tap
             .subscribe (onNext: { [weak self] in
                 self?.moveToFoodRegister()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func moveToTasteTest() {
+        let vc = FirstTasteTestViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func moveToFoodRegister() {
