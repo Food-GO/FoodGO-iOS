@@ -23,7 +23,6 @@ class LifestyleHabitCategoryCell: UICollectionViewCell {
         $0.titleLabel?.textAlignment = .left
         $0.titleLabel?.font = DesignSystemFont.subTitle1
         $0.titleLabel?.textColor = DesignSystemColor.textColor
-//        $0.contentEdgeInsets = UIEdgeInsets(top: 11, left: 12, bottom: 11, right: 0)
         $0.isUserInteractionEnabled = true
     }
     
@@ -52,7 +51,7 @@ class LifestyleHabitCategoryCell: UICollectionViewCell {
     func configure(text: String, isSelected: Bool) {
         self.button.setTitle(text, for: .normal)
         self.button.setTitleColor(isSelected ? .white : DesignSystemColor.textColor, for: .normal)
-        self.button.backgroundColor = isSelected ? .red : .white
+        self.button.backgroundColor = isSelected ? DesignSystemColor.yorijoriPink : .white
     }
     
     override func prepareForReuse() {

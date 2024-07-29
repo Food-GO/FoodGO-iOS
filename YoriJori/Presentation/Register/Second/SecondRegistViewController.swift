@@ -11,13 +11,8 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-protocol SecondRegistViewControllerDelegate {
-    func didCompleteSecondStep()
-}
-
 class SecondRegistViewController: UIViewController {
-    
-    var delegate: SecondRegistViewControllerDelegate?
+
     private let viewModel = SecondRegistViewModel()
     private var disposeBag = DisposeBag()
     
@@ -26,7 +21,7 @@ class SecondRegistViewController: UIViewController {
         $0.minimumValue = 0.0
         $0.maximumValue = 1.0
         $0.setValue(0.5, animated: false)
-        $0.minimumTrackTintColor = .red.withAlphaComponent(0.5)
+        $0.minimumTrackTintColor = DesignSystemColor.yorijoriPink
         $0.isUserInteractionEnabled = false
     }
     
@@ -51,7 +46,7 @@ class SecondRegistViewController: UIViewController {
     private let nicknameTextField = UITextField().then {
         $0.placeholder = "아이디를 입력해주세요"
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
     }
@@ -60,7 +55,7 @@ class SecondRegistViewController: UIViewController {
         $0.setTitle("중복확인", for: .normal)
         $0.backgroundColor = .red.withAlphaComponent(0.5)
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
     }
     
     private lazy var nextButton = UIButton().then {
@@ -143,7 +138,7 @@ class SecondRegistViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.isValidateButtonEnabled
-            .map { $0 ? .red : .gray}
+            .map { $0 ? DesignSystemColor.yorijoriPink : DesignSystemColor.gray400 }
             .bind(to: nicknameValidateButton.rx.backgroundColor)
             .disposed(by: disposeBag)
         
@@ -152,13 +147,14 @@ class SecondRegistViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.isValidateNextButtonEnabled
-            .map { $0 ? .red : .gray }
+            .map { $0 ? DesignSystemColor.yorijoriPink : DesignSystemColor.gray400 }
             .bind(to: nextButton.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
 
     @objc private func nextButtonTapped() {
-        self.delegate?.didCompleteSecondStep()
+        let nextVC = ThirdRegistViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }

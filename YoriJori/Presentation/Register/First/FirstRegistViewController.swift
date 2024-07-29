@@ -11,13 +11,8 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-protocol FirstRegistViewControllerDelegate {
-    func didCompleteFirstStep()
-}
 
 class FirstRegistViewController: UIViewController {
-    
-    var delegate: FirstRegistViewControllerDelegate?
     
     private let viewModel = FirstRegistViewModel()
     private let disposeBag = DisposeBag()
@@ -44,16 +39,15 @@ class FirstRegistViewController: UIViewController {
     private let idTextField = UITextField().then {
         $0.placeholder = "아이디를 입력해주세요"
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
     }
     
     private let idValidateButton = UIButton().then {
         $0.setTitle("중복확인", for: .normal)
-        $0.backgroundColor = .red.withAlphaComponent(0.5)
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
     }
     
     private let pwLabel = UILabel().then {
@@ -63,7 +57,7 @@ class FirstRegistViewController: UIViewController {
     private let pwTextField = UITextField().then {
         $0.placeholder = "비밀번호를 입력해주세요(10자 이상)"
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
     }
@@ -75,7 +69,7 @@ class FirstRegistViewController: UIViewController {
     private let pwValidateTextField = UITextField().then {
         $0.placeholder = "위와 동일한 비밀번호를 입력해주세요"
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
     }
@@ -178,7 +172,7 @@ class FirstRegistViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.isValidateIdButtonEnabled
-            .map { $0 ? .red : .gray }
+            .map { $0 ? DesignSystemColor.yorijoriPink : DesignSystemColor.gray400 }
             .bind(to: idValidateButton.rx.backgroundColor)
             .disposed(by: disposeBag)
         
@@ -187,13 +181,14 @@ class FirstRegistViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.isValidateNextButtonEnabled
-            .map { $0 ? .red : .gray }
+            .map { $0 ? DesignSystemColor.yorijoriPink : DesignSystemColor.gray400 }
             .bind(to: nextButton.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
    
     @objc private func nextButtonTapped() {
-        self.delegate?.didCompleteFirstStep()
+        let nextVC = SecondRegistViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }

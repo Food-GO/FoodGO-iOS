@@ -112,7 +112,7 @@ class OnboardingContainerViewController: UIViewController {
     @objc private func nextButtonTapped() {
         UserDefaultsManager.shared.isFirstLaunched = false
         
-        let loginVC = LoginViewController()
+        let loginVC = UINavigationController(rootViewController: LoginViewController())
         loginVC.modalPresentationStyle = .fullScreen
         self.present(loginVC, animated: true)
     }

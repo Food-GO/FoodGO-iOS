@@ -11,19 +11,15 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-protocol ThirdRegistViewControllerDelegate {
-    func didCompleteThirdStep()
-}
 
 class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    var delegate: ThirdRegistViewControllerDelegate?
+
     private let viewModel = ThirdRegistViewModel()
     private var disposeBag = DisposeBag()
     
     private let scrollView = UIScrollView().then {
         $0.isScrollEnabled = true
-        $0.backgroundColor = .red.withAlphaComponent(0.5)
+        $0.backgroundColor = DesignSystemColor.yorijoriPink
     }
     
     private let contentView = UIView().then {
@@ -35,13 +31,13 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         $0.minimumValue = 0.0
         $0.maximumValue = 1.0
         $0.setValue(0.75, animated: false)
-        $0.minimumTrackTintColor = .red.withAlphaComponent(0.5)
+        $0.minimumTrackTintColor = DesignSystemColor.yorijoriPink
         $0.isUserInteractionEnabled = false
     }
     
     private let usageLabel = UILabel().then {
         $0.text = "용도"
-        $0.textColor = DesignSystemColor.textColor
+        $0.textColor = DesignSystemColor.gray900
         $0.font = DesignSystemFont.title1
     }
     
@@ -49,7 +45,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     
     private let diseaseLabel = UILabel().then {
         $0.text = "유병 질환"
-        $0.textColor = DesignSystemColor.textColor
+        $0.textColor = DesignSystemColor.gray900
         $0.font = DesignSystemFont.title1
     }
     
@@ -58,14 +54,14 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let diseaseTextField = UITextField().then {
         $0.placeholder = "기타 입력..."
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
     }
     
     private let lifestyleHabitLabel = UILabel().then {
         $0.text = "생활습관"
-        $0.textColor = DesignSystemColor.textColor
+        $0.textColor = DesignSystemColor.gray900
         $0.font = DesignSystemFont.title1
     }
     
@@ -74,27 +70,27 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let lifestyleHabitTextField = UITextField().then {
         $0.placeholder = "기타 입력..."
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
     }
     
     private let allergyLabel = UILabel().then {
         $0.text = "알레르기"
-        $0.textColor = DesignSystemColor.textColor
+        $0.textColor = DesignSystemColor.gray900
         $0.font = DesignSystemFont.title1
     }
     
     private let allergyTextField = UITextField().then {
         $0.placeholder = "알레르기를 입력해 주세요"
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .gray
+        $0.backgroundColor = DesignSystemColor.gray400
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
     }
     
     private lazy var nextButton = UIButton().then {
-        $0.backgroundColor = .blue.withAlphaComponent(0.5)
+        $0.backgroundColor = DesignSystemColor.yorijoriPink
         $0.setTitle("다음", for: .normal)
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
@@ -175,7 +171,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
             $0.top.equalTo(self.usageLabel.snp.bottom).offset(6)
             $0.leading.equalToSuperview().offset(15)
             $0.trailing.equalToSuperview().offset(-43)
-            $0.height.equalTo(88)
+            $0.height.equalTo(150)
         })
         
         diseaseLabel.snp.makeConstraints({
@@ -318,7 +314,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc private func nextButtonTapped() {
-        self.delegate?.didCompleteThirdStep()
+        
     }
     
 }
