@@ -18,7 +18,8 @@ class LastTasteTestViewController: BaseTasteTestViewController {
     }
     
     override func nextButtonTapped() {
-        
+        let nextViewController = TasteTestResultViewController()
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
 

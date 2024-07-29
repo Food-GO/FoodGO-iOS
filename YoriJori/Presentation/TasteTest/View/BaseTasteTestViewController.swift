@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class BaseTasteTestViewController: UIViewController {
     
@@ -14,6 +16,9 @@ class BaseTasteTestViewController: UIViewController {
     private let secondSelectButton = YorijoriButton()
     private let thirdSelectButton = YorijoriButton()
     private let nextButton = YorijoriFilledButton()
+    
+    private let viewModel = TasteTestViewModel()
+    private let disposeBag = DisposeBag()
     
     private let progressBar = UISlider().then {
         $0.thumbTintColor = .clear
@@ -42,6 +47,8 @@ class BaseTasteTestViewController: UIViewController {
         self.nextButton.setTitle(nextButtonText, for: .normal)
         
         [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriPink, for: .normal)})
+        [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriGreen, for: .selected)})
+        
         self.nextButton.setTitleColor(DesignSystemColor.white, for: .normal)
     }
     
@@ -54,6 +61,7 @@ class BaseTasteTestViewController: UIViewController {
         self.view.backgroundColor = DesignSystemColor.white
         setUI()
         setupNextButtonAction()
+        bindViewModel()
     }
     
     private func setUI() {
@@ -99,8 +107,50 @@ class BaseTasteTestViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
+    private func bindViewModel() {
+        viewModel.selectedButtonIndex
+            .subscribe(onNext: { [weak self] index in
+                self?.updateButtonStates(selectedIndex: index)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.isNextButtonEnabled
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        firstSelectButton.rx.tap
+            .map { 0 }
+            .bind(to: viewModel.selectedButtonIndex)
+            .disposed(by: disposeBag)
+        
+        secondSelectButton.rx.tap
+            .map { 1 }
+            .bind(to: viewModel.selectedButtonIndex)
+            .disposed(by: disposeBag)
+        
+        thirdSelectButton.rx.tap
+            .map { 2 }
+            .bind(to: viewModel.selectedButtonIndex)
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private func updateButtonStates(selectedIndex: Int?) {
+        let buttons = [firstSelectButton, secondSelectButton, thirdSelectButton]
+        
+        buttons.enumerated().forEach { index, button in
+            if index == selectedIndex {
+                button.isSelected = true
+            } else {
+                button.isSelected = false
+            }
+        }
+    }
+    
     @objc func nextButtonTapped() {
         
     }
+    
+    
     
 }
