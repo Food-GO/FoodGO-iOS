@@ -42,6 +42,7 @@ class BaseTasteTestViewController: UIViewController {
         self.nextButton.setTitle(nextButtonText, for: .normal)
         
         [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriPink, for: .normal)})
+        self.nextButton.setTitleColor(DesignSystemColor.white, for: .normal)
     }
     
     required init?(coder aDecoder: NSCoder) {
