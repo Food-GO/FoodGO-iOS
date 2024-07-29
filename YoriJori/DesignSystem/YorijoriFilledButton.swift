@@ -10,11 +10,18 @@ import UIKit
 
 final class YorijoriFilledButton: UIButton {
     // MARK: - Property
-    private var buttonConfig = UIButton.Configuration.borderedTinted()
+    private var buttonConfig = UIButton.Configuration.filled()
     
     var text: String = "" {
         didSet {
             setTitle()
+        }
+    }
+    
+    var isDisabled: Bool = false {
+        didSet {
+            self.isEnabled = !isDisabled
+            setBackgroundColor()
         }
     }
     
@@ -45,12 +52,12 @@ final class YorijoriFilledButton: UIButton {
     }
     
     private func setBorderColor() {
-        buttonConfig.background.strokeColor = DesignSystemColor.yorijoriPink
-        buttonConfig.background.strokeWidth = 1
+        //        buttonConfig.background.strokeColor = DesignSystemColor.yorijoriPink
+        //        buttonConfig.background.strokeWidth = 1
     }
     
     private func setBackgroundColor() {
-        buttonConfig.baseBackgroundColor = DesignSystemColor.yorijoriPink
+        buttonConfig.baseBackgroundColor = isDisabled ? DesignSystemColor.gray400 : DesignSystemColor.yorijoriPink
     }
     
     func setBackground(color: UIColor) {
