@@ -23,8 +23,6 @@ class FoodRegisterView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderColor = UIColor(hex: "#A7A7A7").cgColor
-        self.layer.borderWidth = 1
         self.layer.cornerRadius = 8
         self.backgroundColor = .white
         
