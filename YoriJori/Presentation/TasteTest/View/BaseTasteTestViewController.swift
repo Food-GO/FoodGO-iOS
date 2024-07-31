@@ -15,7 +15,7 @@ class BaseTasteTestViewController: UIViewController {
     private let firstSelectButton = YorijoriButton()
     private let secondSelectButton = YorijoriButton()
     private let thirdSelectButton = YorijoriButton()
-    private let nextButton = YorijoriFilledButton()
+    private let nextButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white)
     
     private let viewModel = TasteTestViewModel()
     private let disposeBag = DisposeBag()

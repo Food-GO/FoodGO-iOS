@@ -22,4 +22,6 @@ public enum DesignSystemFont {
     
     static let caption1 = UIFont.suit(.medium, size: 12)
     static let caption2 = UIFont.suit(.regular, size: 12)
+    
+    static let semibold18 = UIFont.suit(.semiBold, size: 18)
 }

@@ -11,6 +11,8 @@ import UIKit
 final class YorijoriFilledButton: UIButton {
     // MARK: - Property
     private var buttonConfig = UIButton.Configuration.filled()
+    private var bgColor: UIColor
+    private var textColor: UIColor
     
     var text: String = "" {
         didSet {
@@ -25,10 +27,10 @@ final class YorijoriFilledButton: UIButton {
         }
     }
     
-    // MARK: - Initializer
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(bgColor: UIColor, textColor: UIColor) {
+        self.bgColor = bgColor
+        self.textColor = textColor
+        super.init(frame: .zero)
         setTitle()
         setBackgroundColor()
         setBorderColor()
@@ -43,8 +45,8 @@ final class YorijoriFilledButton: UIButton {
     
     private func setTitle() {
         var titleContainer = AttributeContainer()
-        titleContainer.font = DesignSystemFont.subTitle2
-        titleContainer.foregroundColor = DesignSystemColor.white
+        titleContainer.font = DesignSystemFont.subTitle3
+        titleContainer.foregroundColor = textColor
         buttonConfig.titleAlignment = .center
         
         buttonConfig.attributedTitle = AttributedString(text, attributes: titleContainer)
@@ -52,15 +54,11 @@ final class YorijoriFilledButton: UIButton {
     }
     
     private func setBorderColor() {
-        //        buttonConfig.background.strokeColor = DesignSystemColor.yorijoriPink
-        //        buttonConfig.background.strokeWidth = 1
+
     }
     
     private func setBackgroundColor() {
-        buttonConfig.baseBackgroundColor = isDisabled ? DesignSystemColor.gray400 : DesignSystemColor.yorijoriPink
+        buttonConfig.baseBackgroundColor = isDisabled ? DesignSystemColor.gray400 : bgColor
     }
     
-    func setBackground(color: UIColor) {
-        buttonConfig.baseBackgroundColor = color
-    }
 }
