@@ -17,7 +17,7 @@ class FoodRegisterView: UIView {
         $0.font = DesignSystemFont.subTitle2
     }
     
-    let registerButton = YorijoriButton().then {
+    let registerButton = YorijoriButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.yorijoriPink, borderColor: DesignSystemColor.yorijoriPink).then {
         $0.text = "식재료 등록하기 +"
     }
 
