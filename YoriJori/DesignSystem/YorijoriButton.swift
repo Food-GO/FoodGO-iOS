@@ -10,6 +10,9 @@ import UIKit
 final class YorijoriButton: UIButton {
     // MARK: - Property
     private var buttonConfig = UIButton.Configuration.borderedTinted()
+    private var bgColor: UIColor
+    private var textColor: UIColor
+    private var borderColor: UIColor
     
     var text: String = "" {
         didSet {
@@ -18,9 +21,11 @@ final class YorijoriButton: UIButton {
     }
     
     // MARK: - Initializer
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(bgColor: UIColor, textColor: UIColor, borderColor: UIColor) {
+        self.bgColor = bgColor
+        self.textColor = textColor
+        self.borderColor = borderColor
+        super.init(frame: .zero)
         setTitle()
         setBackgroundColor()
         setBorderColor()
@@ -35,8 +40,8 @@ final class YorijoriButton: UIButton {
     
     private func setTitle() {
         var titleContainer = AttributeContainer()
-        titleContainer.font = DesignSystemFont.subTitle2
-        titleContainer.foregroundColor = DesignSystemColor.yorijoriPink
+        titleContainer.font = DesignSystemFont.subTitle1
+        titleContainer.foregroundColor = textColor
         buttonConfig.titleAlignment = .center
         
         buttonConfig.attributedTitle = AttributedString(text, attributes: titleContainer)
@@ -44,15 +49,12 @@ final class YorijoriButton: UIButton {
     }
     
     private func setBorderColor() {
-        buttonConfig.background.strokeColor = DesignSystemColor.yorijoriPink
+        buttonConfig.background.strokeColor = borderColor
         buttonConfig.background.strokeWidth = 1
     }
     
     private func setBackgroundColor() {
-        buttonConfig.baseBackgroundColor = DesignSystemColor.white
+        buttonConfig.baseBackgroundColor = bgColor
     }
     
-    func setBackground(color: UIColor) {
-        buttonConfig.baseBackgroundColor = color
-    }
 }
