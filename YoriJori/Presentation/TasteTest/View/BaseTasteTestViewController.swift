@@ -12,9 +12,9 @@ import RxCocoa
 
 class BaseTasteTestViewController: UIViewController {
     
-    private let firstSelectButton = YorijoriButton()
-    private let secondSelectButton = YorijoriButton()
-    private let thirdSelectButton = YorijoriButton()
+    private let firstSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100)
+    private let secondSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100)
+    private let thirdSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100)
     private let nextButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white)
     
     private let viewModel = TasteTestViewModel()
@@ -46,8 +46,8 @@ class BaseTasteTestViewController: UIViewController {
         self.thirdSelectButton.setTitle(thirdChoice, for: .normal)
         self.nextButton.setTitle(nextButtonText, for: .normal)
         
-        [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriPink, for: .normal)})
-        [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriGreen, for: .selected)})
+//        [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriPink, for: .normal)})
+//        [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriGreen, for: .selected)})
         
         self.nextButton.setTitleColor(DesignSystemColor.white, for: .normal)
     }
