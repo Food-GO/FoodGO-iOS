@@ -7,8 +7,13 @@
 
 import UIKit
 import SnapKit
+import Then
+import RxSwift
+import RxCocoa
 
 class RegisterFoodViewController: UIViewController {
+    
+    private let disposeBag = DisposeBag()
     
     private let foodNotExistLabel = UILabel().then {
         $0.text = "아직 등록된 식재료가 없어요"
@@ -27,6 +32,7 @@ class RegisterFoodViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         setupNavigationBar()
         setUI()
+        bindAddFoodButton()
     }
     
     private func setupNavigationBar() {
@@ -53,6 +59,41 @@ class RegisterFoodViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(18)
             $0.height.equalTo(50)
         })
+    }
+    
+    private func bindAddFoodButton() {
+        addFoodButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.showBottomSheet()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showBottomSheet() {
+        let bottomSheet = AddFoodBottomSheetViewController()
+        bottomSheet.modalPresentationStyle = .overFullScreen
+        
+        bottomSheet.optionSelected
+            .subscribe(onNext: { [weak self] option in
+                self?.handleSelectedOption(option)
+                bottomSheet.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
+        present(bottomSheet, animated: true, completion: nil)
+    }
+    
+    private func handleSelectedOption(_ option: String) {
+        switch option {
+        case "recognize":
+            print("식재료 인식 선택됨")
+            // 여기에 식재료 인식 로직 구현
+        case "manual":
+            print("직접 작성하기 선택됨")
+            // 여기에 직접 작성하기 로직 구현
+        default:
+            break
+        }
     }
     
     @objc private func backButtonTapped() {
