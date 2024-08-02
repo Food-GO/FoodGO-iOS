@@ -90,7 +90,9 @@ class RegisterFoodViewController: UIViewController {
             // 여기에 식재료 인식 로직 구현
         case "manual":
             print("직접 작성하기 선택됨")
-            // 여기에 직접 작성하기 로직 구현
+            let vc = ManualAddFoodViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
