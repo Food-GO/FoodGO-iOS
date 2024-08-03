@@ -33,7 +33,6 @@ final class YorijoriFilledButton: UIButton {
         super.init(frame: .zero)
         setTitle()
         setBackgroundColor()
-        setBorderColor()
         self.configuration = buttonConfig
     }
     
@@ -53,12 +52,8 @@ final class YorijoriFilledButton: UIButton {
         self.configuration = buttonConfig
     }
     
-    private func setBorderColor() {
-
-    }
-    
     private func setBackgroundColor() {
-        buttonConfig.baseBackgroundColor = isDisabled ? DesignSystemColor.gray400 : bgColor
+        buttonConfig.baseBackgroundColor = isDisabled ? DesignSystemColor.gray500 : bgColor
     }
     
 }
