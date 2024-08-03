@@ -9,7 +9,7 @@ import UIKit
 
 class CounterView: UIView {
     
-    private var count = 1
+    var count = 1
     
     var onCountChanged: ((Int) -> Void)?
     

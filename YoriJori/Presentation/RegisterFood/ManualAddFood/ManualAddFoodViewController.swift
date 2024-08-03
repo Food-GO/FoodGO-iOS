@@ -7,12 +7,19 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class ManualAddFoodViewController: UIViewController {
     
-    private let photoView = UIView().then {
+    private let viewModel = ManualAddFoodViewModel()
+    private let disposeBag = DisposeBag()
+    
+    private let photoView = UIImageView().then {
         $0.backgroundColor = DesignSystemColor.gray150
         $0.layer.cornerRadius = 12
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let emptyPhotoImageView = UIImageView().then {
@@ -43,7 +50,20 @@ class ManualAddFoodViewController: UIViewController {
         $0.font = DesignSystemFont.title3
     }
     
+    private let countSelectorStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.distribution = .fillProportionally
+        $0.spacing = 9
+    }
+    
     private let countView = CounterView()
+    
+    private let unitSelectorView = UnitSelectorView()
+    
+    private let nextButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
+        $0.text = "완료"
+        $0.isDisabled = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +72,8 @@ class ManualAddFoodViewController: UIViewController {
         
         setupNavigationBar()
         setUI()
+        bindViewModel()
     }
-    
     
     private func setupNavigationBar() {
         self.title = "식재료 추가"
@@ -65,8 +85,19 @@ class ManualAddFoodViewController: UIViewController {
     }
     
     private func setUI() {
-        [photoView, photoImageBottomDivider, foodNameLabel, foodTextField, foodTextFieldBottomDivider, countLabel, countView].forEach({self.view.addSubview($0)})
+        [photoView, photoImageBottomDivider, foodNameLabel, foodTextField, foodTextFieldBottomDivider, countLabel, countSelectorStackView, nextButton].forEach({self.view.addSubview($0)})
         self.photoView.addSubview(emptyPhotoImageView)
+        [countView, unitSelectorView].forEach({self.countSelectorStackView.addArrangedSubview($0)})
+        
+        let tapGesture = UITapGestureRecognizer()
+        photoView.addGestureRecognizer(tapGesture)
+        photoView.isUserInteractionEnabled = true
+        
+        tapGesture.rx.event
+            .subscribe(onNext: { [weak self] _ in
+                self?.presentImagePicker()
+            })
+            .disposed(by: disposeBag)
         
         photoView.snp.makeConstraints({
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(16)
@@ -107,17 +138,67 @@ class ManualAddFoodViewController: UIViewController {
             $0.leading.equalToSuperview().offset(18)
         })
         
-        countView.snp.makeConstraints({
+        countSelectorStackView.snp.makeConstraints({
             $0.top.equalTo(self.countLabel.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().offset(18)
-            $0.width.equalTo(248)
+            $0.leading.trailing.equalToSuperview().inset(18)
             $0.height.equalTo(46)
         })
+        
+        countView.snp.makeConstraints({
+            $0.width.equalTo(248)
+        })
+        
+        nextButton.snp.makeConstraints({
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(50)
+        })
+        
+    }
+    
+    private func bindViewModel() {
+        foodTextField.rx.text.orEmpty
+            .bind(to: viewModel.foodName)
+            .disposed(by: disposeBag)
+        
+        viewModel.photoImage
+            .bind(to: photoView.rx.image)
+            .disposed(by: disposeBag)
+        
+        viewModel.isNextButtonEnabled
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.photoImage
+            .map { $0 != nil }
+            .bind(to: emptyPhotoImageView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        emptyPhotoImageView.isHidden = false
+    }
+    
+    private func presentImagePicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
     }
     
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
     
+}
 
+extension ManualAddFoodViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            viewModel.setPhoto(image)
+        }
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
 }
