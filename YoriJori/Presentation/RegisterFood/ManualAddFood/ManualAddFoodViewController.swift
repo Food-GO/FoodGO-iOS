@@ -161,6 +161,12 @@ class ManualAddFoodViewController: UIViewController {
             .bind(to: viewModel.foodName)
             .disposed(by: disposeBag)
         
+        nextButton.rx.tap
+            .subscribe(onNext: {[weak self] in
+                self?.backButtonTapped()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.photoImage
             .bind(to: photoView.rx.image)
             .disposed(by: disposeBag)

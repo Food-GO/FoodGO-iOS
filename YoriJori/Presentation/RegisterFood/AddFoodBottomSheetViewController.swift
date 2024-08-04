@@ -13,10 +13,10 @@ import SnapKit
 class AddFoodBottomSheetViewController: UIViewController {
     
     private let containerView = UIView()
-    private let recognizeButton = YorijoriButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray150).then {
+    private let recognizeButton = YorijoriButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray150, selectedBorderColor: DesignSystemColor.gray150).then {
         $0.text = "식재료 인식"
     }
-    private let manualInputButton = YorijoriButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray150).then {
+    private let manualInputButton = YorijoriButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray150, selectedBorderColor: DesignSystemColor.gray150).then {
         $0.text = "직접 작성하기"
     }
     
