@@ -12,13 +12,25 @@ import RxCocoa
 
 class BaseTasteTestViewController: UIViewController {
     
-    private let firstSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100)
-    private let secondSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100)
-    private let thirdSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100)
+    private let firstSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100, selectedBorderColor: DesignSystemColor.yorijoriGreen)
+    
+    private let secondSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100, selectedBorderColor: DesignSystemColor.yorijoriGreen)
+    
+    private let thirdSelectButton = YorijoriButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray900, borderColor: DesignSystemColor.gray100, selectedBorderColor: DesignSystemColor.yorijoriGreen)
+    
     private let nextButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white)
     
     private let viewModel = TasteTestViewModel()
     private let disposeBag = DisposeBag()
+    
+    private let smallLogo = UIImageView().then {
+        $0.image = UIImage(named: "yorijori_small_logo")
+    }
+    
+    private let progressNumber = UILabel().then {
+        $0.textColor = DesignSystemColor.white
+        $0.font = DesignSystemFont.title3
+    }
     
     private let progressBar = UISlider().then {
         $0.thumbTintColor = .clear
@@ -45,11 +57,10 @@ class BaseTasteTestViewController: UIViewController {
         self.secondSelectButton.setTitle(secondChoice, for: .normal)
         self.thirdSelectButton.setTitle(thirdChoice, for: .normal)
         self.nextButton.setTitle(nextButtonText, for: .normal)
-        
-//        [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriPink, for: .normal)})
-//        [firstSelectButton, secondSelectButton, thirdSelectButton].forEach({$0.setTitleColor(DesignSystemColor.yorijoriGreen, for: .selected)})
-        
         self.nextButton.setTitleColor(DesignSystemColor.white, for: .normal)
+        
+        let stepNumber = Int(step * 10)
+        self.progressNumber.text = "\(stepNumber)"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,16 +76,27 @@ class BaseTasteTestViewController: UIViewController {
     }
     
     private func setUI() {
-        [progressBar, questionLabel, firstSelectButton, secondSelectButton, thirdSelectButton, nextButton].forEach({self.view.addSubview($0)})
+        [progressBar, smallLogo, questionLabel, firstSelectButton, secondSelectButton, thirdSelectButton, nextButton].forEach({self.view.addSubview($0)})
+        self.smallLogo.addSubview(progressNumber)
         
         progressBar.snp.makeConstraints({
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(12)
-            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview().inset(18)
             $0.height.equalTo(4)
         })
         
+        smallLogo.snp.makeConstraints({
+            $0.top.equalTo(self.progressBar.snp.bottom).offset(63)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(32)
+        })
+        
+        progressNumber.snp.makeConstraints({
+            $0.center.equalToSuperview()
+        })
+        
         questionLabel.snp.makeConstraints({
-            $0.top.equalTo(self.progressBar.snp.bottom).offset(57)
+            $0.top.equalTo(self.smallLogo.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(60)
         })
         
@@ -139,18 +161,12 @@ class BaseTasteTestViewController: UIViewController {
         let buttons = [firstSelectButton, secondSelectButton, thirdSelectButton]
         
         buttons.enumerated().forEach { index, button in
-            if index == selectedIndex {
-                button.isSelected = true
-            } else {
-                button.isSelected = false
-            }
+            button.isSelected = (index == selectedIndex)
+            button.setNeedsUpdateConfiguration()
         }
     }
     
     @objc func nextButtonTapped() {
         
     }
-    
-    
-    
 }
