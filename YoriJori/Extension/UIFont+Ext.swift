@@ -10,6 +10,7 @@ import UIKit
 extension UIFont {
     enum SUIT {
         
+        case extraBold
         case bold
         case semiBold
         case medium
@@ -17,6 +18,8 @@ extension UIFont {
         
         var value: String {
             switch self {
+            case .extraBold:
+                return "SUIT-ExtraBold"
             case .bold:
                 return "SUIT-Bold"
             case .semiBold:
