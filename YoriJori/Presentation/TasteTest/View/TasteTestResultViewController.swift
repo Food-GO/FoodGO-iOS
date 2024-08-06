@@ -7,11 +7,19 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class TasteTestResultViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
+    
     private let characterBackgroundView = UIView().then {
         $0.layer.cornerRadius = 12
+    }
+    
+    private let shareButton = UIButton().then {
+        $0.setImage(UIImage(named: "share"), for: .normal)
     }
     
     private let characterImageView = UIImageView()
@@ -35,6 +43,16 @@ class TasteTestResultViewController: UIViewController {
         $0.image = UIImage(named: "type_underLine")
     }
     
+    private let reTestButton = YorijoriFilledButton(bgColor: DesignSystemColor.gray100, textColor: DesignSystemColor.gray600).then {
+        $0.text = "테스트 다시하기"
+        $0.semanticContentAttribute = .forceRightToLeft
+        $0.setImage(UIImage(named: "return"), for: .normal)
+    }
+    
+    private let applyTasteButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
+        $0.text = "취향 적용하기"
+    }
+    
     init(bgColor: UIColor, characterImage: UIImage, typeTextColor: UIColor, type: String, typeDesc: String) {
         self.characterBackgroundView.backgroundColor = bgColor
         self.characterImageView.image = characterImage
@@ -55,6 +73,11 @@ class TasteTestResultViewController: UIViewController {
         setupNavigationBar()
         setUI()
         
+        shareButton.rx.tap
+            .subscribe(onNext: {[weak self] in
+                self?.showBottomSheet()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupNavigationBar() {
@@ -67,13 +90,19 @@ class TasteTestResultViewController: UIViewController {
     }
     
     private func setUI() {
-        [characterBackgroundView].forEach({self.view.addSubview($0)})
-        [nameLabel, typeDescLabel, typeLabel, typeUnderLine, characterImageView].forEach({self.characterBackgroundView.addSubview($0)})
+        [characterBackgroundView, reTestButton, applyTasteButton].forEach({self.view.addSubview($0)})
+        [nameLabel, typeDescLabel, typeLabel, typeUnderLine, characterImageView, shareButton].forEach({self.characterBackgroundView.addSubview($0)})
         
         characterBackgroundView.snp.makeConstraints({
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(54)
             $0.leading.trailing.equalToSuperview().inset(18)
             $0.height.equalTo(483)
+        })
+        
+        shareButton.snp.makeConstraints({
+            $0.top.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.width.height.equalTo(36)
         })
         
         nameLabel.snp.makeConstraints({
@@ -103,6 +132,41 @@ class TasteTestResultViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(27)
             $0.height.equalTo(269)
         })
+        
+        reTestButton.snp.makeConstraints({
+            $0.top.equalTo(self.characterBackgroundView.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(110)
+            $0.height.equalTo(40)
+        })
+        
+        applyTasteButton.snp.makeConstraints({
+            $0.top.equalTo(self.reTestButton.snp.bottom).offset(56)
+            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(50)
+        })
+    }
+    
+    private func showBottomSheet() {
+        let bottomSheet = ShareBottomSheetViewController()
+        bottomSheet.modalPresentationStyle = .overFullScreen
+        
+        bottomSheet.optionSelected
+            .subscribe(onNext: { [weak self] option in
+                self?.handleSelectedOption(option)
+                bottomSheet.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
+        present(bottomSheet, animated: true, completion: nil)
+    }
+    
+    private func handleSelectedOption(_ option: String) {
+        switch option {
+        case "home":
+            self.navigationController?.popToRootViewController(animated: true)
+        default:
+            break
+        }
     }
     
     @objc private func backButtonTapped() {
