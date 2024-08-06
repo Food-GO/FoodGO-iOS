@@ -39,7 +39,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         myprofileTab.tabBarItem = myprofileTabBarItem
         
         self.viewControllers = [recommendTab, reportTab, homeTab, communityTab, myprofileTab]
-        self.selectedIndex = 0
+        self.selectedIndex = 2
     }
     
     private func setUpTabBar() {
