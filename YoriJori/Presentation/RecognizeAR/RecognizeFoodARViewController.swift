@@ -37,9 +37,11 @@ class RecognizeFoodARViewController: UIViewController, ARSCNViewDelegate {
         
         // 모델 추가
         addModel()
+        
+        showRecipeGuide()
     }
     
-    func addModel() {
+    private func addModel() {
         guard let planeScene = SCNScene(named: "art.scnassets/ship.scn") else {
             print("Failed to load plane model")
             return
@@ -49,6 +51,16 @@ class RecognizeFoodARViewController: UIViewController, ARSCNViewDelegate {
             planeNode.position = SCNVector3(0, 0, -0.5) // 카메라 앞에 위치
             sceneView.scene.rootNode.addChildNode(planeNode)
             self.planeNode = planeNode
+        }
+    }
+    
+    private func showRecipeGuide() {
+        let recipeGuideVC = RecipeGuideViewController(headerTitle: "재료 손질", contentsText: "세척한 토마토는 꼭지를 제거하고 편으로 썰고, 대파는 송송 썰어주세요.\n달걀은 잘 풀어 소금을 조금 뿌려 주세요.")
+        recipeGuideVC.modalPresentationStyle = .overFullScreen
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            guard let self = self else { return }
+            self.present(recipeGuideVC, animated: true, completion: nil)
         }
     }
     
