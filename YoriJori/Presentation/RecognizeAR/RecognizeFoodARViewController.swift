@@ -55,8 +55,12 @@ class RecognizeFoodARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func showRecipeGuide() {
-        let recipeGuideVC = RecipeGuideViewController(headerTitle: "재료 손질", contentsText: "세척한 토마토는 꼭지를 제거하고 편으로 썰고, 대파는 송송 썰어주세요.\n달걀은 잘 풀어 소금을 조금 뿌려 주세요.")
+        let viewModel = RecipeGuideViewModel()
+        
+        let recipeGuideVC = RecipeGuideViewController(viewModel: viewModel)
         recipeGuideVC.modalPresentationStyle = .overFullScreen
+        
+        viewModel.fetchRecipeGuide(recipeName: "퀴노아닭가슴살샐러드")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
             guard let self = self else { return }

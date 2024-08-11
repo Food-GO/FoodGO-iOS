@@ -11,7 +11,7 @@ import RxCocoa
 import SnapKit
 
 class RecipeGuideViewController: UIViewController {
-    
+    private let viewModel: RecipeGuideViewModel
     private let disposeBag = DisposeBag()
     
     private let closeButton = UIButton().then {
@@ -31,8 +31,8 @@ class RecipeGuideViewController: UIViewController {
         $0.spacing = 24
     }
     
-    private let headerLeftChevron = UIImageView().then {
-        $0.image = UIImage(named: "chevron_left")
+    private let headerLeftChevron = UIButton().then {
+        $0.setImage(UIImage(named: "chevron_left"), for: .normal)
     }
     
     private let headerTitle = UILabel().then {
@@ -40,8 +40,8 @@ class RecipeGuideViewController: UIViewController {
         $0.textColor = DesignSystemColor.gray900
     }
     
-    private let headerRightChevron = UIImageView().then {
-        $0.image = UIImage(named: "chevron_right")
+    private let headerRightChevron = UIButton().then {
+        $0.setImage(UIImage(named: "chevron_right"), for: .normal)
     }
     
     private let contentsContainer = UIView().then {
@@ -57,11 +57,9 @@ class RecipeGuideViewController: UIViewController {
         $0.textAlignment = .left
     }
     
-    init(headerTitle: String, contentsText: String) {
+    init(viewModel: RecipeGuideViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
-        self.headerTitle.text = headerTitle
-        self.contentsLabel.text = contentsText
     }
     
     required init?(coder: NSCoder) {
@@ -72,6 +70,7 @@ class RecipeGuideViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bindButtons()
+        bindViewModel()
     }
     
     private func setupUI() {
@@ -111,7 +110,7 @@ class RecipeGuideViewController: UIViewController {
         contentsContainer.snp.makeConstraints({
             $0.top.equalTo(self.headerStackView.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(18)
-            $0.height.equalTo(104)
+            $0.bottom.equalToSuperview().offset(-20)
         })
         
         contentsLabel.snp.makeConstraints({
@@ -127,6 +126,56 @@ class RecipeGuideViewController: UIViewController {
                 self?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
+        
+        headerLeftChevron.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.moveToPreviousStep()
+            })
+            .disposed(by: disposeBag)
+        
+        headerRightChevron.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.moveToNextStep()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindViewModel() {
+        viewModel.currentStepIndex
+            .map { [weak self] index in
+                self?.viewModel.getStepTitle(for: index) ?? ""
+            }
+            .bind(to: headerTitle.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.canMoveToNextStep
+            .bind(to: headerRightChevron.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.canMoveToPreviousStep
+            .bind(to: headerLeftChevron.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.currentStepIndex
+            .map { [weak self] index -> String? in
+                guard let self = self else { return nil }
+                return index == 0 ? nil : self.viewModel.getCurrentStep()
+            }
+            .do(onNext: { [weak self] text in
+                self?.updateContentsVisibility(text: text)
+            })
+            .bind(to: contentsLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateContentsVisibility(text: String?) {
+        if let text = text, !text.isEmpty {
+            contentsContainer.isHidden = false
+            contentsLabel.text = text
+        } else {
+            contentsContainer.isHidden = true
+            contentsLabel.text = nil
+        }
     }
 }
 
