@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C516C192C57BE65000D9C1C /* TasteTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C182C57BE65000D9C1C /* TasteTestViewModel.swift */; };
+		9C516C1B2C57C357000D9C1C /* TasteTestResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C1A2C57C357000D9C1C /* TasteTestResultViewController.swift */; };
+		9C516C1F2C5BB566000D9C1C /* AddFoodBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C1E2C5BB566000D9C1C /* AddFoodBottomSheetViewController.swift */; };
+		9C516C232C5D1353000D9C1C /* ManualAddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C222C5D1353000D9C1C /* ManualAddFoodViewController.swift */; };
+		9C516C252C5D1533000D9C1C /* YorijoriTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C242C5D1533000D9C1C /* YorijoriTextField.swift */; };
+		9C516C272C5D16DC000D9C1C /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C262C5D16DC000D9C1C /* CounterView.swift */; };
+		9C516C292C5E0907000D9C1C /* UnitSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C282C5E0907000D9C1C /* UnitSelectorView.swift */; };
+		9C516C2C2C5E0CFE000D9C1C /* ManualAddFoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C2B2C5E0CFE000D9C1C /* ManualAddFoodViewModel.swift */; };
+		9C516C302C5E1DF9000D9C1C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C2F2C5E1DF9000D9C1C /* NetworkService.swift */; };
+		9C516C322C5F5F0B000D9C1C /* SUIT-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C516C312C5F5F0B000D9C1C /* SUIT-ExtraBold.otf */; };
+		9C516C342C624BC4000D9C1C /* ShareBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C332C624BC4000D9C1C /* ShareBottomSheetViewController.swift */; };
+		9C516C372C63A1FF000D9C1C /* RecognizeFoodARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C362C63A1FF000D9C1C /* RecognizeFoodARViewController.swift */; };
+		9C516C392C64EDC8000D9C1C /* TutorialRecognizeFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C382C64EDC8000D9C1C /* TutorialRecognizeFoodViewController.swift */; };
+		9C516C3D2C67771A000D9C1C /* RecipeGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C3C2C67771A000D9C1C /* RecipeGuideViewController.swift */; };
+		9C516C442C687A43000D9C1C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9C516C432C687A43000D9C1C /* Alamofire */; };
+		9C516C462C687D06000D9C1C /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C452C687D06000D9C1C /* LoadingIndicator.swift */; };
+		9C516C482C688D8B000D9C1C /* OpenAPIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C472C688D8B000D9C1C /* OpenAPIResponseModel.swift */; };
+		9C516C4B2C689742000D9C1C /* RecipeGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C4A2C689742000D9C1C /* RecipeGuideViewModel.swift */; };
 		9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7972C38EB8C0096D384 /* AppDelegate.swift */; };
 		9CABC79A2C38EB8C0096D384 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC7992C38EB8C0096D384 /* art.scnassets */; };
 		9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC79B2C38EB8C0096D384 /* ViewController.swift */; };
@@ -18,7 +36,6 @@
 		9CABC7BA2C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7B92C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift */; };
 		9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C72C39070B0096D384 /* SceneDelegate.swift */; };
 		9CABC7CA2C390E680096D384 /* RecommendFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C92C390E680096D384 /* RecommendFoodViewController.swift */; };
-		9CABC7CE2C3911FC0096D384 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7CD2C3911FC0096D384 /* Coordinator.swift */; };
 		9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */; };
 		9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D82C3918D30096D384 /* LoginViewController.swift */; };
 		9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DC2C391D440096D384 /* OnboardingContainerViewController.swift */; };
@@ -57,6 +74,18 @@
 		9CABC84D2C5296210096D384 /* SUIT-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC84C2C5296210096D384 /* SUIT-Regular.otf */; };
 		9CABC84F2C5298910096D384 /* YorijoriButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC84E2C5298910096D384 /* YorijoriButton.swift */; };
 		9CABC8522C5319C50096D384 /* RegisterFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8512C5319C50096D384 /* RegisterFoodViewController.swift */; };
+		9CABC85B2C5684860096D384 /* BaseTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC85A2C5684860096D384 /* BaseTasteTestViewController.swift */; };
+		9CABC85D2C5687930096D384 /* FirstTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC85C2C5687930096D384 /* FirstTasteTestViewController.swift */; };
+		9CABC85F2C56884C0096D384 /* YorijoriFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC85E2C56884C0096D384 /* YorijoriFilledButton.swift */; };
+		9CABC8612C568B760096D384 /* SecondTasteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8602C568B760096D384 /* SecondTasteViewController.swift */; };
+		9CABC8632C568BBB0096D384 /* ThirdTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8622C568BBB0096D384 /* ThirdTasteTestViewController.swift */; };
+		9CABC8652C568BC50096D384 /* FourthTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8642C568BC50096D384 /* FourthTasteTestViewController.swift */; };
+		9CABC8672C568BCF0096D384 /* FifthTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8662C568BCF0096D384 /* FifthTasteTestViewController.swift */; };
+		9CABC8692C568BD70096D384 /* SixthTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8682C568BD70096D384 /* SixthTasteTestViewController.swift */; };
+		9CABC86B2C568BE10096D384 /* SeventhTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC86A2C568BE10096D384 /* SeventhTasteTestViewController.swift */; };
+		9CABC86D2C568C030096D384 /* EighthTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC86C2C568C030096D384 /* EighthTasteTestViewController.swift */; };
+		9CABC86F2C568C1A0096D384 /* NinthTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC86E2C568C1A0096D384 /* NinthTasteTestViewController.swift */; };
+		9CABC8712C568C230096D384 /* LastTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8702C568C230096D384 /* LastTasteTestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +106,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C516C182C57BE65000D9C1C /* TasteTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteTestViewModel.swift; sourceTree = "<group>"; };
+		9C516C1A2C57C357000D9C1C /* TasteTestResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteTestResultViewController.swift; sourceTree = "<group>"; };
+		9C516C1E2C5BB566000D9C1C /* AddFoodBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodBottomSheetViewController.swift; sourceTree = "<group>"; };
+		9C516C222C5D1353000D9C1C /* ManualAddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualAddFoodViewController.swift; sourceTree = "<group>"; };
+		9C516C242C5D1533000D9C1C /* YorijoriTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorijoriTextField.swift; sourceTree = "<group>"; };
+		9C516C262C5D16DC000D9C1C /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		9C516C282C5E0907000D9C1C /* UnitSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectorView.swift; sourceTree = "<group>"; };
+		9C516C2B2C5E0CFE000D9C1C /* ManualAddFoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualAddFoodViewModel.swift; sourceTree = "<group>"; };
+		9C516C2D2C5E1A7C000D9C1C /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		9C516C2F2C5E1DF9000D9C1C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		9C516C312C5F5F0B000D9C1C /* SUIT-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-ExtraBold.otf"; sourceTree = "<group>"; };
+		9C516C332C624BC4000D9C1C /* ShareBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBottomSheetViewController.swift; sourceTree = "<group>"; };
+		9C516C362C63A1FF000D9C1C /* RecognizeFoodARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeFoodARViewController.swift; sourceTree = "<group>"; };
+		9C516C382C64EDC8000D9C1C /* TutorialRecognizeFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRecognizeFoodViewController.swift; sourceTree = "<group>"; };
+		9C516C3C2C67771A000D9C1C /* RecipeGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGuideViewController.swift; sourceTree = "<group>"; };
+		9C516C452C687D06000D9C1C /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		9C516C472C688D8B000D9C1C /* OpenAPIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAPIResponseModel.swift; sourceTree = "<group>"; };
+		9C516C4A2C689742000D9C1C /* RecipeGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGuideViewModel.swift; sourceTree = "<group>"; };
 		9CABC7942C38EB8C0096D384 /* YoriJori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoriJori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CABC7972C38EB8C0096D384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CABC7992C38EB8C0096D384 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -92,7 +139,6 @@
 		9CABC7C62C3906730096D384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9CABC7C72C39070B0096D384 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CABC7C92C390E680096D384 /* RecommendFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFoodViewController.swift; sourceTree = "<group>"; };
-		9CABC7CD2C3911FC0096D384 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9CABC7D82C3918D30096D384 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CABC7DC2C391D440096D384 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +173,18 @@
 		9CABC84C2C5296210096D384 /* SUIT-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.otf"; sourceTree = "<group>"; };
 		9CABC84E2C5298910096D384 /* YorijoriButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorijoriButton.swift; sourceTree = "<group>"; };
 		9CABC8512C5319C50096D384 /* RegisterFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFoodViewController.swift; sourceTree = "<group>"; };
+		9CABC85A2C5684860096D384 /* BaseTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC85C2C5687930096D384 /* FirstTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC85E2C56884C0096D384 /* YorijoriFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorijoriFilledButton.swift; sourceTree = "<group>"; };
+		9CABC8602C568B760096D384 /* SecondTasteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTasteViewController.swift; sourceTree = "<group>"; };
+		9CABC8622C568BBB0096D384 /* ThirdTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC8642C568BC50096D384 /* FourthTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC8662C568BCF0096D384 /* FifthTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC8682C568BD70096D384 /* SixthTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixthTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC86A2C568BE10096D384 /* SeventhTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeventhTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC86C2C568C030096D384 /* EighthTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EighthTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC86E2C568C1A0096D384 /* NinthTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinthTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CABC8702C568C230096D384 /* LastTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTasteTestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C516C442C687A43000D9C1C /* Alamofire in Frameworks */,
 				9CABC7EF2C395A060096D384 /* RxSwift in Frameworks */,
 				9CABC7ED2C395A060096D384 /* RxCocoa in Frameworks */,
 				9CABC7E82C392D5F0096D384 /* SnapKit in Frameworks */,
@@ -158,9 +217,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C516C162C57BE4F000D9C1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC85A2C5684860096D384 /* BaseTasteTestViewController.swift */,
+				9CABC85C2C5687930096D384 /* FirstTasteTestViewController.swift */,
+				9CABC8602C568B760096D384 /* SecondTasteViewController.swift */,
+				9CABC8622C568BBB0096D384 /* ThirdTasteTestViewController.swift */,
+				9CABC8642C568BC50096D384 /* FourthTasteTestViewController.swift */,
+				9CABC8662C568BCF0096D384 /* FifthTasteTestViewController.swift */,
+				9CABC8682C568BD70096D384 /* SixthTasteTestViewController.swift */,
+				9CABC86A2C568BE10096D384 /* SeventhTasteTestViewController.swift */,
+				9CABC86C2C568C030096D384 /* EighthTasteTestViewController.swift */,
+				9CABC86E2C568C1A0096D384 /* NinthTasteTestViewController.swift */,
+				9CABC8702C568C230096D384 /* LastTasteTestViewController.swift */,
+				9C516C1A2C57C357000D9C1C /* TasteTestResultViewController.swift */,
+				9C516C332C624BC4000D9C1C /* ShareBottomSheetViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C516C172C57BE59000D9C1C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C516C182C57BE65000D9C1C /* TasteTestViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C516C2A2C5E0CB4000D9C1C /* ManualAddFood */ = {
+			isa = PBXGroup;
+			children = (
+				9C516C282C5E0907000D9C1C /* UnitSelectorView.swift */,
+				9C516C262C5D16DC000D9C1C /* CounterView.swift */,
+				9C516C222C5D1353000D9C1C /* ManualAddFoodViewController.swift */,
+				9C516C2B2C5E0CFE000D9C1C /* ManualAddFoodViewModel.swift */,
+			);
+			path = ManualAddFood;
+			sourceTree = "<group>";
+		};
+		9C516C2E2C5E1DEC000D9C1C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9C516C2F2C5E1DF9000D9C1C /* NetworkService.swift */,
+				9C516C472C688D8B000D9C1C /* OpenAPIResponseModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9C516C352C63A1E3000D9C1C /* RecognizeAR */ = {
+			isa = PBXGroup;
+			children = (
+				9C516C492C689732000D9C1C /* RecipeGuide */,
+				9C516C362C63A1FF000D9C1C /* RecognizeFoodARViewController.swift */,
+				9C516C382C64EDC8000D9C1C /* TutorialRecognizeFoodViewController.swift */,
+			);
+			path = RecognizeAR;
+			sourceTree = "<group>";
+		};
+		9C516C492C689732000D9C1C /* RecipeGuide */ = {
+			isa = PBXGroup;
+			children = (
+				9C516C3C2C67771A000D9C1C /* RecipeGuideViewController.swift */,
+				9C516C4A2C689742000D9C1C /* RecipeGuideViewModel.swift */,
+			);
+			path = RecipeGuide;
+			sourceTree = "<group>";
+		};
 		9CABC78B2C38EB8C0096D384 = {
 			isa = PBXGroup;
 			children = (
+				9C516C2D2C5E1A7C000D9C1C /* Secrets.xcconfig */,
 				9CABC7962C38EB8C0096D384 /* YoriJori */,
 				9CABC7AC2C38EB8E0096D384 /* YoriJoriTests */,
 				9CABC7B62C38EB8E0096D384 /* YoriJoriUITests */,
@@ -181,19 +308,17 @@
 		9CABC7962C38EB8C0096D384 /* YoriJori */ = {
 			isa = PBXGroup;
 			children = (
+				9C516C2E2C5E1DEC000D9C1C /* Network */,
+				9CABC8552C553EFF0096D384 /* Common */,
 				9CABC81B2C4548230096D384 /* Resources */,
 				9CABC8162C4546980096D384 /* DesignSystem */,
-				9CABC80F2C45400A0096D384 /* Extension */,
 				9CABC7D62C3918B70096D384 /* Presentation */,
 				9CABC7CB2C3911690096D384 /* App */,
 				9CABC7CC2C3911EA0096D384 /* Protocol */,
 				9CABC7C62C3906730096D384 /* Info.plist */,
-				9CABC7992C38EB8C0096D384 /* art.scnassets */,
 				9CABC79B2C38EB8C0096D384 /* ViewController.swift */,
 				9CABC79D2C38EB8C0096D384 /* Main.storyboard */,
-				9CABC7A02C38EB8D0096D384 /* Assets.xcassets */,
 				9CABC7A22C38EB8D0096D384 /* LaunchScreen.storyboard */,
-				9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */,
 			);
 			path = YoriJori;
 			sourceTree = "<group>";
@@ -227,7 +352,6 @@
 		9CABC7CC2C3911EA0096D384 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				9CABC7CD2C3911FC0096D384 /* Coordinator.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -235,6 +359,8 @@
 		9CABC7D62C3918B70096D384 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				9C516C352C63A1E3000D9C1C /* RecognizeAR */,
+				9CABC8592C5684730096D384 /* TasteTest */,
 				9CABC8502C5319A40096D384 /* RegisterFood */,
 				9CABC8312C4C01630096D384 /* MyProfile */,
 				9CABC8302C4C015C0096D384 /* Community */,
@@ -245,7 +371,6 @@
 				9CABC7E12C3929FB0096D384 /* RecommendFood */,
 				9CABC7DE2C391F040096D384 /* Onboarding */,
 				9CABC7D72C3918C40096D384 /* Login */,
-				9CABC8512C5319C50096D384 /* RegisterFoodViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -344,6 +469,8 @@
 				9CABC8172C4546A60096D384 /* DesignSystemColor.swift */,
 				9CABC8212C4549120096D384 /* DesignSystemFont.swift */,
 				9CABC84E2C5298910096D384 /* YorijoriButton.swift */,
+				9CABC85E2C56884C0096D384 /* YorijoriFilledButton.swift */,
+				9C516C242C5D1533000D9C1C /* YorijoriTextField.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -351,6 +478,9 @@
 		9CABC81B2C4548230096D384 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9CABC80F2C45400A0096D384 /* Extension */,
+				9CABC7992C38EB8C0096D384 /* art.scnassets */,
+				9CABC7A02C38EB8D0096D384 /* Assets.xcassets */,
 				9CABC81C2C4548330096D384 /* Fonts */,
 			);
 			path = Resources;
@@ -359,6 +489,7 @@
 		9CABC81C2C4548330096D384 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				9C516C312C5F5F0B000D9C1C /* SUIT-ExtraBold.otf */,
 				9CABC84C2C5296210096D384 /* SUIT-Regular.otf */,
 				9CABC8492C52961B0096D384 /* SUIT-Medium.otf */,
 				9CABC8482C52961B0096D384 /* SUIT-SemiBold.otf */,
@@ -410,8 +541,29 @@
 		9CABC8502C5319A40096D384 /* RegisterFood */ = {
 			isa = PBXGroup;
 			children = (
+				9C516C2A2C5E0CB4000D9C1C /* ManualAddFood */,
+				9CABC8512C5319C50096D384 /* RegisterFoodViewController.swift */,
+				9C516C1E2C5BB566000D9C1C /* AddFoodBottomSheetViewController.swift */,
 			);
 			path = RegisterFood;
+			sourceTree = "<group>";
+		};
+		9CABC8552C553EFF0096D384 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */,
+				9C516C452C687D06000D9C1C /* LoadingIndicator.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9CABC8592C5684730096D384 /* TasteTest */ = {
+			isa = PBXGroup;
+			children = (
+				9C516C172C57BE59000D9C1C /* ViewModel */,
+				9C516C162C57BE4F000D9C1C /* View */,
+			);
+			path = TasteTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +587,7 @@
 				9CABC7EC2C395A060096D384 /* RxCocoa */,
 				9CABC7EE2C395A060096D384 /* RxSwift */,
 				9CABC7F72C399D410096D384 /* Then */,
+				9C516C432C687A43000D9C1C /* Alamofire */,
 			);
 			productName = YoriJori;
 			productReference = 9CABC7942C38EB8C0096D384 /* YoriJori.app */;
@@ -512,6 +665,7 @@
 				9CABC7E62C392D5F0096D384 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				9CABC7EB2C395A060096D384 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				9CABC7F62C399D410096D384 /* XCRemoteSwiftPackageReference "Then" */,
+				9C516C422C687A43000D9C1C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 9CABC7952C38EB8C0096D384 /* Products */;
 			projectDirPath = "";
@@ -530,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CABC79A2C38EB8C0096D384 /* art.scnassets in Resources */,
+				9C516C322C5F5F0B000D9C1C /* SUIT-ExtraBold.otf in Resources */,
 				9CABC7A12C38EB8D0096D384 /* Assets.xcassets in Resources */,
 				9CABC84B2C52961B0096D384 /* SUIT-Medium.otf in Resources */,
 				9CABC84D2C5296210096D384 /* SUIT-Regular.otf in Resources */,
@@ -561,41 +716,68 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C516C192C57BE65000D9C1C /* TasteTestViewModel.swift in Sources */,
 				9CABC80D2C453C7D0096D384 /* SecondRegistViewModel.swift in Sources */,
 				9CABC8052C3C17CD0096D384 /* ThirdRegistViewController.swift in Sources */,
 				9CABC8262C468EF00096D384 /* DiseaseCategoryCell.swift in Sources */,
+				9CABC86D2C568C030096D384 /* EighthTasteTestViewController.swift in Sources */,
 				9CABC8202C4548BB0096D384 /* UIFont+Ext.swift in Sources */,
 				9CABC8282C4946120096D384 /* LifestyleHabitCategoryCell.swift in Sources */,
 				9CABC8132C4545910096D384 /* ThirdRegistViewModel.swift in Sources */,
 				9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */,
+				9C516C482C688D8B000D9C1C /* OpenAPIResponseModel.swift in Sources */,
+				9CABC86F2C568C1A0096D384 /* NinthTasteTestViewController.swift in Sources */,
+				9C516C392C64EDC8000D9C1C /* TutorialRecognizeFoodViewController.swift in Sources */,
 				9CABC8112C4540180096D384 /* UIScrollView+Ext.swift in Sources */,
+				9CABC86B2C568BE10096D384 /* SeventhTasteTestViewController.swift in Sources */,
+				9C516C372C63A1FF000D9C1C /* RecognizeFoodARViewController.swift in Sources */,
 				9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */,
+				9CABC85D2C5687930096D384 /* FirstTasteTestViewController.swift in Sources */,
 				9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */,
 				9CABC8392C4C01AA0096D384 /* MyProfileViewController.swift in Sources */,
+				9CABC8712C568C230096D384 /* LastTasteTestViewController.swift in Sources */,
+				9C516C2C2C5E0CFE000D9C1C /* ManualAddFoodViewModel.swift in Sources */,
 				9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */,
 				9CABC8332C4C01880096D384 /* ReportViewController.swift in Sources */,
 				9CABC8222C4549120096D384 /* DesignSystemFont.swift in Sources */,
 				9CABC8522C5319C50096D384 /* RegisterFoodViewController.swift in Sources */,
 				9CABC7F32C399CAA0096D384 /* LoginRequestModel.swift in Sources */,
+				9C516C272C5D16DC000D9C1C /* CounterView.swift in Sources */,
 				9CABC8152C4546360096D384 /* UsageCategoryCell.swift in Sources */,
-				9CABC7CE2C3911FC0096D384 /* Coordinator.swift in Sources */,
+				9C516C3D2C67771A000D9C1C /* RecipeGuideViewController.swift in Sources */,
 				9CABC7E32C392B990096D384 /* FirstOnboardingViewController.swift in Sources */,
 				9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */,
 				9CABC8432C4E8E090096D384 /* FoodRegisterView.swift in Sources */,
+				9CABC8652C568BC50096D384 /* FourthTasteTestViewController.swift in Sources */,
+				9CABC8612C568B760096D384 /* SecondTasteViewController.swift in Sources */,
 				9CABC8072C3C17DD0096D384 /* LastRegistViewController.swift in Sources */,
+				9CABC8632C568BBB0096D384 /* ThirdTasteTestViewController.swift in Sources */,
 				9CABC7FA2C399EF70096D384 /* LoginViewModel.swift in Sources */,
+				9C516C302C5E1DF9000D9C1C /* NetworkService.swift in Sources */,
 				9CABC8372C4C019F0096D384 /* CommunityViewController.swift in Sources */,
 				9CABC8352C4C01940096D384 /* HomeViewController.swift in Sources */,
 				9CABC8012C3C175D0096D384 /* FirstRegistViewController.swift in Sources */,
 				9CABC80A2C3D6BCF0096D384 /* FirstRegistViewModel.swift in Sources */,
+				9CABC8692C568BD70096D384 /* SixthTasteTestViewController.swift in Sources */,
+				9C516C1F2C5BB566000D9C1C /* AddFoodBottomSheetViewController.swift in Sources */,
+				9C516C292C5E0907000D9C1C /* UnitSelectorView.swift in Sources */,
+				9C516C232C5D1353000D9C1C /* ManualAddFoodViewController.swift in Sources */,
 				9CABC82B2C4BF5E50096D384 /* TabBarController.swift in Sources */,
 				9CABC81A2C4546D20096D384 /* UIColor+Ext.swift in Sources */,
 				9CABC7CA2C390E680096D384 /* RecommendFoodViewController.swift in Sources */,
+				9C516C252C5D1533000D9C1C /* YorijoriTextField.swift in Sources */,
 				9CABC8032C3C17B60096D384 /* SecondRegistViewController.swift in Sources */,
+				9C516C342C624BC4000D9C1C /* ShareBottomSheetViewController.swift in Sources */,
 				9CABC7E52C392BAE0096D384 /* SecondOnboardingViewController.swift in Sources */,
 				9CABC8182C4546A60096D384 /* DesignSystemColor.swift in Sources */,
+				9C516C462C687D06000D9C1C /* LoadingIndicator.swift in Sources */,
+				9CABC85B2C5684860096D384 /* BaseTasteTestViewController.swift in Sources */,
 				9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */,
+				9C516C1B2C57C357000D9C1C /* TasteTestResultViewController.swift in Sources */,
+				9CABC85F2C56884C0096D384 /* YorijoriFilledButton.swift in Sources */,
+				9CABC8672C568BCF0096D384 /* FifthTasteTestViewController.swift in Sources */,
 				9CABC84F2C5298910096D384 /* YorijoriButton.swift in Sources */,
+				9C516C4B2C689742000D9C1C /* RecipeGuideViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +954,7 @@
 		};
 		9CABC7BE2C38EB8E0096D384 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C516C2D2C5E1A7C000D9C1C /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -780,6 +963,7 @@
 				DEVELOPMENT_TEAM = YL7ZX6U88Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YoriJori/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "요리조리";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -798,6 +982,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -806,6 +991,7 @@
 		};
 		9CABC7BF2C38EB8E0096D384 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C516C2D2C5E1A7C000D9C1C /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -814,6 +1000,7 @@
 				DEVELOPMENT_TEAM = YL7ZX6U88Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YoriJori/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "요리조리";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -832,6 +1019,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -956,6 +1144,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9C516C422C687A43000D9C1C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 		9CABC7E62C392D5F0096D384 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -983,6 +1179,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9C516C432C687A43000D9C1C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C516C422C687A43000D9C1C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		9CABC7E72C392D5F0096D384 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CABC7E62C392D5F0096D384 /* XCRemoteSwiftPackageReference "SnapKit" */;
