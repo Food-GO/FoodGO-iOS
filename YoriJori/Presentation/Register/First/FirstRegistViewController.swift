@@ -28,6 +28,8 @@ class FirstRegistViewController: UIViewController {
     
     private let idLabel = UILabel().then {
         $0.text = "아이디"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.bold16
     }
     
     private let idStackView = UIStackView().then {
@@ -36,48 +38,43 @@ class FirstRegistViewController: UIViewController {
         $0.spacing = 8
     }
     
-    private let idTextField = UITextField().then {
+    private let idTextField = YorijoriTextField().then {
         $0.placeholder = "아이디를 입력해주세요"
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        $0.leftViewMode = .always
     }
     
     private let idValidateButton = UIButton().then {
         $0.setTitle("중복확인", for: .normal)
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
+        $0.setTitleColor(DesignSystemColor.white, for: .normal)
+        $0.layer.cornerRadius = 12
+        $0.backgroundColor = DesignSystemColor.gray500
     }
     
     private let pwLabel = UILabel().then {
         $0.text = "비밀번호"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.bold16
     }
     
-    private let pwTextField = UITextField().then {
+    private let pwTextField = YorijoriTextField().then {
         $0.placeholder = "비밀번호를 입력해주세요(10자 이상)"
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        $0.leftViewMode = .always
+        $0.isSecureTextEntry = true
     }
     
     private let pwValidateLabel = UILabel().then {
         $0.text = "비밀번호 확인"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.bold16
     }
     
-    private let pwValidateTextField = UITextField().then {
+    private let pwValidateTextField = YorijoriTextField().then {
         $0.placeholder = "위와 동일한 비밀번호를 입력해주세요"
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        $0.leftViewMode = .always
+        $0.isSecureTextEntry = true
     }
     
-    private lazy var nextButton = UIButton().then {
+    private lazy var nextButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
         $0.setTitle("다음", for: .normal)
-        $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     override func viewDidLoad() {
@@ -85,8 +82,19 @@ class FirstRegistViewController: UIViewController {
         
         self.view.backgroundColor = .white
         
+        setupNavigationBar()
         setUI()
         bindViewModel()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {       self.view.endEditing(true)
+    }
+    
+    private func setupNavigationBar() {
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = DesignSystemColor.gray900
+        self.navigationItem.leftBarButtonItem = backButton
     }
     
     private func setUI() {
@@ -189,6 +197,10 @@ class FirstRegistViewController: UIViewController {
     @objc private func nextButtonTapped() {
         let nextVC = SecondRegistViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc private func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
