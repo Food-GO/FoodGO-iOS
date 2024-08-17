@@ -18,7 +18,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let recommendTab = UINavigationController(rootViewController: RecommendFoodViewController())
+        let recommendTab = UINavigationController(rootViewController: RecommendFoodTapViewController())
         let recommendTabBarItem = UITabBarItem(title: "", image: UIImage(named: "tab_food_unselected"), selectedImage: UIImage(named: "tab_food_selected")?.withRenderingMode(.alwaysOriginal))
         recommendTab.tabBarItem = recommendTabBarItem
         
