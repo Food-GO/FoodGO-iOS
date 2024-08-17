@@ -17,29 +17,39 @@ class LoginViewController: UIViewController {
     private let loginViewModel = LoginViewModel()
     private let disposeBag = DisposeBag()
     
-    private let idTextField = UITextField().then {
-        $0.borderStyle = .roundedRect
+    private let homeLogo = UIImageView().then {
+        $0.image = UIImage(named: "yorijori_logo")
+    }
+    
+    private let serviceDescLabel = UILabel().then {
+        $0.text = "내 취향과 식재료에\n딱 맞춘 요리 레시피"
+        $0.numberOfLines = 2
+        $0.textAlignment = .center
+        $0.textColor = DesignSystemColor.yorijoriPink
+        $0.font = DesignSystemFont.semibold22
+    }
+    
+    private let idTextField = YorijoriTextField().then {
         $0.placeholder = "아이디"
     }
     
-    private let passwordTextField = UITextField().then {
-        $0.borderStyle = .roundedRect
+    private let passwordTextField = YorijoriTextField().then {
         $0.placeholder = "비밀번호"
         $0.isSecureTextEntry = true
     }
     
-    private var loginButton = UIButton().then {
+    private var loginButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
         $0.setTitle("로그인", for: .normal)
-        $0.backgroundColor = .red.withAlphaComponent(0.5)
-        $0.setTitleColor(.white, for: .normal)
         $0.isEnabled = false
     }
     
     private lazy var registerLabel = UILabel().then {
-        $0.text = "회원가입"
-        $0.textColor = .black
+        $0.text = "계정이 없으신가요? 빠르게 가입하기"
+        $0.textColor = DesignSystemColor.gray700
+        $0.font = DesignSystemFont.medium14
         let gesture = UITapGestureRecognizer(target: self, action: #selector(registerDidTap))
         $0.addGestureRecognizer(gesture)
+        $0.asColor(targetString: "빠르게 가입하기", color: DesignSystemColor.yorijoriGreen)
         $0.isUserInteractionEnabled = true
     }
     
@@ -53,29 +63,40 @@ class LoginViewController: UIViewController {
     }
     
     private func setUI() {
-        [idTextField, passwordTextField, loginButton, registerLabel].forEach({self.view.addSubview($0)})
+        [homeLogo, serviceDescLabel, idTextField, passwordTextField, loginButton, registerLabel].forEach({self.view.addSubview($0)})
+        
+        homeLogo.snp.makeConstraints({
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(117)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(120)
+        })
+        
+        serviceDescLabel.snp.makeConstraints({
+            $0.top.equalTo(self.homeLogo.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+        })
         
         idTextField.snp.makeConstraints({
-            $0.center.equalToSuperview()
+            $0.top.equalTo(self.serviceDescLabel.snp.bottom).offset(44)
             $0.leading.trailing.equalToSuperview().inset(15)
-            $0.height.equalTo(50)
+            $0.height.equalTo(46)
         })
         
         passwordTextField.snp.makeConstraints({
-            $0.top.equalTo(self.idTextField.snp.bottom).offset(6)
+            $0.top.equalTo(self.idTextField.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(15)
-            $0.height.equalTo(50)
+            $0.height.equalTo(46)
         })
         
         loginButton.snp.makeConstraints({
             $0.top.equalTo(self.passwordTextField.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(15)
-            $0.height.equalTo(54)
+            $0.height.equalTo(50)
         })
         
         registerLabel.snp.makeConstraints({
-            $0.top.equalTo(self.loginButton.snp.bottom).offset(16)
-            $0.trailing.equalToSuperview().offset(-15)
+            $0.top.equalTo(self.loginButton.snp.bottom).offset(73)
+            $0.centerX.equalToSuperview()
         })
     }
     
