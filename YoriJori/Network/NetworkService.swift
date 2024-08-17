@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum APIEndpoint {
-    case users
+    case userNameCheck(username: String)
     case ingredients
     case cuisines
     case challenges
@@ -17,7 +17,12 @@ enum APIEndpoint {
     case openAPI(start: Int, end: Int, recipeName: String)
     
     private var baseUrl: String {
-        return Bundle.main.object(forInfoDictionaryKey: "Base_URL") as? String ?? ""
+        let url = Bundle.main.object(forInfoDictionaryKey: "Base_URL") as? String ?? ""
+        let trimmed = url.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let cleaned = trimmed.replacingOccurrences(of: "\\/\\/", with: "//")
+        
+        return cleaned
     }
     
     private var openKey: String {
@@ -26,8 +31,8 @@ enum APIEndpoint {
     
     var path: String {
         switch self {
-        case .users:
-            return "/users"
+        case .userNameCheck(let username):
+            return "/users/username?username=\(username)"
         case .ingredients:
             return "/ingredients"
         case .cuisines:
@@ -41,13 +46,23 @@ enum APIEndpoint {
             return "http://openapi.foodsafetykorea.go.kr/api/\(openKey)/COOKRCP01/json/\(start)/\(end)/RCP_NM=\(encodedRecipeName)"        }
     }
     
-    var url: URL {
+    var url: URL? {
         switch self {
         case .openAPI:
-            return URL(string: path)!
+            return URL(string: path)
         default:
-            return URL(string: baseUrl + path)!
+            let urlString = baseUrl + path
+            return URL(string: urlString)
         }
+    }
+    
+    func debugInfo() -> String {
+        return """
+            Endpoint: \(self)
+            Base URL: \(baseUrl)
+            Path: \(path)
+            Full URL: \(url?.absoluteString ?? "Invalid URL")
+            """
     }
 }
 
@@ -82,10 +97,16 @@ class NetworkService {
     private init () {}
     
     func request<T: Decodable>(_ endpoint: APIEndpoint, method: HTTPMethod, parameters: Parameters? = nil, headers: HTTPHeaders? = nil, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        
+        guard let url = endpoint.url else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
         let encoding: ParameterEncoding = (method == .get) ? URLEncoding.default : JSONEncoding.default
         LoadingIndicator.showLoading()
         
-        AF.request(endpoint.url,
+        AF.request(url,
                    method: method,
                    parameters: parameters,
                    encoding: encoding,
