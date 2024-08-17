@@ -1,133 +1,138 @@
 //
-//  MainViewController.swift
+//  RecommendFoodViewController.swift
 //  YoriJori
 //
-//  Created by 김강현 on 7/6/24.
+//  Created by 김강현 on 8/17/24.
 //
 
 import UIKit
 import SnapKit
-import RxSwift
 
 class RecommendFoodViewController: UIViewController {
     
-    private let disposeBag = DisposeBag()
-    
-    private let topBackgroundView = UIView().then {
-        $0.backgroundColor = DesignSystemColor.yorijoriPink
-        $0.layer.cornerRadius = 12
-        $0.layer.masksToBounds = true
+    private let recipeContainer = UIView().then {
+        $0.backgroundColor = DesignSystemColor.white
+        $0.layer.cornerRadius = 8
     }
     
-    private let profileImage = UIImageView().then {
-        $0.image = UIImage(named: "energe_character")
-    }
-    
-    private let userTasteLabel = UILabel().then {
-        $0.text = "이00님의 음식 취향은\n어떤 취향 일까요?"
-        $0.numberOfLines = 0
-        $0.font = DesignSystemFont.semibold18
-        $0.textColor = DesignSystemColor.white
-        $0.textAlignment = .center
-    }
-    
-    private let foodTasteTestButton = YorijoriFilledButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.yorijoriPink).then {
-        $0.text = "테스트 하러가기"
-    }
-    
-    private let grayView = UIView().then {
-        $0.backgroundColor = DesignSystemColor.gray150
-    }
-    
-    private let myGradientLabel = UILabel().then {
-        $0.text = "내 식재료"
-        $0.font = DesignSystemFont.subTitle2
+    private let foodNameLabel = UILabel().then {
+        $0.text = "토마토달걀볶음"
         $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.semibold18
     }
     
-    private let registerView = FoodRegisterView()
+    private let foodDescription = UILabel().then {
+        $0.text = "바쁜 아침에 간단하게 먹을 수 있는 메뉴로 자극적이지 않고 간편하게 즐길 수 있는 토마토 달걀 볶음"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.regular14
+        $0.numberOfLines = 0
+    }
     
+    private let ingredientsLabel = UILabel().then {
+        $0.text = "[재료]"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.medium14
+    }
+    
+    private let ingredientDescription = UILabel().then {
+        $0.text = "토마토 250g, 달걀 4개, 식용유(스크램블용) 1/4컵(30g), 대파 1/2컵 (40g), 식용유(파 기름용) 1/4컵(30g), 진간장 1큰술(10g), 굴소스 1큰술(10g), 꽃소금 적당량, 후춧가루 적당량, 참기름 1/2큰술(3g)"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.regular14
+        $0.numberOfLines = 0
+    }
+    
+    private let buttonStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.distribution = .fillProportionally
+        $0.spacing = 8
+    }
+    
+    private lazy var ARRecipeButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
+        $0.text = "AR 조리법 보러가기"
+        $0.addTarget(self, action: #selector(showARRecipe), for: .touchUpInside)
+        $0.isUserInteractionEnabled = true
+    }
+    
+    private lazy var youtubeButton = YorijoriFilledButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.gray900).then {
+        $0.text = "유튜브"
+        $0.addTarget(self, action: #selector(moveToYoutube), for: .touchUpInside)
+        $0.isUserInteractionEnabled = true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = DesignSystemColor.gray150
-        
+        self.view.backgroundColor = DesignSystemColor.yorijoriGreen
+        self.tabBarController?.tabBar.isHidden = true
+        setupNavigationBar()
         setUI()
-        bind()
+    }
+    
+    private func setupNavigationBar() {
+        self.title = "음식 추천"
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = DesignSystemColor.gray900
+        self.navigationItem.leftBarButtonItem = backButton
+        
     }
     
     private func setUI() {
-        [topBackgroundView, grayView, myGradientLabel, registerView].forEach({self.view.addSubview($0)})
-        [profileImage, userTasteLabel, foodTasteTestButton].forEach({self.topBackgroundView.addSubview($0)})
+        [recipeContainer, buttonStackView].forEach({self.view.addSubview($0)})
+        [foodNameLabel, foodDescription, ingredientsLabel, ingredientDescription].forEach({self.recipeContainer.addSubview($0)})
+        [ARRecipeButton, youtubeButton].forEach({self.buttonStackView.addArrangedSubview($0)})
         
-        topBackgroundView.snp.makeConstraints({
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(411)
+        youtubeButton.snp.makeConstraints({
+            $0.width.equalTo(77)
         })
         
-        profileImage.snp.makeConstraints({
-            $0.top.equalToSuperview().offset(64)
+        buttonStackView.snp.makeConstraints({
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
+            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(50)
+        })
+        
+        recipeContainer.snp.makeConstraints({
+            $0.bottom.equalTo(self.buttonStackView.snp.top).offset(-8)
+            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(249)
+        })
+        
+        foodNameLabel.snp.makeConstraints({
+            $0.top.equalToSuperview().offset(16)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(209)
-            $0.height.equalTo(186)
         })
         
-        userTasteLabel.snp.makeConstraints({
-            $0.top.equalTo(self.profileImage.snp.bottom).offset(22)
-            $0.centerX.equalToSuperview()
+        foodDescription.snp.makeConstraints({
+            $0.top.equalTo(self.foodNameLabel.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(14)
         })
         
-        foodTasteTestButton.snp.makeConstraints({
-            $0.top.equalTo(self.userTasteLabel.snp.bottom).offset(12)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(180)
-            $0.height.equalTo(42)
-        })
-        
-        grayView.snp.makeConstraints({
-            $0.top.equalTo(self.topBackgroundView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        })
-        
-        myGradientLabel.snp.makeConstraints({
-            $0.top.equalTo(self.grayView.snp.top).offset(28)
+        ingredientsLabel.snp.makeConstraints({
+            $0.top.equalTo(self.foodDescription.snp.bottom).offset(16)
             $0.leading.equalToSuperview().offset(16)
         })
         
-        registerView.snp.makeConstraints({
-            $0.top.equalTo(self.myGradientLabel.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(190)
+        ingredientDescription.snp.makeConstraints({
+            $0.top.equalTo(self.ingredientsLabel.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(14)
         })
     }
     
-    private func bind() {
-        foodTasteTestButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.moveToTasteTest()
-            })
-            .disposed(by: disposeBag)
-        
-        registerView.isUserInteractionEnabled = true
-        registerView.registerButton.rx.tap
-            .subscribe (onNext: { [weak self] in
-                self?.moveToFoodRegister()
-            })
-            .disposed(by: disposeBag)
+    @objc private func moveToYoutube() {
+        if let url = URL(string: "https://www.youtube.com/results?search_query=%ED%86%A0%EB%A7%88%ED%86%A0%EB%8B%AC%EA%B1%80%EB%B3%B6%EC%9D%8C") {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
     
-    private func moveToTasteTest() {
-        let vc = FirstTasteTestViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+    @objc private func showARRecipe() {
+        let recipeVC = RecognizeFoodARViewController()
+        recipeVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.pushViewController(recipeVC, animated: true)
     }
     
-    private func moveToFoodRegister() {
-        let vc = RegisterFoodViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+    @objc private func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
-    
+
 }
