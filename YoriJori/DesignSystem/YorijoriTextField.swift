@@ -16,7 +16,7 @@ class YorijoriTextField: UITextField {
         self.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         self.leftViewMode = .always
         self.font = DesignSystemFont.medium14
-        self.textColor = DesignSystemColor.gray800
+        self.textColor = DesignSystemColor.gray500
     }
     
     required init?(coder: NSCoder) {

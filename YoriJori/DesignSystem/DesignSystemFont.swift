@@ -26,7 +26,9 @@ public enum DesignSystemFont {
     static let extraBold20 = UIFont.suit(.extraBold, size: 20)
     
     static let bold18 = UIFont.suit(.bold, size: 18)
+    static let bold16 = UIFont.suit(.bold, size: 16)
     
+    static let semibold22 = UIFont.suit(.semiBold, size: 22)
     static let semibold18 = UIFont.suit(.semiBold, size: 18)
     static let semibold16 = UIFont.suit(.semiBold, size: 16)
     static let semibold15 = UIFont.suit(.semiBold, size: 15)
