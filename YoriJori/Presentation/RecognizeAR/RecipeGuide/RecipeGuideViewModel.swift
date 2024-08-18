@@ -65,6 +65,28 @@ class RecipeGuideViewModel {
         }
     }
     
+    func fetchMockRecipe() {
+        self.recipeGuide = Recipe (
+            name: "토마토 달걀 볶음",
+            ingredients: "",
+            steps: [
+                "세척한 토마토는 꼭지를 제거하고 편으로 썰고, 대파는 송송 썰어주세요.\n달걀은 잘 풀어 소금을 뿌려 주세요.",
+                "팬에 식용유1/4컵(30g)를 두르고",
+                "스크램블 에그를 만들어 그릇에 담아주세요",
+                "팬에 식용유1/4컵(30g)를 두르고",
+                "대파1/2컵 (40g)를 넣어 파기름을 내주세요",
+                "대파가 노릇해지면 토마토를 넣어 함께 볶아주세요",
+                "프라이팬 바닥에 진간장 1큰술(10g), 굴소스 1큰술(10g)를 넣고 누르듯이 볶아주세요",
+                "기호에 맞춰 꽃소금으로 간을 맞추고, 후춧가루를 뿌려주세요",
+                "만들어 둔 스크램블 에그를 팬에 넣어 함께 볶아주세요",
+                "마지막으로 불을 끄고 참기름을 넣어 섞어주세요.",
+                "그릇에 담으면, 완성!"
+            ]
+        )
+        self._currentStepIndex.accept(0)
+        self._isPreparationStep.accept(true)
+    }
+    
     func moveToNextStep() {
         let nextIndex = min(_currentStepIndex.value + 1, totalSteps - 1)
         _currentStepIndex.accept(nextIndex)
