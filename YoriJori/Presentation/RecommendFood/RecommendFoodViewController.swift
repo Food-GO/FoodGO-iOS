@@ -7,8 +7,15 @@
 
 import UIKit
 import SnapKit
+import ARKit
 
-class RecommendFoodViewController: UIViewController {
+class RecommendFoodViewController: UIViewController, ARSCNViewDelegate {
+    
+    private let sceneView = ARSCNView()
+    
+    private let foodImageView = UIImageView().then {
+        $0.image = UIImage(named: "tomato_food_AR")
+    }
     
     private let recipeContainer = UIView().then {
         $0.backgroundColor = DesignSystemColor.white
@@ -58,14 +65,38 @@ class RecommendFoodViewController: UIViewController {
         $0.addTarget(self, action: #selector(moveToYoutube), for: .touchUpInside)
         $0.isUserInteractionEnabled = true
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = DesignSystemColor.yorijoriGreen
         self.tabBarController?.tabBar.isHidden = true
         setupNavigationBar()
+        
+        self.view.addSubview(sceneView)
+        sceneView.snp.makeConstraints({
+            $0.edges.equalToSuperview()
+        })
+        
+        sceneView.delegate = self
+        
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+        
         setUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        sceneView.session.pause()
     }
     
     private func setupNavigationBar() {
@@ -74,13 +105,18 @@ class RecommendFoodViewController: UIViewController {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
         backButton.tintColor = DesignSystemColor.gray900
         self.navigationItem.leftBarButtonItem = backButton
-        
     }
     
     private func setUI() {
-        [recipeContainer, buttonStackView].forEach({self.view.addSubview($0)})
+        [foodImageView, recipeContainer, buttonStackView].forEach({self.sceneView.addSubview($0)})
         [foodNameLabel, foodDescription, ingredientsLabel, ingredientDescription].forEach({self.recipeContainer.addSubview($0)})
         [ARRecipeButton, youtubeButton].forEach({self.buttonStackView.addArrangedSubview($0)})
+        
+        foodImageView.snp.makeConstraints({
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(69)
+            $0.leading.trailing.equalToSuperview().inset(40)
+            $0.height.equalTo(262)
+        })
         
         youtubeButton.snp.makeConstraints({
             $0.width.equalTo(77)
@@ -126,7 +162,7 @@ class RecommendFoodViewController: UIViewController {
     }
     
     @objc private func showARRecipe() {
-        let recipeVC = RecognizeFoodARViewController()
+        let recipeVC = TutorialRecognizeFoodViewController()
         recipeVC.modalPresentationStyle = .overFullScreen
         self.navigationController?.pushViewController(recipeVC, animated: true)
     }
@@ -134,5 +170,5 @@ class RecommendFoodViewController: UIViewController {
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
 }
