@@ -14,14 +14,14 @@ class RecipeGuideViewController: UIViewController {
     private let viewModel: RecipeGuideViewModel
     private let disposeBag = DisposeBag()
     
-    private let closeButton = UIButton().then {
-        $0.setImage(UIImage(named: "closeButton"), for: .normal)
-    }
-    
     private let containerView = UIView().then {
         $0.backgroundColor = DesignSystemColor.white
         $0.layer.cornerRadius = 20
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    private let closeButton = UIButton().then {
+        $0.setImage(UIImage(named: "closeButton"), for: .normal)
     }
     
     private let headerStackView = UIStackView().then {
@@ -54,7 +54,7 @@ class RecipeGuideViewController: UIViewController {
         $0.font = DesignSystemFont.semibold16
         $0.textColor = DesignSystemColor.gray900
         $0.numberOfLines = 0
-        $0.textAlignment = .left
+        $0.textAlignment = .center
     }
     
     init(viewModel: RecipeGuideViewModel) {
@@ -84,8 +84,8 @@ class RecipeGuideViewController: UIViewController {
         })
         
         closeButton.snp.makeConstraints({
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(10)
-            $0.trailing.equalToSuperview().offset(-16)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(16)
+            $0.trailing.equalToSuperview().offset(-18)
             $0.width.height.equalTo(28)
         })
         

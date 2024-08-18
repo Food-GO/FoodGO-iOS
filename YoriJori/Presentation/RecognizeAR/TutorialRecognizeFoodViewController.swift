@@ -9,8 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import ARKit
 
-class TutorialRecognizeFoodViewController: UIViewController {
+class TutorialRecognizeFoodViewController: UIViewController, ARSCNViewDelegate {
+    
+    private let sceneView = ARSCNView()
+    
+    private let overlayView = UIView()
     
     private let closeButton = UIButton().then {
         $0.setImage(UIImage(named: "closeButton"), for: .normal)
@@ -28,18 +33,55 @@ class TutorialRecognizeFoodViewController: UIViewController {
         $0.image = UIImage(named: "tutorial_food")
     }
     
+    private let recognizingFoodButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
+        $0.text = "식재료를 인식 중이에요.."
+    }
+    
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setARView()
         setupUI()
         bindButtons()
     }
     
-    private func setupUI() {
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+    private func setARView() {
+        self.view.addSubview(sceneView)
+        sceneView.snp.makeConstraints({
+            $0.edges.equalToSuperview()
+        })
         
-        [closeButton, tutorialLabel, tutorialImage].forEach({self.view.addSubview($0)})
+        sceneView.delegate = self
+        
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = true
+        
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        sceneView.session.pause()
+    }
+    
+    private func setupUI() {
+        self.view.addSubview(overlayView)
+        self.overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        self.overlayView.snp.makeConstraints({
+            $0.edges.equalToSuperview()
+        })
+        
+        [closeButton, tutorialLabel, tutorialImage, recognizingFoodButton].forEach({self.overlayView.addSubview($0)})
         
         self.closeButton.snp.makeConstraints({
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(10)
@@ -59,6 +101,13 @@ class TutorialRecognizeFoodViewController: UIViewController {
             $0.height.equalTo(218)
         })
         
+        recognizingFoodButton.snp.makeConstraints({
+            $0.top.equalTo(self.tutorialImage.snp.bottom).offset(71)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(197)
+            $0.height.equalTo(48)
+        })
+        
     }
     
     private func bindButtons() {
@@ -67,6 +116,18 @@ class TutorialRecognizeFoodViewController: UIViewController {
                 self?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
+        
+        recognizingFoodButton.rx.tap
+            .subscribe(onNext: {[weak self] in
+                self?.showRecognizeFoodView()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showRecognizeFoodView() {
+        let recognizeFoodVC = RecognizeFoodARViewController()
+        recognizeFoodVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.pushViewController(recognizeFoodVC, animated: true)
     }
 }
 
