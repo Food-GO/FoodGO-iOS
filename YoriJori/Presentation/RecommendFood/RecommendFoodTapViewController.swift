@@ -60,6 +60,12 @@ class RecommendFoodTapViewController: UIViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     private func setUI() {
         [topBackgroundView, grayView, myGradientLabel, registerView, foodRecommendButton].forEach({self.view.addSubview($0)})
         [profileImage, userTasteLabel, foodTasteTestButton].forEach({self.topBackgroundView.addSubview($0)})
