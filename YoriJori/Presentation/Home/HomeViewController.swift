@@ -8,10 +8,14 @@
 import UIKit
 import SnapKit
 import ARKit
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController, ARSCNViewDelegate {
     
     private let sceneView = ARSCNView()
+    
+    private let disposeBag = DisposeBag()
     
     private let logo = UIImageView().then {
         $0.image = UIImage(named: "small_logo")
@@ -42,6 +46,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         setUI()
+        bind()
         
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
@@ -50,6 +55,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
         
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
@@ -93,6 +99,21 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
             $0.leading.trailing.equalToSuperview().inset(18)
             $0.height.equalTo(50)
         })
+    }
+    
+    private func bind() {
+        recognizeButton.rx.tap
+            .subscribe(onNext: {[weak self] in
+                self?.moveToRecognize()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func moveToRecognize() {
+        let recognizeVC = HomeRecognizeARViewController()
+        recognizeVC.modalPresentationStyle = .overFullScreen
+        
+        self.navigationController?.pushViewController(recognizeVC, animated: true)
     }
 
 }
