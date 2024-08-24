@@ -23,7 +23,7 @@ class CalorieCheckWithTextView: UIView {
         $0.font = DesignSystemFont.bold16
     }
     
-    private let riskImageView = UIImageView()
+    let riskImageView = UIImageView()
 
     
     init(text: String, risk: String) {
