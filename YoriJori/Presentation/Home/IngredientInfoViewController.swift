@@ -1,0 +1,107 @@
+//
+//  IngredientInfoViewController.swift
+//  YoriJori
+//
+//  Created by 김강현 on 8/23/24.
+//
+
+import UIKit
+import SnapKit
+
+class IngredientInfoViewController: UIViewController {
+    
+    private let backButton = UIButton().then {
+        $0.setImage(UIImage(named: "chevron_left")?.withTintColor(DesignSystemColor.gray900), for: .normal)
+    }
+    
+    var captureImageView = UIImageView().then {
+        $0.layer.cornerRadius = 12
+        $0.clipsToBounds = true
+    }
+    
+    private let eggInfoView = CalorieInfoView(foodName: "달걀", riskCategory: "soso")
+    
+    private let tomatoInfoView = CalorieInfoView(foodName: "토마토", riskCategory: "bad")
+    
+    private let greenOnionView = CalorieInfoView(foodName: "대파", riskCategory: "good")
+    
+    private let bottomStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 10
+        $0.distribution = .fill
+        $0.alignment = .fill
+    }
+    
+    private let registerIngredientsButton = YorijoriFilledButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.gray800).then {
+        $0.layer.borderColor = DesignSystemColor.gray150.cgColor
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 12
+        $0.text = "식재료 등록하기"
+    }
+    
+    private let showDetailButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
+        $0.text = "상세정보"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = DesignSystemColor.white
+        
+        self.navigationController?.navigationBar.isHidden = false
+        setupNavigationBar()
+        setUI()
+    }
+    
+    private func setupNavigationBar() {
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = DesignSystemColor.gray900
+        self.navigationItem.leftBarButtonItem = backButton
+    }
+    
+    private func setUI() {
+        [captureImageView, bottomStackView].forEach({self.view.addSubview($0)})
+        [eggInfoView, tomatoInfoView, greenOnionView].forEach({self.captureImageView.addSubview($0)})
+        [registerIngredientsButton, showDetailButton].forEach({self.bottomStackView.addArrangedSubview($0)})
+        
+        captureImageView.snp.makeConstraints({
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(641)
+        })
+        
+        eggInfoView.snp.makeConstraints({
+            $0.top.equalToSuperview().offset(41)
+            $0.trailing.equalToSuperview().offset(-48)
+            $0.width.equalTo(151)
+            $0.height.equalTo(176)
+        })
+        
+        tomatoInfoView.snp.makeConstraints({
+            $0.top.equalTo(self.eggInfoView.snp.bottom).offset(57)
+            $0.leading.equalToSuperview().offset(21)
+            $0.width.equalTo(151)
+            $0.height.equalTo(179)
+        })
+        
+        greenOnionView.snp.makeConstraints({
+            $0.top.equalTo(self.eggInfoView.snp.bottom).offset(203)
+            $0.trailing.equalToSuperview().offset(-21)
+            $0.width.equalTo(151)
+            $0.height.equalTo(176)
+        })
+        
+        bottomStackView.snp.makeConstraints({
+            $0.top.equalTo(self.captureImageView.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(50)
+        })
+        
+    }
+    
+    @objc private func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+}
