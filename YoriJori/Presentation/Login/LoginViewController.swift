@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = .white
         
         setUI()
@@ -143,11 +143,28 @@ class LoginViewController: UIViewController {
         print("로그인 실패")
     }
     
-
+    
     @objc private func loginSucceed() {
+        //        let mainVC = TabBarController()
+        //        mainVC.modalPresentationStyle = .fullScreen
+        //        self.present(mainVC, animated: true)
         let mainVC = TabBarController()
-        mainVC.modalPresentationStyle = .fullScreen
-        self.present(mainVC, animated: true)
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate {
+            
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = mainVC
+            window.makeKeyAndVisible()
+            sceneDelegate.window = window
+            
+        } else if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = mainVC
+            window.makeKeyAndVisible()
+            appDelegate.window = window
+        }
     }
     
     @objc private func registerDidTap() {
@@ -155,5 +172,5 @@ class LoginViewController: UIViewController {
         firstVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(firstVC, animated: true)
     }
-
+    
 }
