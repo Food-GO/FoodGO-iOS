@@ -92,7 +92,7 @@ class RecognizeFoodARViewController: UIViewController, ARSCNViewDelegate {
 //        let viewModel = RecipeGuideViewModel()
         
         let recipeGuideVC = RecipeGuideViewController(viewModel: self.viewModel)
-        recipeGuideVC.modalPresentationStyle = .fullScreen
+        recipeGuideVC.modalPresentationStyle = .overFullScreen
         
 //        viewModel.fetchRecipeGuide(recipeName: "토마토달걀")
         
