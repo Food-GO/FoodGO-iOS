@@ -123,7 +123,8 @@ class RecipeGuideViewController: UIViewController {
     private func bindButtons() {
         closeButton.rx.tap
             .subscribe(onNext: {[weak self] in
-                self?.dismiss(animated: true)
+//                self?.dismiss(animated: true)
+                self?.returnToHome()
             })
             .disposed(by: disposeBag)
         
@@ -175,6 +176,26 @@ class RecipeGuideViewController: UIViewController {
         } else {
             contentsContainer.isHidden = true
             contentsLabel.text = nil
+        }
+    }
+    
+    private func returnToHome() {
+        let tabVC = TabBarController()
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate {
+            
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = tabVC
+            window.makeKeyAndVisible()
+            sceneDelegate.window = window
+            
+        } else if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = tabVC
+            window.makeKeyAndVisible()
+            appDelegate.window = window
         }
     }
 }
