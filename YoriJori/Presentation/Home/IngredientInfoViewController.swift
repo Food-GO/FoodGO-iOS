@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class IngredientInfoViewController: UIViewController {
+    
+    private let disposeBag = DisposeBag()
     
     private let backButton = UIButton().then {
         $0.setImage(UIImage(named: "chevron_left")?.withTintColor(DesignSystemColor.gray900), for: .normal)
@@ -51,6 +55,7 @@ class IngredientInfoViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         setupNavigationBar()
         setUI()
+        bind()
     }
     
     private func setupNavigationBar() {
@@ -98,6 +103,53 @@ class IngredientInfoViewController: UIViewController {
             $0.height.equalTo(50)
         })
         
+    }
+    
+    private func bind() {
+        registerIngredientsButton.rx.tap
+            .subscribe(onNext: {[weak self] in
+                self?.showToast("등록되었습니다", withDuration: 2, delay: 1.5)
+            })
+            .disposed(by: disposeBag)
+        
+        showDetailButton.rx.tap
+            .subscribe(onNext: {[weak self] in
+                self?.moveToDetailView()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showToast(_ message : String, withDuration: Double, delay: Double) {
+        let toastLabel = UILabel()
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = DesignSystemFont.semibold12
+        toastLabel.textAlignment = .center
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 12
+        toastLabel.clipsToBounds  =  true
+        
+        self.captureImageView.addSubview(toastLabel)
+        
+        toastLabel.snp.makeConstraints({
+            $0.bottom.equalToSuperview().offset(-17)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(120)
+            $0.height.equalTo(34)
+        })
+        
+        UIView.animate(withDuration: withDuration, delay: delay, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    private func moveToDetailView() {
+        let detailVC = IngredientsDetailInfoViewController()
+        detailVC.modalPresentationStyle = .overFullScreen
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     @objc private func backButtonTapped() {
