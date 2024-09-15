@@ -33,7 +33,7 @@ class ShareBottomSheetViewController: UIViewController {
     
     private let friendButton1 = YorijoriButton(bgColor: DesignSystemColor.white, textColor: DesignSystemColor.gray900, borderColor: UIColor(hex: "#545456").withAlphaComponent(0.34), selectedBorderColor: DesignSystemColor.yorijoriGreen).then {
         $0.text = "이소정"
-        $0.setImage(UIImage(named: "friend1"), for: .normal)
+        $0.setImage(UIImage(named: "friend2"), for: .normal)
         $0.contentHorizontalAlignment = .left
     }
     

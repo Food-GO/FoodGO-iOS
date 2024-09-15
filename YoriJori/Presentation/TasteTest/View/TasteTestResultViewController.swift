@@ -25,7 +25,7 @@ class TasteTestResultViewController: UIViewController {
     private let characterImageView = UIImageView()
     
     private let nameLabel = UILabel().then {
-        $0.text = "이OO님은,"
+        $0.text = "요리조리님은,"
         $0.font = DesignSystemFont.extraBold20
         $0.textColor = DesignSystemColor.gray100
     }

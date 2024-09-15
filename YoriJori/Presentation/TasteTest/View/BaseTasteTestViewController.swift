@@ -70,9 +70,17 @@ class BaseTasteTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = DesignSystemColor.white
+        setupNavigationBar()
         setUI()
         setupNextButtonAction()
         bindViewModel()
+    }
+    
+    private func setupNavigationBar() {
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = DesignSystemColor.gray900
+        self.navigationItem.leftBarButtonItem = backButton
     }
     
     private func setUI() {
@@ -168,5 +176,9 @@ class BaseTasteTestViewController: UIViewController {
     
     @objc func nextButtonTapped() {
         
+    }
+    
+    @objc private func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
