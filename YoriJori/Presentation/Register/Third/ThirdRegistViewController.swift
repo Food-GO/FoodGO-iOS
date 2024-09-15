@@ -100,10 +100,19 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         
         self.view.backgroundColor = .white
         
+        setupNavigationBar()
         setScrollView()
         setCollectionView()
         setUI()
         bindViewModel()
+    }
+    
+    
+    private func setupNavigationBar() {
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = DesignSystemColor.gray900
+        self.navigationItem.leftBarButtonItem = backButton
     }
     
     private func setScrollView() {
@@ -314,7 +323,13 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc private func nextButtonTapped() {
-        
+        let lastVC = LastRegisterViewController()
+        lastVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.pushViewController(lastVC, animated: true)
+    }
+    
+    @objc private func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

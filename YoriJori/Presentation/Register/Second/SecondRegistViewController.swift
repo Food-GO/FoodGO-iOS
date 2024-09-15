@@ -69,8 +69,16 @@ class SecondRegistViewController: UIViewController {
 
         self.view.backgroundColor = .white
         
+        setupNavigationBar()
         setUI()
         bindViewModel()
+    }
+    
+    private func setupNavigationBar() {
+        
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = DesignSystemColor.gray900
+        self.navigationItem.leftBarButtonItem = backButton
     }
     
     private func setUI() {
@@ -155,6 +163,10 @@ class SecondRegistViewController: UIViewController {
     @objc private func nextButtonTapped() {
         let nextVC = ThirdRegistViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc private func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
