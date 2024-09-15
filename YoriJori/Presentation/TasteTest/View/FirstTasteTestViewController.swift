@@ -21,8 +21,17 @@ class FirstTasteTestViewController: BaseTasteTestViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
     override func nextButtonTapped() {
         let nextViewController = SecondTasteTestViewController() 
         navigationController?.pushViewController(nextViewController, animated: true)
     }
+    
+    
 }
