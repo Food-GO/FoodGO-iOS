@@ -24,6 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
 //            rootViewController = UINavigationController(rootViewController: LoginViewController())
             rootViewController = TabBarController()
+//            rootViewController = UINavigationController(rootViewController: TasteTestResultViewController(bgColor: UIColor(hex: "#FFA06B"), characterImage: UIImage(named: "red_character")!, typeTextColor: UIColor(hex: "#B92100"), type: "에너지 운동가", typeDesc: "활력있는 취향인"))
+//            rootViewController = RecognizeFoodARViewController()
         }
         
         self.window?.rootViewController = rootViewController
