@@ -30,11 +30,13 @@ public enum DesignSystemFont {
     static let bold18 = UIFont.suit(.bold, size: 18)
     static let bold16 = UIFont.suit(.bold, size: 16)
     static let bold14 = UIFont.suit(.bold, size: 14)
+    static let bold12 = UIFont.suit(.bold, size: 12)
     
     static let semibold22 = UIFont.suit(.semiBold, size: 22)
     static let semibold18 = UIFont.suit(.semiBold, size: 18)
     static let semibold16 = UIFont.suit(.semiBold, size: 16)
     static let semibold15 = UIFont.suit(.semiBold, size: 15)
+    static let semibold14 = UIFont.suit(.semiBold, size: 14)
     static let semibold12 = UIFont.suit(.semiBold, size: 12)
     
     static let medium20 = UIFont.suit(.medium, size: 20)
