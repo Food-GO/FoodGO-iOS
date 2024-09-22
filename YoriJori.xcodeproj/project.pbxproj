@@ -25,6 +25,9 @@
 		9C516C462C687D06000D9C1C /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C452C687D06000D9C1C /* LoadingIndicator.swift */; };
 		9C516C482C688D8B000D9C1C /* OpenAPIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C472C688D8B000D9C1C /* OpenAPIResponseModel.swift */; };
 		9C516C4B2C689742000D9C1C /* RecipeGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C4A2C689742000D9C1C /* RecipeGuideViewModel.swift */; };
+		9C516C4E2C70633C000D9C1C /* RecommendFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C4D2C70633C000D9C1C /* RecommendFoodViewController.swift */; };
+		9C516C502C707415000D9C1C /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C4F2C707415000D9C1C /* UILabel+Ext.swift */; };
+		9CA9B2BC2CA034E000423287 /* WeeklyReportChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9B2BB2CA034E000423287 /* WeeklyReportChartView.swift */; };
 		9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7972C38EB8C0096D384 /* AppDelegate.swift */; };
 		9CABC79A2C38EB8C0096D384 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC7992C38EB8C0096D384 /* art.scnassets */; };
 		9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC79B2C38EB8C0096D384 /* ViewController.swift */; };
@@ -35,7 +38,7 @@
 		9CABC7B82C38EB8E0096D384 /* YoriJoriUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7B72C38EB8E0096D384 /* YoriJoriUITests.swift */; };
 		9CABC7BA2C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7B92C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift */; };
 		9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C72C39070B0096D384 /* SceneDelegate.swift */; };
-		9CABC7CA2C390E680096D384 /* RecommendFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C92C390E680096D384 /* RecommendFoodViewController.swift */; };
+		9CABC7CA2C390E680096D384 /* RecommendFoodTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7C92C390E680096D384 /* RecommendFoodTapViewController.swift */; };
 		9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */; };
 		9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7D82C3918D30096D384 /* LoginViewController.swift */; };
 		9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7DC2C391D440096D384 /* OnboardingContainerViewController.swift */; };
@@ -86,6 +89,25 @@
 		9CABC86D2C568C030096D384 /* EighthTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC86C2C568C030096D384 /* EighthTasteTestViewController.swift */; };
 		9CABC86F2C568C1A0096D384 /* NinthTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC86E2C568C1A0096D384 /* NinthTasteTestViewController.swift */; };
 		9CABC8712C568C230096D384 /* LastTasteTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC8702C568C230096D384 /* LastTasteTestViewController.swift */; };
+		9CDF4C082C9FF389003268DD /* EmptyFoodRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF4C072C9FF389003268DD /* EmptyFoodRecordView.swift */; };
+		9CDF4C0A2C9FFF0E003268DD /* WeeklyDietGuideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF4C092C9FFF0E003268DD /* WeeklyDietGuideCollectionViewCell.swift */; };
+		9CDFA7CB2C7773150040554B /* HomeRecognizeARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7CA2C7773150040554B /* HomeRecognizeARViewController.swift */; };
+		9CDFA7CE2C777CD30040554B /* CalorieCheckWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7CD2C777CD30040554B /* CalorieCheckWithTextView.swift */; };
+		9CDFA7D02C78C60D0040554B /* IngredientInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7CF2C78C60D0040554B /* IngredientInfoViewController.swift */; };
+		9CDFA7D22C78CA9A0040554B /* CalorieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7D12C78CA9A0040554B /* CalorieInfoView.swift */; };
+		9CDFA7D42C78CB910040554B /* CalorieInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7D32C78CB910040554B /* CalorieInfoStackView.swift */; };
+		9CDFA7D62C7AFAFC0040554B /* IngredientsDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7D52C7AFAFC0040554B /* IngredientsDetailInfoViewController.swift */; };
+		9CDFA7D82C7AFBDE0040554B /* IngredientsDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7D72C7AFBDE0040554B /* IngredientsDetailInfoView.swift */; };
+		9CDFA7DB2C7B00340040554B /* IngredientsDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7DA2C7B00340040554B /* IngredientsDetailModel.swift */; };
+		9CDFA7DE2C7B036A0040554B /* NutritionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7DD2C7B036A0040554B /* NutritionTableView.swift */; };
+		9CDFA7E02C7B03860040554B /* NutritionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7DF2C7B03860040554B /* NutritionTableViewCell.swift */; };
+		9CDFA7E22C7B03D50040554B /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7E12C7B03D50040554B /* UIView+Ext.swift */; };
+		9CDFA7E42C7B1E130040554B /* IngredientsReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7E32C7B1E130040554B /* IngredientsReportViewController.swift */; };
+		9CDFA7E72C7B42380040554B /* WeeklyReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7E62C7B42380040554B /* WeeklyReportView.swift */; };
+		9CDFA7EA2C7CB12A0040554B /* LastRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7E92C7CB12A0040554B /* LastRegisterViewController.swift */; };
+		9CDFA7EC2C955C970040554B /* FriendsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7EB2C955C970040554B /* FriendsListModel.swift */; };
+		9CDFA7EF2C955D860040554B /* FriendsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFA7EE2C955D860040554B /* FriendsListTableViewCell.swift */; };
+		9CDFA7F22C957AA30040554B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDFA7F12C957AA30040554B /* FSCalendar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +146,9 @@
 		9C516C452C687D06000D9C1C /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		9C516C472C688D8B000D9C1C /* OpenAPIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAPIResponseModel.swift; sourceTree = "<group>"; };
 		9C516C4A2C689742000D9C1C /* RecipeGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGuideViewModel.swift; sourceTree = "<group>"; };
+		9C516C4D2C70633C000D9C1C /* RecommendFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFoodViewController.swift; sourceTree = "<group>"; };
+		9C516C4F2C707415000D9C1C /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		9CA9B2BB2CA034E000423287 /* WeeklyReportChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportChartView.swift; sourceTree = "<group>"; };
 		9CABC7942C38EB8C0096D384 /* YoriJori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoriJori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CABC7972C38EB8C0096D384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CABC7992C38EB8C0096D384 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -138,7 +163,7 @@
 		9CABC7B92C38EB8E0096D384 /* YoriJoriUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoriJoriUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9CABC7C62C3906730096D384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9CABC7C72C39070B0096D384 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CABC7C92C390E680096D384 /* RecommendFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFoodViewController.swift; sourceTree = "<group>"; };
+		9CABC7C92C390E680096D384 /* RecommendFoodTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFoodTapViewController.swift; sourceTree = "<group>"; };
 		9CABC7D22C39152B0096D384 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9CABC7D82C3918D30096D384 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CABC7DC2C391D440096D384 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +210,24 @@
 		9CABC86C2C568C030096D384 /* EighthTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EighthTasteTestViewController.swift; sourceTree = "<group>"; };
 		9CABC86E2C568C1A0096D384 /* NinthTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinthTasteTestViewController.swift; sourceTree = "<group>"; };
 		9CABC8702C568C230096D384 /* LastTasteTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTasteTestViewController.swift; sourceTree = "<group>"; };
+		9CDF4C072C9FF389003268DD /* EmptyFoodRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFoodRecordView.swift; sourceTree = "<group>"; };
+		9CDF4C092C9FFF0E003268DD /* WeeklyDietGuideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyDietGuideCollectionViewCell.swift; sourceTree = "<group>"; };
+		9CDFA7CA2C7773150040554B /* HomeRecognizeARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecognizeARViewController.swift; sourceTree = "<group>"; };
+		9CDFA7CD2C777CD30040554B /* CalorieCheckWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCheckWithTextView.swift; sourceTree = "<group>"; };
+		9CDFA7CF2C78C60D0040554B /* IngredientInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientInfoViewController.swift; sourceTree = "<group>"; };
+		9CDFA7D12C78CA9A0040554B /* CalorieInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieInfoView.swift; sourceTree = "<group>"; };
+		9CDFA7D32C78CB910040554B /* CalorieInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieInfoStackView.swift; sourceTree = "<group>"; };
+		9CDFA7D52C7AFAFC0040554B /* IngredientsDetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsDetailInfoViewController.swift; sourceTree = "<group>"; };
+		9CDFA7D72C7AFBDE0040554B /* IngredientsDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsDetailInfoView.swift; sourceTree = "<group>"; };
+		9CDFA7DA2C7B00340040554B /* IngredientsDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsDetailModel.swift; sourceTree = "<group>"; };
+		9CDFA7DD2C7B036A0040554B /* NutritionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionTableView.swift; sourceTree = "<group>"; };
+		9CDFA7DF2C7B03860040554B /* NutritionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionTableViewCell.swift; sourceTree = "<group>"; };
+		9CDFA7E12C7B03D50040554B /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		9CDFA7E32C7B1E130040554B /* IngredientsReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsReportViewController.swift; sourceTree = "<group>"; };
+		9CDFA7E62C7B42380040554B /* WeeklyReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportView.swift; sourceTree = "<group>"; };
+		9CDFA7E92C7CB12A0040554B /* LastRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastRegisterViewController.swift; sourceTree = "<group>"; };
+		9CDFA7EB2C955C970040554B /* FriendsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListModel.swift; sourceTree = "<group>"; };
+		9CDFA7EE2C955D860040554B /* FriendsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C516C442C687A43000D9C1C /* Alamofire in Frameworks */,
+				9CDFA7F22C957AA30040554B /* FSCalendar in Frameworks */,
 				9CABC7EF2C395A060096D384 /* RxSwift in Frameworks */,
 				9CABC7ED2C395A060096D384 /* RxCocoa in Frameworks */,
 				9CABC7E82C392D5F0096D384 /* SnapKit in Frameworks */,
@@ -398,8 +442,9 @@
 		9CABC7E12C3929FB0096D384 /* RecommendFood */ = {
 			isa = PBXGroup;
 			children = (
-				9CABC7C92C390E680096D384 /* RecommendFoodViewController.swift */,
+				9CABC7C92C390E680096D384 /* RecommendFoodTapViewController.swift */,
 				9CABC8422C4E8E090096D384 /* FoodRegisterView.swift */,
+				9C516C4D2C70633C000D9C1C /* RecommendFoodViewController.swift */,
 			);
 			path = RecommendFood;
 			sourceTree = "<group>";
@@ -415,6 +460,7 @@
 		9CABC7FB2C3C12240096D384 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				9CDFA7E82C7CB0FC0040554B /* Last */,
 				9CABC80E2C453FAF0096D384 /* Third */,
 				9CABC80B2C3EC8030096D384 /* Second */,
 				9CABC8082C3D6BBB0096D384 /* First */,
@@ -459,6 +505,8 @@
 				9CABC8102C4540180096D384 /* UIScrollView+Ext.swift */,
 				9CABC8192C4546D20096D384 /* UIColor+Ext.swift */,
 				9CABC81F2C4548BB0096D384 /* UIFont+Ext.swift */,
+				9C516C4F2C707415000D9C1C /* UILabel+Ext.swift */,
+				9CDFA7E12C7B03D50040554B /* UIView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -478,6 +526,7 @@
 		9CABC81B2C4548230096D384 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9CDFA7CC2C777C7C0040554B /* Reusable */,
 				9CABC80F2C45400A0096D384 /* Extension */,
 				9CABC7992C38EB8C0096D384 /* art.scnassets */,
 				9CABC7A02C38EB8D0096D384 /* Assets.xcassets */,
@@ -510,6 +559,9 @@
 			isa = PBXGroup;
 			children = (
 				9CABC8322C4C01880096D384 /* ReportViewController.swift */,
+				9CDF4C072C9FF389003268DD /* EmptyFoodRecordView.swift */,
+				9CDF4C092C9FFF0E003268DD /* WeeklyDietGuideCollectionViewCell.swift */,
+				9CA9B2BB2CA034E000423287 /* WeeklyReportChartView.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -517,7 +569,12 @@
 		9CABC82F2C4C01570096D384 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				9CDFA7E52C7B42170040554B /* IngredientsReport */,
+				9CDFA7DC2C7B03450040554B /* IngredientsDetail */,
 				9CABC8342C4C01940096D384 /* HomeViewController.swift */,
+				9CDFA7CA2C7773150040554B /* HomeRecognizeARViewController.swift */,
+				9CDFA7CF2C78C60D0040554B /* IngredientInfoViewController.swift */,
+				9CDFA7D52C7AFAFC0040554B /* IngredientsDetailInfoViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -525,6 +582,7 @@
 		9CABC8302C4C015C0096D384 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				9CDFA7ED2C955D620040554B /* FriendsList */,
 				9CABC8362C4C019F0096D384 /* CommunityViewController.swift */,
 			);
 			path = Community;
@@ -566,6 +624,61 @@
 			path = TasteTest;
 			sourceTree = "<group>";
 		};
+		9CDFA7CC2C777C7C0040554B /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFA7CD2C777CD30040554B /* CalorieCheckWithTextView.swift */,
+				9CDFA7D12C78CA9A0040554B /* CalorieInfoView.swift */,
+				9CDFA7D32C78CB910040554B /* CalorieInfoStackView.swift */,
+				9CDFA7D72C7AFBDE0040554B /* IngredientsDetailInfoView.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		9CDFA7D92C7B00200040554B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFA7DA2C7B00340040554B /* IngredientsDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9CDFA7DC2C7B03450040554B /* IngredientsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFA7D92C7B00200040554B /* Model */,
+				9CDFA7DD2C7B036A0040554B /* NutritionTableView.swift */,
+				9CDFA7DF2C7B03860040554B /* NutritionTableViewCell.swift */,
+			);
+			path = IngredientsDetail;
+			sourceTree = "<group>";
+		};
+		9CDFA7E52C7B42170040554B /* IngredientsReport */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFA7E32C7B1E130040554B /* IngredientsReportViewController.swift */,
+				9CDFA7E62C7B42380040554B /* WeeklyReportView.swift */,
+			);
+			path = IngredientsReport;
+			sourceTree = "<group>";
+		};
+		9CDFA7E82C7CB0FC0040554B /* Last */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFA7E92C7CB12A0040554B /* LastRegisterViewController.swift */,
+			);
+			path = Last;
+			sourceTree = "<group>";
+		};
+		9CDFA7ED2C955D620040554B /* FriendsList */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFA7EB2C955C970040554B /* FriendsListModel.swift */,
+				9CDFA7EE2C955D860040554B /* FriendsListTableViewCell.swift */,
+			);
+			path = FriendsList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -588,6 +701,7 @@
 				9CABC7EE2C395A060096D384 /* RxSwift */,
 				9CABC7F72C399D410096D384 /* Then */,
 				9C516C432C687A43000D9C1C /* Alamofire */,
+				9CDFA7F12C957AA30040554B /* FSCalendar */,
 			);
 			productName = YoriJori;
 			productReference = 9CABC7942C38EB8C0096D384 /* YoriJori.app */;
@@ -666,6 +780,7 @@
 				9CABC7EB2C395A060096D384 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				9CABC7F62C399D410096D384 /* XCRemoteSwiftPackageReference "Then" */,
 				9C516C422C687A43000D9C1C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9CDFA7F02C957AA30040554B /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 9CABC7952C38EB8C0096D384 /* Products */;
 			projectDirPath = "";
@@ -722,17 +837,23 @@
 				9CABC8262C468EF00096D384 /* DiseaseCategoryCell.swift in Sources */,
 				9CABC86D2C568C030096D384 /* EighthTasteTestViewController.swift in Sources */,
 				9CABC8202C4548BB0096D384 /* UIFont+Ext.swift in Sources */,
+				9CDFA7E02C7B03860040554B /* NutritionTableViewCell.swift in Sources */,
+				9C516C502C707415000D9C1C /* UILabel+Ext.swift in Sources */,
 				9CABC8282C4946120096D384 /* LifestyleHabitCategoryCell.swift in Sources */,
 				9CABC8132C4545910096D384 /* ThirdRegistViewModel.swift in Sources */,
 				9CABC7D92C3918D30096D384 /* LoginViewController.swift in Sources */,
 				9C516C482C688D8B000D9C1C /* OpenAPIResponseModel.swift in Sources */,
 				9CABC86F2C568C1A0096D384 /* NinthTasteTestViewController.swift in Sources */,
 				9C516C392C64EDC8000D9C1C /* TutorialRecognizeFoodViewController.swift in Sources */,
+				9CDFA7D02C78C60D0040554B /* IngredientInfoViewController.swift in Sources */,
 				9CABC8112C4540180096D384 /* UIScrollView+Ext.swift in Sources */,
+				9CDFA7EA2C7CB12A0040554B /* LastRegisterViewController.swift in Sources */,
 				9CABC86B2C568BE10096D384 /* SeventhTasteTestViewController.swift in Sources */,
 				9C516C372C63A1FF000D9C1C /* RecognizeFoodARViewController.swift in Sources */,
 				9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */,
+				9CDFA7D22C78CA9A0040554B /* CalorieInfoView.swift in Sources */,
 				9CABC85D2C5687930096D384 /* FirstTasteTestViewController.swift in Sources */,
+				9C516C4E2C70633C000D9C1C /* RecommendFoodViewController.swift in Sources */,
 				9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */,
 				9CABC8392C4C01AA0096D384 /* MyProfileViewController.swift in Sources */,
 				9CABC8712C568C230096D384 /* LastTasteTestViewController.swift in Sources */,
@@ -744,37 +865,52 @@
 				9CABC7F32C399CAA0096D384 /* LoginRequestModel.swift in Sources */,
 				9C516C272C5D16DC000D9C1C /* CounterView.swift in Sources */,
 				9CABC8152C4546360096D384 /* UsageCategoryCell.swift in Sources */,
+				9CDFA7EC2C955C970040554B /* FriendsListModel.swift in Sources */,
+				9CA9B2BC2CA034E000423287 /* WeeklyReportChartView.swift in Sources */,
+				9CDF4C082C9FF389003268DD /* EmptyFoodRecordView.swift in Sources */,
 				9C516C3D2C67771A000D9C1C /* RecipeGuideViewController.swift in Sources */,
 				9CABC7E32C392B990096D384 /* FirstOnboardingViewController.swift in Sources */,
 				9CABC7C82C39070B0096D384 /* SceneDelegate.swift in Sources */,
 				9CABC8432C4E8E090096D384 /* FoodRegisterView.swift in Sources */,
 				9CABC8652C568BC50096D384 /* FourthTasteTestViewController.swift in Sources */,
+				9CDFA7D82C7AFBDE0040554B /* IngredientsDetailInfoView.swift in Sources */,
+				9CDFA7D42C78CB910040554B /* CalorieInfoStackView.swift in Sources */,
+				9CDFA7D62C7AFAFC0040554B /* IngredientsDetailInfoViewController.swift in Sources */,
 				9CABC8612C568B760096D384 /* SecondTasteViewController.swift in Sources */,
 				9CABC8072C3C17DD0096D384 /* LastRegistViewController.swift in Sources */,
+				9CDFA7E42C7B1E130040554B /* IngredientsReportViewController.swift in Sources */,
 				9CABC8632C568BBB0096D384 /* ThirdTasteTestViewController.swift in Sources */,
 				9CABC7FA2C399EF70096D384 /* LoginViewModel.swift in Sources */,
 				9C516C302C5E1DF9000D9C1C /* NetworkService.swift in Sources */,
 				9CABC8372C4C019F0096D384 /* CommunityViewController.swift in Sources */,
 				9CABC8352C4C01940096D384 /* HomeViewController.swift in Sources */,
+				9CDFA7EF2C955D860040554B /* FriendsListTableViewCell.swift in Sources */,
+				9CDFA7E72C7B42380040554B /* WeeklyReportView.swift in Sources */,
 				9CABC8012C3C175D0096D384 /* FirstRegistViewController.swift in Sources */,
 				9CABC80A2C3D6BCF0096D384 /* FirstRegistViewModel.swift in Sources */,
+				9CDF4C0A2C9FFF0E003268DD /* WeeklyDietGuideCollectionViewCell.swift in Sources */,
 				9CABC8692C568BD70096D384 /* SixthTasteTestViewController.swift in Sources */,
 				9C516C1F2C5BB566000D9C1C /* AddFoodBottomSheetViewController.swift in Sources */,
 				9C516C292C5E0907000D9C1C /* UnitSelectorView.swift in Sources */,
 				9C516C232C5D1353000D9C1C /* ManualAddFoodViewController.swift in Sources */,
 				9CABC82B2C4BF5E50096D384 /* TabBarController.swift in Sources */,
 				9CABC81A2C4546D20096D384 /* UIColor+Ext.swift in Sources */,
-				9CABC7CA2C390E680096D384 /* RecommendFoodViewController.swift in Sources */,
+				9CABC7CA2C390E680096D384 /* RecommendFoodTapViewController.swift in Sources */,
 				9C516C252C5D1533000D9C1C /* YorijoriTextField.swift in Sources */,
 				9CABC8032C3C17B60096D384 /* SecondRegistViewController.swift in Sources */,
 				9C516C342C624BC4000D9C1C /* ShareBottomSheetViewController.swift in Sources */,
 				9CABC7E52C392BAE0096D384 /* SecondOnboardingViewController.swift in Sources */,
+				9CDFA7CB2C7773150040554B /* HomeRecognizeARViewController.swift in Sources */,
+				9CDFA7E22C7B03D50040554B /* UIView+Ext.swift in Sources */,
 				9CABC8182C4546A60096D384 /* DesignSystemColor.swift in Sources */,
+				9CDFA7DE2C7B036A0040554B /* NutritionTableView.swift in Sources */,
 				9C516C462C687D06000D9C1C /* LoadingIndicator.swift in Sources */,
+				9CDFA7DB2C7B00340040554B /* IngredientsDetailModel.swift in Sources */,
 				9CABC85B2C5684860096D384 /* BaseTasteTestViewController.swift in Sources */,
 				9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */,
 				9C516C1B2C57C357000D9C1C /* TasteTestResultViewController.swift in Sources */,
 				9CABC85F2C56884C0096D384 /* YorijoriFilledButton.swift in Sources */,
+				9CDFA7CE2C777CD30040554B /* CalorieCheckWithTextView.swift in Sources */,
 				9CABC8672C568BCF0096D384 /* FifthTasteTestViewController.swift in Sources */,
 				9CABC84F2C5298910096D384 /* YorijoriButton.swift in Sources */,
 				9C516C4B2C689742000D9C1C /* RecipeGuideViewModel.swift in Sources */,
@@ -980,12 +1116,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.team.YoriJori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Debug;
 		};
@@ -1017,12 +1153,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.team.YoriJori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Release;
 		};
@@ -1176,6 +1312,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		9CDFA7F02C957AA30040554B /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1203,6 +1347,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CABC7F62C399D410096D384 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		9CDFA7F12C957AA30040554B /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CDFA7F02C957AA30040554B /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
