@@ -13,9 +13,13 @@ import RxCocoa
 
 class HomeRecognizeARViewController: UIViewController, ARSCNViewDelegate {
     
-    private let sceneView = ARSCNView()
+//    private let sceneView = ARSCNView()
     
     private let disposeBag = DisposeBag()
+    
+    let capturedImage = UIImageView()
+    
+    var detectedFoodName: [String] = []
     
     private let backButton = UIButton().then {
         $0.setImage(UIImage(named: "chevron_left")?.withTintColor(DesignSystemColor.white), for: .normal)
@@ -52,13 +56,17 @@ class HomeRecognizeARViewController: UIViewController, ARSCNViewDelegate {
         
         self.tabBarController?.tabBar.isHidden = true
         
-        self.view.addSubview(sceneView)
+//        self.view.addSubview(sceneView)
+        self.view.addSubview(capturedImage)
         
-        sceneView.delegate = self
-        let configuration = ARWorldTrackingConfiguration()
-        sceneView.session.run(configuration)
+//        sceneView.delegate = self
+//        let configuration = ARWorldTrackingConfiguration()
+//        sceneView.session.run(configuration)
         
-        sceneView.snp.makeConstraints({
+//        sceneView.snp.makeConstraints({
+//            $0.edges.equalToSuperview()
+//        })
+        capturedImage.snp.makeConstraints({
             $0.edges.equalToSuperview()
         })
         
@@ -70,19 +78,20 @@ class HomeRecognizeARViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         
-        let configuration = ARWorldTrackingConfiguration()
-        sceneView.session.run(configuration)
+//        let configuration = ARWorldTrackingConfiguration()
+//        sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        sceneView.session.pause()
+//        sceneView.session.pause()
     }
     
     
     
     private func setUI() {
-        [backButton, toggle, egg, tomato, greenOnion, bottomButtonStackView].forEach({self.sceneView.addSubview($0)})
+//        [backButton, toggle, egg, tomato, greenOnion, bottomButtonStackView].forEach({self.sceneView.addSubview($0)})
+        [backButton, toggle, egg, tomato, greenOnion, bottomButtonStackView].forEach({self.capturedImage.addSubview($0)})
         [resultButton, reRecognizeButton].forEach({self.bottomButtonStackView.addArrangedSubview($0)})
         
         backButton.snp.makeConstraints({
@@ -167,21 +176,22 @@ class HomeRecognizeARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func captureSceneCurrentImage() -> UIImage? {
-        guard let currentFrame = self.sceneView.session.currentFrame else {
-            print("현재 프레임을 가져올 수 없습니다.")
-            return nil
-        }
-        
-        let image = CIImage(cvPixelBuffer: currentFrame.capturedImage)
-        let context = CIContext(options: nil)
-        guard let cgImage = context.createCGImage(image, from: image.extent) else {
-            print("CGImage를 생성할 수 없습니다.")
-            return nil
-        }
-        
-        let uiImage = UIImage(cgImage: cgImage)
-        let rotatedImage = rotateImage(uiImage, byDegrees: 90)
-        return rotatedImage
+//        guard let currentFrame = self.sceneView.session.currentFrame else {
+//            print("현재 프레임을 가져올 수 없습니다.")
+//            return nil
+//        }
+//        
+//        let image = CIImage(cvPixelBuffer: currentFrame.capturedImage)
+//        let context = CIContext(options: nil)
+//        guard let cgImage = context.createCGImage(image, from: image.extent) else {
+//            print("CGImage를 생성할 수 없습니다.")
+//            return nil
+//        }
+//        
+//        let uiImage = UIImage(cgImage: cgImage)
+//        let rotatedImage = rotateImage(uiImage, byDegrees: 90)
+//        return rotatedImage
+        return capturedImage.image
     }
     
     private func rotateImage(_ image: UIImage, byDegrees degrees: CGFloat) -> UIImage {
