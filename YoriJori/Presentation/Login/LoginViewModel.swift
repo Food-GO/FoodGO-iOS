@@ -9,6 +9,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+struct LoginResponse: Codable {
+    let statusCode: String
+    let message: String
+    let content: Token
+}
+
+struct Token: Codable {
+    let accessToken: String
+    let refreshToken: String
+}
+
+
 enum LoginError: Error {
     case badRequest
     case serverError
@@ -37,15 +49,22 @@ class LoginViewModel {
         let id = idRelay.value
         let pw = passwordRelay.value
         
-        DispatchQueue.global().async { [weak self] in
-            Thread.sleep(forTimeInterval: 0.0)
-            
-            DispatchQueue.main.async {
-                if id == pw {
-                    self?.loginResult.onNext(.success)
-                } else {
-                    self?.loginResult.onNext(.failure(message: "실패"))
-                }
+        
+        let parameters: [String: Any] = [
+            "username": id,
+            "password": pw
+        ]
+        
+        NetworkService.shared.post(.login, parameters: parameters) { (result: Result<LoginResponse, NetworkError>) in
+            switch result {
+            case .success(let response):
+                UserDefaultsManager.shared.accesstoken = response.content.accessToken
+                UserDefaultsManager.shared.refreshtoken = response.content.refreshToken
+                print("액세스 토큰 \(UserDefaultsManager.shared.accesstoken)")
+                print("리프레쉬 토큰 \(UserDefaultsManager.shared.refreshtoken)")
+                self.loginResult.onNext(.success)
+            case .failure(let error):
+                self.loginResult.onNext(.failure(message: "실패"))
             }
         }
     }

@@ -29,5 +29,32 @@ class UserDefaultsManager {
         }
     }
     
+    private let accesstokenKey = "accessTokenKey"
+    var accesstoken: String {
+        set(newValue) {
+            userDefaults.setValue(newValue, forKey: accesstokenKey)
+        }
+        get {
+            if let acesstoken = userDefaults.string(forKey: accesstokenKey) {
+                return acesstoken
+            } else {
+                return ""
+            }
+        }
+    }
+    
+    private let refreshtokenKey = "refreshtokenKey"
+    var refreshtoken: String {
+        set(newValue) {
+            userDefaults.setValue(newValue, forKey: refreshtokenKey)
+        }
+        get {
+            if let acesstoken = userDefaults.string(forKey: refreshtokenKey) {
+                return acesstoken
+            } else {
+                return ""
+            }
+        }
+    }
     
 }
