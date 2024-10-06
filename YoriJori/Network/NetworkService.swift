@@ -11,9 +11,11 @@ import Alamofire
 enum APIEndpoint {
     case userNameCheck(username: String)
     case ingredients
-    case cuisines
+    case cuisine
+    case test
     case challenges
     case notification
+    case login
     case openAPI(start: Int, end: Int, recipeName: String)
     
     private var baseUrl: String {
@@ -35,12 +37,16 @@ enum APIEndpoint {
             return "/users/username?username=\(username)"
         case .ingredients:
             return "/ingredients"
-        case .cuisines:
-            return "/cuisines"
+        case .cuisine:
+            return "/cuisine"
+        case .test:
+            return "/cuisine/test"
         case .challenges:
             return "/challenges"
         case .notification:
             return "/notification"
+        case .login:
+            return "/users/login"
         case .openAPI(let start, let end, let recipeName):
             let encodedRecipeName = recipeName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? recipeName
             return "http://openapi.foodsafetykorea.go.kr/api/\(openKey)/COOKRCP01/json/\(start)/\(end)/RCP_NM=\(encodedRecipeName)"        }
