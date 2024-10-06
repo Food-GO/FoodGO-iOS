@@ -145,9 +145,6 @@ class LoginViewController: UIViewController {
     
     
     @objc private func loginSucceed() {
-        //        let mainVC = TabBarController()
-        //        mainVC.modalPresentationStyle = .fullScreen
-        //        self.present(mainVC, animated: true)
         let mainVC = TabBarController()
         
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
