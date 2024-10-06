@@ -9,11 +9,33 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import Alamofire
+
+struct PresignedUrlResponse: Decodable {
+    let statusCode: String
+    let message: String
+    let content: S3Model
+}
+
+struct S3Model: Codable {
+    let url: String
+    let filePath: String
+}
+
+struct AddFoodResponse: Decodable {
+    let statusCode: String
+    let message: String
+    let content: String
+}
 
 class ManualAddFoodViewController: UIViewController {
     
     private let viewModel = ManualAddFoodViewModel()
     private let disposeBag = DisposeBag()
+    
+    private let presignedUrl = ""
+    
+    private var s3Url = ""
     
     private let photoView = UIImageView().then {
         $0.backgroundColor = DesignSystemColor.gray150
@@ -163,7 +185,7 @@ class ManualAddFoodViewController: UIViewController {
         
         nextButton.rx.tap
             .subscribe(onNext: {[weak self] in
-                self?.backButtonTapped()
+                self?.registerFood()
             })
             .disposed(by: disposeBag)
         
@@ -190,6 +212,72 @@ class ManualAddFoodViewController: UIViewController {
         present(imagePicker, animated: true)
     }
     
+    private func getPresignedUrl() async throws -> String {
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(UserDefaultsManager.shared.accesstoken)"
+        ]
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(presignedUrl, method: .get, headers: headers).responseDecodable(of: PresignedUrlResponse.self) { response in
+                switch response.result {
+                case .success(let presignedUrlResponse):
+                    print("Presigned URL: \(presignedUrlResponse.content.url)")
+                    continuation.resume(returning: presignedUrlResponse.content.url)
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+    
+    private func uploadImageToS3(imageData: Data, presignedUrl: URL) async throws {
+        var request = URLRequest(url: presignedUrl)
+        request.httpMethod = "PUT"
+        request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+        
+        let (_, response) = try await URLSession.shared.upload(for: request, from: imageData)
+        
+        print("결과 \(response)")
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200...299).contains(httpResponse.statusCode) else {
+            throw URLError(.badServerResponse)
+        }
+        
+        // Store the presigned URL as the S3 URL, removing query parameters
+        if var components = URLComponents(url: presignedUrl, resolvingAgainstBaseURL: true) {
+            components.query = nil
+            self.s3Url = components.url?.absoluteString ?? ""
+        } else {
+            self.s3Url = ""
+        }
+        print("s3Url \(s3Url)")
+        
+        print("Image uploaded successfully")
+    }
+    
+    @objc private func registerFood() {
+        let body: [String: Any] = [
+            "name": self.foodTextField.text,
+            "quantity": "\(self.countView.count)개",
+            "imageUrl": self.s3Url
+        ]
+        
+        let header: HTTPHeaders = [
+            "Authorization": "Bearer \(UserDefaultsManager.shared.accesstoken)"
+        ]
+        
+        NetworkService.shared.post(.cuisine, parameters: body, headers: header) { (result: Result<AddFoodResponse ,NetworkError>) in
+            switch result {
+            case .success(let response):
+                print("결과 \(response)")
+                self.backButtonTapped()
+            case .failure(let error):
+                print("\(error)")
+            }
+        }
+    }
+    
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -198,13 +286,45 @@ class ManualAddFoodViewController: UIViewController {
 
 extension ManualAddFoodViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            viewModel.setPhoto(image)
+        guard let image = info[.originalImage] as? UIImage else {
+            dismiss(animated: true)
+            return
         }
+        
+        viewModel.setPhoto(image)
         dismiss(animated: true)
+        
+        // Convert UIImage to Data
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            print("Failed to convert image to data")
+            return
+        }
+        
+        // Get presigned URL (You need to implement this method)
+        Task {
+            do {
+                let presignedUrl = try await getPresignedUrl()
+                print("\(presignedUrl)")
+                try await uploadImageToS3(imageData: imageData, presignedUrl: URL(string: presignedUrl)!)
+                print("Image uploaded successfully to S3")
+                // Update UI or perform any other actions after successful upload
+            } catch {
+                print("Failed to upload image: \(error)")
+                // Handle error, maybe show an alert to the user
+            }
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+    }
+}
+
+
+extension URL {
+    func withQuery(_ query: String?) -> URL {
+        var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
+        components?.query = query
+        return components?.url ?? self
     }
 }
