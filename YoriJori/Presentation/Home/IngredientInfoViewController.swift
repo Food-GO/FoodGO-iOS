@@ -12,6 +12,8 @@ import RxCocoa
 
 class IngredientInfoViewController: UIViewController {
     
+    var recognizedObjects: [(identifier: String, boundingBox: CGRect)] = []
+    
     private let disposeBag = DisposeBag()
     
     private let backButton = UIButton().then {
@@ -51,7 +53,7 @@ class IngredientInfoViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = DesignSystemColor.white
-        
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
         setupNavigationBar()
         setUI()

@@ -10,6 +10,21 @@ import SnapKit
 import ARKit
 import RxSwift
 import RxCocoa
+import Alamofire
+
+// MARK: - Response Model
+struct DetectionResponse: Codable {
+    let rawResults: [DetectionResult]
+    
+    enum CodingKeys: String, CodingKey {
+        case rawResults = "raw_results"
+    }
+}
+
+struct DetectionResult: Codable {
+    let name: String
+}
+
 
 class HomeViewController: UIViewController, ARSCNViewDelegate {
     
@@ -38,7 +53,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     private let recognizeButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
         $0.text = "식재료 인식하기"
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,16 +119,72 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     private func bind() {
         recognizeButton.rx.tap
             .subscribe(onNext: {[weak self] in
+//                self?.detectFood()
                 self?.moveToRecognize()
             })
             .disposed(by: disposeBag)
     }
     
+//    private func detectFood() {
+//        
+//        // 현재 AR 화면 캡처
+//        let capturedImage = sceneView.snapshot()
+//        
+//        // 이미지를 서버로 전송
+//        uploadImage(capturedImage) { [weak self] result in
+//            switch result {
+//            case .success(let detectedItems):
+//                print("Upload successful. Detected items:")
+//                detectedItems.forEach { print("- \($0)") }
+//                // 여기에 성공 후 로직 추가 (예: 결과를 표시하거나 다음 화면으로 이동)
+//                self?.moveToRecognize(detectedItems: detectedItems, catpturedImage: capturedImage)
+//            case .failure(let error):
+//                print("Upload failed: \(error.localizedDescription)")
+//                // 에러 처리 (예: 사용자에게 알림)
+//            }
+//        }
+//    }
+    
+//    private func moveToRecognize(detectedItems: [String], catpturedImage: UIImage) {
+//        let recognizeVC = HomeRecognizeARViewController()
+//        recognizeVC.modalPresentationStyle = .overFullScreen
+//        recognizeVC.detectedFoodName = detectedItems
+//        recognizeVC.capturedImage.image = catpturedImage
+//        self.navigationController?.pushViewController(recognizeVC, animated: true)
+//    }
+    
     private func moveToRecognize() {
-        let recognizeVC = HomeRecognizeARViewController()
+        let recognizeVC = VisionDetectViewController()
         recognizeVC.modalPresentationStyle = .overFullScreen
-        
         self.navigationController?.pushViewController(recognizeVC, animated: true)
     }
-
+    
+    
+    private func uploadImage(_ image: UIImage, completion: @escaping (Result<[String], Error>) -> Void) {
+        guard let imageData = image.pngData() else {
+            completion(.failure(NSError(domain: "ImageConversionError", code: 0, userInfo: nil)))
+            return
+        }
+        
+        LoadingIndicator.showLoading()
+        
+        let url = "" // 실제 API 엔드포인트로 변경해야 합니다
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imageData, withName: "image", fileName: "ar_capture.png", mimeType: "image/png")
+        }, to: url, method: .post)
+        .responseDecodable(of: DetectionResponse.self) { response in
+            switch response.result {
+            case .success(let detectionResponse):
+                print("결과값 \(response.result)")
+                let detectedItems = detectionResponse.rawResults.map { $0.name }
+                LoadingIndicator.hideLoading()
+                completion(.success(detectedItems))
+            case .failure(let error):
+                print("Upload error details: \(error)")
+                LoadingIndicator.hideLoading()
+                completion(.failure(error))
+            }
+        }
+    }
 }
