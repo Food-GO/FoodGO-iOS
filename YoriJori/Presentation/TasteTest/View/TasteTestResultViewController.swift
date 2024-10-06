@@ -9,6 +9,13 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import Alamofire
+
+struct BaseResponse: Codable {
+    let statusCode: String
+    let message: String
+    let content: String
+}
 
 class TasteTestResultViewController: UIViewController {
     
@@ -49,8 +56,10 @@ class TasteTestResultViewController: UIViewController {
         $0.setImage(UIImage(named: "return"), for: .normal)
     }
     
-    private let applyTasteButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
+    private lazy var applyTasteButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
         $0.text = "취향 적용하기"
+        $0.addTarget(self, action: #selector(postTestResult), for: .touchUpInside)
+        $0.isUserInteractionEnabled = true
     }
     
     init(bgColor: UIColor, characterImage: UIImage, typeTextColor: UIColor, type: String, typeDesc: String) {
@@ -68,7 +77,7 @@ class TasteTestResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = DesignSystemColor.white
         setupNavigationBar()
         setUI()
@@ -169,8 +178,45 @@ class TasteTestResultViewController: UIViewController {
         }
     }
     
+    private func applyTasteTest() async throws {
+        let header: HTTPHeaders = [
+            "Authorization": "Bearer \(UserDefaultsManager.shared.accesstoken)"
+        ]
+        
+        let body: [String: Any] = [
+            "testType": "SOCIAL"
+        ]
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            NetworkService.shared.post(.test, parameters: body, headers: header) { (result: Result<BaseResponse, NetworkError>) in
+                switch result {
+                case .success(let response):
+                    print("결과값 \(response)")
+                    continuation.resume()
+                case .failure(let error):
+                    print("실패 \(error)")
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+    
+    @objc private func postTestResult() {
+        Task {
+            do {
+                try await applyTasteTest()
+                print("테이스트 테스트 적용 성공")
+                self.navigationController?.popToRootViewController(animated: true)
+                
+            } catch {
+                print("테이스트 테스트 적용 실패: \(error)")
+                // 에러 처리 (예: 사용자에게 알림)
+            }
+        }
+    }
+    
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
 }
