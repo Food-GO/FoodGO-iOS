@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserDefaultsManager.shared.isFirstLaunched == true {
             rootViewController = OnboardingContainerViewController()
         } else {
-            rootViewController = UINavigationController(rootViewController: LoginViewController())
-//            rootViewController = TabBarController()
+//            rootViewController = UINavigationController(rootViewController: LoginViewController())
+            rootViewController = TabBarController()
 //            rootViewController = TestARViewController()
         }
         

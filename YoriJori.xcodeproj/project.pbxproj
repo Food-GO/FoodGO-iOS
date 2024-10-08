@@ -32,6 +32,7 @@
 		9C5FDB512CB029100003C9A0 /* IngredientTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FDB502CB029100003C9A0 /* IngredientTableCell.swift */; };
 		9C5FDB552CB2C5960003C9A0 /* VisionDetectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FDB542CB2C5960003C9A0 /* VisionDetectViewController.swift */; };
 		9C5FDB572CB2C8B80003C9A0 /* light_best.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FDB562CB2C8B80003C9A0 /* light_best.mlmodel */; };
+		9C5FDB5B2CB53A2A0003C9A0 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FDB5A2CB53A2A0003C9A0 /* Secrets.xcconfig */; };
 		9CA9B2BC2CA034E000423287 /* WeeklyReportChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9B2BB2CA034E000423287 /* WeeklyReportChartView.swift */; };
 		9CA9B2C12CA7D56400423287 /* WeeklyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9B2C02CA7D56400423287 /* WeeklyReportViewController.swift */; };
 		9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7972C38EB8C0096D384 /* AppDelegate.swift */; };
@@ -158,6 +159,7 @@
 		9C5FDB502CB029100003C9A0 /* IngredientTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableCell.swift; sourceTree = "<group>"; };
 		9C5FDB542CB2C5960003C9A0 /* VisionDetectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDetectViewController.swift; sourceTree = "<group>"; };
 		9C5FDB562CB2C8B80003C9A0 /* light_best.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = light_best.mlmodel; sourceTree = "<group>"; };
+		9C5FDB5A2CB53A2A0003C9A0 /* Secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		9CA9B2BB2CA034E000423287 /* WeeklyReportChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportChartView.swift; sourceTree = "<group>"; };
 		9CA9B2C02CA7D56400423287 /* WeeklyReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportViewController.swift; sourceTree = "<group>"; };
 		9CABC7942C38EB8C0096D384 /* YoriJori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoriJori.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				9C516C2D2C5E1A7C000D9C1C /* Secrets.xcconfig */,
+				9C5FDB5A2CB53A2A0003C9A0 /* Secrets.xcconfig */,
 				9CABC7962C38EB8C0096D384 /* YoriJori */,
 				9CABC7AC2C38EB8E0096D384 /* YoriJoriTests */,
 				9CABC7B62C38EB8E0096D384 /* YoriJoriUITests */,
@@ -379,7 +382,6 @@
 				9CABC8162C4546980096D384 /* DesignSystem */,
 				9CABC7D62C3918B70096D384 /* Presentation */,
 				9CABC7CB2C3911690096D384 /* App */,
-				9CABC7CC2C3911EA0096D384 /* Protocol */,
 				9CABC7C62C3906730096D384 /* Info.plist */,
 				9CABC79B2C38EB8C0096D384 /* ViewController.swift */,
 				9CABC79D2C38EB8C0096D384 /* Main.storyboard */,
@@ -412,13 +414,6 @@
 				9CABC7972C38EB8C0096D384 /* AppDelegate.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		9CABC7CC2C3911EA0096D384 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		9CABC7D62C3918B70096D384 /* Presentation */ = {
@@ -831,6 +826,7 @@
 				9CABC84B2C52961B0096D384 /* SUIT-Medium.otf in Resources */,
 				9CABC84D2C5296210096D384 /* SUIT-Regular.otf in Resources */,
 				9CABC8472C5296130096D384 /* SUIT-Bold.otf in Resources */,
+				9C5FDB5B2CB53A2A0003C9A0 /* Secrets.xcconfig in Resources */,
 				9CABC84A2C52961B0096D384 /* SUIT-SemiBold.otf in Resources */,
 				9CABC79F2C38EB8C0096D384 /* Base in Resources */,
 				9CABC7A42C38EB8D0096D384 /* Base in Resources */,
