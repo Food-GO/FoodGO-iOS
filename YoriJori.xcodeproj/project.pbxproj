@@ -27,7 +27,13 @@
 		9C516C4B2C689742000D9C1C /* RecipeGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C4A2C689742000D9C1C /* RecipeGuideViewModel.swift */; };
 		9C516C4E2C70633C000D9C1C /* RecommendFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C4D2C70633C000D9C1C /* RecommendFoodViewController.swift */; };
 		9C516C502C707415000D9C1C /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C516C4F2C707415000D9C1C /* UILabel+Ext.swift */; };
+		9C5FDB4C2CB00EFE0003C9A0 /* FoodItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FDB4B2CB00EFE0003C9A0 /* FoodItemCell.swift */; };
+		9C5FDB4F2CB00F6C0003C9A0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9C5FDB4E2CB00F6C0003C9A0 /* Kingfisher */; };
+		9C5FDB512CB029100003C9A0 /* IngredientTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FDB502CB029100003C9A0 /* IngredientTableCell.swift */; };
+		9C5FDB552CB2C5960003C9A0 /* VisionDetectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FDB542CB2C5960003C9A0 /* VisionDetectViewController.swift */; };
+		9C5FDB572CB2C8B80003C9A0 /* light_best.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FDB562CB2C8B80003C9A0 /* light_best.mlmodel */; };
 		9CA9B2BC2CA034E000423287 /* WeeklyReportChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9B2BB2CA034E000423287 /* WeeklyReportChartView.swift */; };
+		9CA9B2C12CA7D56400423287 /* WeeklyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9B2C02CA7D56400423287 /* WeeklyReportViewController.swift */; };
 		9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC7972C38EB8C0096D384 /* AppDelegate.swift */; };
 		9CABC79A2C38EB8C0096D384 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CABC7992C38EB8C0096D384 /* art.scnassets */; };
 		9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABC79B2C38EB8C0096D384 /* ViewController.swift */; };
@@ -148,7 +154,12 @@
 		9C516C4A2C689742000D9C1C /* RecipeGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGuideViewModel.swift; sourceTree = "<group>"; };
 		9C516C4D2C70633C000D9C1C /* RecommendFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendFoodViewController.swift; sourceTree = "<group>"; };
 		9C516C4F2C707415000D9C1C /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		9C5FDB4B2CB00EFE0003C9A0 /* FoodItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemCell.swift; sourceTree = "<group>"; };
+		9C5FDB502CB029100003C9A0 /* IngredientTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableCell.swift; sourceTree = "<group>"; };
+		9C5FDB542CB2C5960003C9A0 /* VisionDetectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDetectViewController.swift; sourceTree = "<group>"; };
+		9C5FDB562CB2C8B80003C9A0 /* light_best.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = light_best.mlmodel; sourceTree = "<group>"; };
 		9CA9B2BB2CA034E000423287 /* WeeklyReportChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportChartView.swift; sourceTree = "<group>"; };
+		9CA9B2C02CA7D56400423287 /* WeeklyReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportViewController.swift; sourceTree = "<group>"; };
 		9CABC7942C38EB8C0096D384 /* YoriJori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoriJori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CABC7972C38EB8C0096D384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CABC7992C38EB8C0096D384 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -237,6 +248,7 @@
 			files = (
 				9C516C442C687A43000D9C1C /* Alamofire in Frameworks */,
 				9CDFA7F22C957AA30040554B /* FSCalendar in Frameworks */,
+				9C5FDB4F2CB00F6C0003C9A0 /* Kingfisher in Frameworks */,
 				9CABC7EF2C395A060096D384 /* RxSwift in Frameworks */,
 				9CABC7ED2C395A060096D384 /* RxCocoa in Frameworks */,
 				9CABC7E82C392D5F0096D384 /* SnapKit in Frameworks */,
@@ -328,6 +340,14 @@
 			path = RecipeGuide;
 			sourceTree = "<group>";
 		};
+		9CA9B2BF2CA7D55400423287 /* Weekly */ = {
+			isa = PBXGroup;
+			children = (
+				9CA9B2C02CA7D56400423287 /* WeeklyReportViewController.swift */,
+			);
+			path = Weekly;
+			sourceTree = "<group>";
+		};
 		9CABC78B2C38EB8C0096D384 = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +372,7 @@
 		9CABC7962C38EB8C0096D384 /* YoriJori */ = {
 			isa = PBXGroup;
 			children = (
+				9C5FDB562CB2C8B80003C9A0 /* light_best.mlmodel */,
 				9C516C2E2C5E1DEC000D9C1C /* Network */,
 				9CABC8552C553EFF0096D384 /* Common */,
 				9CABC81B2C4548230096D384 /* Resources */,
@@ -445,6 +466,8 @@
 				9CABC7C92C390E680096D384 /* RecommendFoodTapViewController.swift */,
 				9CABC8422C4E8E090096D384 /* FoodRegisterView.swift */,
 				9C516C4D2C70633C000D9C1C /* RecommendFoodViewController.swift */,
+				9C5FDB4B2CB00EFE0003C9A0 /* FoodItemCell.swift */,
+				9C5FDB502CB029100003C9A0 /* IngredientTableCell.swift */,
 			);
 			path = RecommendFood;
 			sourceTree = "<group>";
@@ -558,6 +581,7 @@
 		9CABC82E2C4C01500096D384 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				9CA9B2BF2CA7D55400423287 /* Weekly */,
 				9CABC8322C4C01880096D384 /* ReportViewController.swift */,
 				9CDF4C072C9FF389003268DD /* EmptyFoodRecordView.swift */,
 				9CDF4C092C9FFF0E003268DD /* WeeklyDietGuideCollectionViewCell.swift */,
@@ -575,6 +599,7 @@
 				9CDFA7CA2C7773150040554B /* HomeRecognizeARViewController.swift */,
 				9CDFA7CF2C78C60D0040554B /* IngredientInfoViewController.swift */,
 				9CDFA7D52C7AFAFC0040554B /* IngredientsDetailInfoViewController.swift */,
+				9C5FDB542CB2C5960003C9A0 /* VisionDetectViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -702,6 +727,7 @@
 				9CABC7F72C399D410096D384 /* Then */,
 				9C516C432C687A43000D9C1C /* Alamofire */,
 				9CDFA7F12C957AA30040554B /* FSCalendar */,
+				9C5FDB4E2CB00F6C0003C9A0 /* Kingfisher */,
 			);
 			productName = YoriJori;
 			productReference = 9CABC7942C38EB8C0096D384 /* YoriJori.app */;
@@ -781,6 +807,7 @@
 				9CABC7F62C399D410096D384 /* XCRemoteSwiftPackageReference "Then" */,
 				9C516C422C687A43000D9C1C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9CDFA7F02C957AA30040554B /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				9C5FDB4D2CB00F6C0003C9A0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 9CABC7952C38EB8C0096D384 /* Products */;
 			projectDirPath = "";
@@ -838,6 +865,7 @@
 				9CABC86D2C568C030096D384 /* EighthTasteTestViewController.swift in Sources */,
 				9CABC8202C4548BB0096D384 /* UIFont+Ext.swift in Sources */,
 				9CDFA7E02C7B03860040554B /* NutritionTableViewCell.swift in Sources */,
+				9CA9B2C12CA7D56400423287 /* WeeklyReportViewController.swift in Sources */,
 				9C516C502C707415000D9C1C /* UILabel+Ext.swift in Sources */,
 				9CABC8282C4946120096D384 /* LifestyleHabitCategoryCell.swift in Sources */,
 				9CABC8132C4545910096D384 /* ThirdRegistViewModel.swift in Sources */,
@@ -853,11 +881,13 @@
 				9CABC79C2C38EB8C0096D384 /* ViewController.swift in Sources */,
 				9CDFA7D22C78CA9A0040554B /* CalorieInfoView.swift in Sources */,
 				9CABC85D2C5687930096D384 /* FirstTasteTestViewController.swift in Sources */,
+				9C5FDB512CB029100003C9A0 /* IngredientTableCell.swift in Sources */,
 				9C516C4E2C70633C000D9C1C /* RecommendFoodViewController.swift in Sources */,
 				9CABC7982C38EB8C0096D384 /* AppDelegate.swift in Sources */,
 				9CABC8392C4C01AA0096D384 /* MyProfileViewController.swift in Sources */,
 				9CABC8712C568C230096D384 /* LastTasteTestViewController.swift in Sources */,
 				9C516C2C2C5E0CFE000D9C1C /* ManualAddFoodViewModel.swift in Sources */,
+				9C5FDB4C2CB00EFE0003C9A0 /* FoodItemCell.swift in Sources */,
 				9CABC7D32C39152B0096D384 /* UserDefaultsManager.swift in Sources */,
 				9CABC8332C4C01880096D384 /* ReportViewController.swift in Sources */,
 				9CABC8222C4549120096D384 /* DesignSystemFont.swift in Sources */,
@@ -905,6 +935,7 @@
 				9CABC8182C4546A60096D384 /* DesignSystemColor.swift in Sources */,
 				9CDFA7DE2C7B036A0040554B /* NutritionTableView.swift in Sources */,
 				9C516C462C687D06000D9C1C /* LoadingIndicator.swift in Sources */,
+				9C5FDB572CB2C8B80003C9A0 /* light_best.mlmodel in Sources */,
 				9CDFA7DB2C7B00340040554B /* IngredientsDetailModel.swift in Sources */,
 				9CABC85B2C5684860096D384 /* BaseTasteTestViewController.swift in Sources */,
 				9CABC7DD2C391D440096D384 /* OnboardingContainerViewController.swift in Sources */,
@@ -914,6 +945,7 @@
 				9CABC8672C568BCF0096D384 /* FifthTasteTestViewController.swift in Sources */,
 				9CABC84F2C5298910096D384 /* YorijoriButton.swift in Sources */,
 				9C516C4B2C689742000D9C1C /* RecipeGuideViewModel.swift in Sources */,
+				9C5FDB552CB2C5960003C9A0 /* VisionDetectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1288,6 +1320,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		9C5FDB4D2CB00F6C0003C9A0 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
 		9CABC7E62C392D5F0096D384 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1327,6 +1367,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9C516C422C687A43000D9C1C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		9C5FDB4E2CB00F6C0003C9A0 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C5FDB4D2CB00F6C0003C9A0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		9CABC7E72C392D5F0096D384 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

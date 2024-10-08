@@ -16,6 +16,8 @@ class VisionDetectViewController: UIViewController, AVCaptureVideoDataOutputSamp
     
     private let disposeBag = DisposeBag()
     
+    public var test = ""
+    
     private var capturedImage: UIImage?
     private var recognizedObjects: [(identifier: String, boundingBox: CGRect)] = []
     private var lastUpdateTime: Date = Date()
@@ -400,7 +402,6 @@ class VisionDetectViewController: UIViewController, AVCaptureVideoDataOutputSamp
     }
     
     private func startCaptureSession() {
-//        session.startRunning()
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.session.startRunning()
         }

@@ -8,8 +8,12 @@
 import UIKit
 import SnapKit
 import FSCalendar
+import RxSwift
+import RxCocoa
 
 class ReportViewController: UIViewController {
+    
+    private let disposeBag = DisposeBag()
     
     private var weeklyDietItems: [(mealTime: String, desc: String)] = [
         (mealTime: "점심", desc: "잡곡밥 1/2공기, 김치 약간,\n닭가슴살 샐러드(드레싱은 오일&식초 기반)"),
@@ -73,7 +77,11 @@ class ReportViewController: UIViewController {
         $0.textColor = DesignSystemColor.gray900
     }
     
-    private let chartView = WeeklyReportChartView()
+    private lazy var chartView = WeeklyReportChartView().then {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(moveTodetailReport))
+        $0.addGestureRecognizer(gesture)
+        $0.isUserInteractionEnabled = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,6 +160,12 @@ class ReportViewController: UIViewController {
         })
         
         self.scrollView.updateContentSize()
+    }
+    
+    @objc private func moveTodetailReport() {
+        let weeklyReportVC = WeeklyReportViewController()
+        weeklyReportVC.modalPresentationStyle = .overFullScreen
+        self.navigationController?.pushViewController(weeklyReportVC, animated: true)
     }
     
 }

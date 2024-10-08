@@ -156,6 +156,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     private func moveToRecognize() {
         let recognizeVC = VisionDetectViewController()
         recognizeVC.modalPresentationStyle = .overFullScreen
+        
         self.navigationController?.pushViewController(recognizeVC, animated: true)
     }
     
