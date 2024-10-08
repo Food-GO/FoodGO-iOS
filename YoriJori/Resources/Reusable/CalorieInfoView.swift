@@ -113,7 +113,6 @@ class CalorieInfoView: UIView {
         //        }
         
         foodNameLabel.snp.makeConstraints({
-            //            $0.top.equalTo(self.riskImageView.snp.bottom).offset(10)
             $0.top.equalToSuperview().offset(12)
             $0.centerX.equalToSuperview()
         })
@@ -121,17 +120,20 @@ class CalorieInfoView: UIView {
         
     }
     
-    func fetchIngredientsAndUpdateUI() {
-        Task {
-            do {
-                try await getIngredients()
-                await MainActor.run {
+    func fetchIngredientsAndUpdateUI() async throws -> Ingredients? {
+        do {
+            let ingredients = try await getIngredients()
+            await MainActor.run {
+                if let ingredients = ingredients {
+                    self.ingredients = ingredients
                     self.updateUI()
                 }
-            } catch {
-                print("Error fetching ingredients: \(error)")
-                // 에러 처리
             }
+            return ingredients
+        } catch {
+            print("Error fetching ingredients: \(error)")
+            // 에러 처리
+            throw error
         }
     }
     
@@ -174,8 +176,8 @@ class CalorieInfoView: UIView {
         }
     }
     
-    private func getIngredients() async throws {
-        guard let foodName = self.foodNameLabel.text else { return }
+    private func getIngredients() async throws -> Ingredients? {
+        guard let foodName = self.foodNameLabel.text else { return nil }
         let components = foodName.split(separator: "/")
         
         let body: [String: Any] = [
@@ -192,8 +194,7 @@ class CalorieInfoView: UIView {
                 switch result {
                 case .success(let response):
                     print("결과 \(response)")
-                    self.ingredients = response.content
-                    continuation.resume(returning: ())
+                    continuation.resume(returning: (response.content))
                 case .failure(let error):
                     print("\(error)")
                     continuation.resume(throwing: error)

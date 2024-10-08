@@ -14,6 +14,7 @@ class IngredientInfoViewController: UIViewController {
     
     var recognizedObjects: [(identifier: String, boundingBox: CGRect)] = []
     private var calorieInfoViews: [CalorieInfoView] = []
+    private var ingredientsData: [Ingredients] = []
     
     private let disposeBag = DisposeBag()
     
@@ -25,6 +26,7 @@ class IngredientInfoViewController: UIViewController {
         $0.layer.cornerRadius = 12
         $0.clipsToBounds = true
     }
+    
     
     //    private let eggInfoView = CalorieInfoView(foodName: "달걀")
     
@@ -63,7 +65,7 @@ class IngredientInfoViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        updateBoundingBoxes()
+        //        updateBoundingBoxes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -213,19 +215,33 @@ class IngredientInfoViewController: UIViewController {
             }
         }
         
-        fetchAllIngredientsData()
+        Task {
+            await fetchAllIngredientsData()
+        }
     }
     
     
-    private func fetchAllIngredientsData() {
+    private func fetchAllIngredientsData() async {
+        var allIngredients: [Ingredients] = []
         for view in calorieInfoViews {
-            view.fetchIngredientsAndUpdateUI()
+            do {
+                if let ingredients = try await view.fetchIngredientsAndUpdateUI() {
+                    allIngredients.append(ingredients)
+                }
+            } catch {
+                print("Error fetching ingredients for view: \(error)")
+                // 에러 처리
+            }
         }
+        self.ingredientsData = allIngredients
+        print("인식된 재료들 \(allIngredients)")
     }
     
     private func moveToDetailView() {
         let detailVC = IngredientsDetailInfoViewController()
         detailVC.modalPresentationStyle = .overFullScreen
+        detailVC.ingredientsData = self.ingredientsData
+        detailVC.capturedImage = self.captureImageView.image
         
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
