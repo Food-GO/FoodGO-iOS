@@ -18,6 +18,8 @@
 	</dict>
 	<key>Open_Key</key>
 	<string>$(Open_Key)</string>
+	<key>PRESINGED_URL</key>
+	<string>$(PRESIGNED_URL)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SUIT-Medium.otf</string>

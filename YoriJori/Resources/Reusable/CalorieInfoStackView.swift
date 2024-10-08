@@ -11,16 +11,16 @@ import SnapKit
 class CalorieInfoStackView: UIStackView {
     
     private let titleLabel = UILabel().then {
-        $0.textColor = DesignSystemColor.gray800
+        $0.textColor = DesignSystemColor.gray900
         $0.font = DesignSystemFont.bold14
     }
     
     private let divider = UIView().then {
-        $0.backgroundColor = DesignSystemColor.gray700
+        $0.backgroundColor = DesignSystemColor.gray900
     }
     
     private let detailLabel = UILabel().then {
-        $0.textColor = DesignSystemColor.gray800
+        $0.textColor = DesignSystemColor.gray900
         $0.font = DesignSystemFont.medium14
         
     }

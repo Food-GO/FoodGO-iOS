@@ -7,33 +7,62 @@
 
 import UIKit
 import SnapKit
+import Alamofire
+
+struct IngredientsResponse: Decodable {
+    let statusCode: String
+    let message: String
+    let content: Ingredients
+}
+
+struct Ingredients: Codable {
+    let descKor: String
+    let groupName: String
+    let kcal: String
+    let carbohydrate: String
+    let protein: String
+    let fat: String
+    let sugar: String
+    let sodium: String
+    let cholesterol: String
+    let fattyAcids: String
+    let transFat: String
+    
+    enum CodingKeys: String, CodingKey {
+        case descKor = "DESC_KOR"
+        case groupName = "GROUP_NAME"
+        case kcal = "NUTR_CONT1"
+        case carbohydrate = "NUTR_CONT2"
+        case protein = "NUTR_CONT3"
+        case fat = "NUTR_CONT4"
+        case sugar = "NUTR_CONT5"
+        case sodium = "NUTR_CONT6"
+        case cholesterol = "NUTR_CONT7"
+        case fattyAcids = "NUTR_CONT8"
+        case transFat = "NUTR_CONT9"
+    }
+}
 
 class CalorieInfoView: UIView {
     
-    private var riskCategory = ""
+    //    private var riskCategory = ""
     
-    private let riskImageView = UIImageView()
+    //    private let riskImageView = UIImageView()
+    
+    private var ingredients: Ingredients?
     
     private let foodNameLabel = UILabel().then {
         $0.textColor = DesignSystemColor.gray900
         $0.font = DesignSystemFont.bold16
     }
     
-    private let totalCalorieStackView = CalorieInfoStackView(title: "총칼로리", amountText: "146 kcal")
-    
-    private let proteinStackView = CalorieInfoStackView(title: "단백질", amountText: "6.9g")
-    
-    private let calciumStackView = CalorieInfoStackView(title: "칼슘", amountText: "24mg")
-    
-    private let fatStackView = CalorieInfoStackView(title: "지방", amountText: "4.4g")
-    
-    init(foodName: String, riskCategory: String) {
+    init(foodName: String) {
         super.init(frame: .zero)
         
         self.layer.cornerRadius = 12
         self.backgroundColor = DesignSystemColor.white.withAlphaComponent(0.8)
         
-        self.riskCategory = riskCategory
+        //        self.riskCategory = riskCategory
         self.foodNameLabel.text = foodName
         
         setUI()
@@ -51,64 +80,125 @@ class CalorieInfoView: UIView {
     
     
     private func setUI() {
-        [riskImageView, foodNameLabel, totalCalorieStackView, proteinStackView, calciumStackView, fatStackView].forEach({self.addSubview($0)})
+        //        [riskImageView, foodNameLabel, totalCalorieStackView, proteinStackView, calciumStackView, fatStackView].forEach({self.addSubview($0)})
+//        [foodNameLabel, totalCalorieStackView, proteinStackView, calciumStackView, fatStackView].forEach({self.addSubview($0)})
+        [foodNameLabel].forEach({self.addSubview($0)})
         
-        switch riskCategory {
-        case "good":
-            riskImageView.image = UIImage(named: "risk_good")
-            riskImageView.snp.makeConstraints({
-                $0.top.equalToSuperview().offset(12)
-                $0.centerX.equalToSuperview()
-                $0.width.height.equalTo(22)
-            })
-        case "soso":
-            riskImageView.image = UIImage(named: "risk_soso")
-            riskImageView.snp.makeConstraints({
-                $0.top.equalToSuperview().offset(12)
-                $0.centerX.equalToSuperview()
-                $0.width.equalTo(26)
-                $0.height.equalTo(22)
-            })
-        case "bad":
-            riskImageView.image = UIImage(named: "risk_bad")
-            riskImageView.snp.makeConstraints({
-                $0.top.equalToSuperview().offset(12)
-                $0.centerX.equalToSuperview()
-                $0.width.equalTo(6)
-                $0.height.equalTo(26)
-            })
-        default:
-            return
-        }
+        //        switch riskCategory {
+        //        case "good":
+        //            riskImageView.image = UIImage(named: "risk_good")
+        //            riskImageView.snp.makeConstraints({
+        //                $0.top.equalToSuperview().offset(12)
+        //                $0.centerX.equalToSuperview()
+        //                $0.width.height.equalTo(22)
+        //            })
+        //        case "soso":
+        //            riskImageView.image = UIImage(named: "risk_soso")
+        //            riskImageView.snp.makeConstraints({
+        //                $0.top.equalToSuperview().offset(12)
+        //                $0.centerX.equalToSuperview()
+        //                $0.width.equalTo(26)
+        //                $0.height.equalTo(22)
+        //            })
+        //        case "bad":
+        //            riskImageView.image = UIImage(named: "risk_bad")
+        //            riskImageView.snp.makeConstraints({
+        //                $0.top.equalToSuperview().offset(12)
+        //                $0.centerX.equalToSuperview()
+        //                $0.width.equalTo(6)
+        //                $0.height.equalTo(26)
+        //            })
+        //        default:
+        //            return
+        //        }
         
         foodNameLabel.snp.makeConstraints({
-            $0.top.equalTo(self.riskImageView.snp.bottom).offset(10)
+            //            $0.top.equalTo(self.riskImageView.snp.bottom).offset(10)
+            $0.top.equalToSuperview().offset(12)
             $0.centerX.equalToSuperview()
         })
         
-        totalCalorieStackView.snp.makeConstraints({
-            $0.top.equalTo(self.foodNameLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(17)
-        })
         
-        proteinStackView.snp.makeConstraints({
-            $0.top.equalTo(self.totalCalorieStackView.snp.bottom).offset(6)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(17)
-        })
-        
-        calciumStackView.snp.makeConstraints({
-            $0.top.equalTo(self.proteinStackView.snp.bottom).offset(6)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(17)
-        })
-        
-        fatStackView.snp.makeConstraints({
-            $0.top.equalTo(self.calciumStackView.snp.bottom).offset(6)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(17)
-        })
     }
     
+    func fetchIngredientsAndUpdateUI() {
+        Task {
+            do {
+                try await getIngredients()
+                await MainActor.run {
+                    self.updateUI()
+                }
+            } catch {
+                print("Error fetching ingredients: \(error)")
+                // 에러 처리
+            }
+        }
+    }
+    
+    private func updateUI() {
+        if let ingredients = self.ingredients {
+            
+            let totalCalorieStackView = CalorieInfoStackView(title: "총칼로리", amountText: "\(ingredients.kcal)")
+            let proteinStackView = CalorieInfoStackView(title: "단백질", amountText: "\(ingredients.protein)")
+            let carbonStackView = CalorieInfoStackView(title: "탄수화물", amountText: "\(ingredients.carbohydrate)")
+            let fatStackView = CalorieInfoStackView(title: "지방", amountText: "\(ingredients.fat)")
+            
+            [totalCalorieStackView, proteinStackView, carbonStackView, fatStackView].forEach({self.addSubview($0)})
+            
+            totalCalorieStackView.snp.makeConstraints({
+                $0.top.equalTo(self.foodNameLabel.snp.bottom).offset(10)
+                $0.leading.trailing.equalToSuperview().inset(20)
+                $0.height.equalTo(17)
+            })
+            
+            proteinStackView.snp.makeConstraints({
+                $0.top.equalTo(totalCalorieStackView.snp.bottom).offset(6)
+                $0.leading.trailing.equalToSuperview().inset(20)
+                $0.height.equalTo(17)
+            })
+            
+            carbonStackView.snp.makeConstraints({
+                $0.top.equalTo(proteinStackView.snp.bottom).offset(6)
+                $0.leading.trailing.equalToSuperview().inset(20)
+                $0.height.equalTo(17)
+            })
+            
+            fatStackView.snp.makeConstraints({
+                $0.top.equalTo(carbonStackView.snp.bottom).offset(6)
+                $0.leading.trailing.equalToSuperview().inset(20)
+                $0.height.equalTo(17)
+            })
+            
+        } else {
+            print("ingredients 값 없음")
+        }
+    }
+    
+    private func getIngredients() async throws {
+        guard let foodName = self.foodNameLabel.text else { return }
+        let components = foodName.split(separator: "/")
+        
+        let body: [String: Any] = [
+            "descKor": components[0],
+            "groupName": components[1]
+        ]
+        
+        let header: HTTPHeaders = [
+            "Authorization": "Bearer \(UserDefaultsManager.shared.accesstoken)"
+        ]
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            NetworkService.shared.post(.ingredients, parameters: body, headers: header) { (result: Result<IngredientsResponse, NetworkError>) in
+                switch result {
+                case .success(let response):
+                    print("결과 \(response)")
+                    self.ingredients = response.content
+                    continuation.resume(returning: ())
+                case .failure(let error):
+                    print("\(error)")
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
 }
