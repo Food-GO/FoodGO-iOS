@@ -13,9 +13,11 @@ enum APIEndpoint {
     case ingredients
     case cuisine
     case test
+    case report
     case challenges
     case notification
     case login
+    case join
     case openAPI(start: Int, end: Int, recipeName: String)
     
     private var baseUrl: String {
@@ -41,12 +43,16 @@ enum APIEndpoint {
             return "/cuisine"
         case .test:
             return "/cuisine/test"
+        case .report:
+            return "/report"
         case .challenges:
             return "/challenges"
         case .notification:
             return "/notification"
         case .login:
             return "/users/login"
+        case .join:
+            return "/users/join"
         case .openAPI(let start, let end, let recipeName):
             let encodedRecipeName = recipeName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? recipeName
             return "http://openapi.foodsafetykorea.go.kr/api/\(openKey)/COOKRCP01/json/\(start)/\(end)/RCP_NM=\(encodedRecipeName)"        }
@@ -206,4 +212,50 @@ class NetworkService {
     func getRecipeGuide<T: Decodable>(start: Int, end: Int, recipeName: String, completion: @escaping (Result<T, NetworkError>) -> Void) {
         get(.openAPI(start: start, end: end, recipeName: recipeName), completion: completion)
     }
+}
+
+extension NetworkService {
+    func postMultipartWithJSON(_ endpoint: APIEndpoint, parameters: [String: Any], completion: @escaping (Result<JoinResponse, NetworkError>) -> Void) {
+        guard let url = endpoint.url else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            // Convert parameters to JSON Data
+            if let jsonData = try? JSONSerialization.data(withJSONObject: parameters) {
+                multipartFormData.append(jsonData, withName: "request", mimeType: "application/json")
+            }
+        }, to: url)
+        .validate()
+        .responseDecodable(of: JoinResponse.self) { response in
+            print("Response headers: \(response.response?.allHeaderFields ?? [:])")
+            print("Request headers: \(response.request?.allHTTPHeaderFields ?? [:])")
+            
+            switch response.result {
+            case .success(let joinResponse):
+                completion(.success(joinResponse))
+            case .failure(let error):
+                if let data = response.data, let responseString = String(data: data, encoding: .utf8) {
+                    print("Raw server response: \(responseString)")
+                    do {
+                        let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                        completion(.failure(.serverError(errorResponse.message)))
+                    } catch {
+                        print("Error decoding error response: \(error)")
+                        completion(.failure(.decodingError))
+                    }
+                } else {
+                    print("Network error details: \(error)")
+                    completion(.failure(.networkError(error)))
+                }
+            }
+        }
+    }
+}
+
+struct ErrorResponse: Codable {
+    let statusCode: String
+    let message: String
+    let content: String?
 }

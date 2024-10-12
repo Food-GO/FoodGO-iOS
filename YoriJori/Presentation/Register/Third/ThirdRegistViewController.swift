@@ -10,10 +10,28 @@ import Then
 import SnapKit
 import RxSwift
 import RxCocoa
+import Alamofire
+
+struct JoinResponse: Codable {
+    let statusCode: String
+    let message: String
+    let content: JoinData
+}
+
+struct JoinData: Codable {
+    let id: Int
+    let username: String
+    let nickname: String
+    let imageUrl: String?
+    let usageType: String
+    let diseaseType: String
+    let lifeStyle: String
+    let allergy: String
+}
 
 
 class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
+    
     private let viewModel = ThirdRegistViewModel()
     private var disposeBag = DisposeBag()
     
@@ -322,10 +340,53 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         
     }
     
+    private func getJoinStatus() async throws -> String {
+        let requestData: [String: Any] = [
+            "username": UserDefaultsManager.shared.id,
+            "password": UserDefaultsManager.shared.password,
+            "nickname": "요리조리",
+            "usageType": "INGREDIENT",
+            "diseaseType": "GOUT",
+            "lifeStyle": "하루에 3끼 먹어",
+            "allergy": "새우"
+        ]
+        
+        print("username: \(UserDefaultsManager.shared.id)")
+        print("password: \(UserDefaultsManager.shared.password)")
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            NetworkService.shared.postMultipartWithJSON(.join, parameters: requestData) { result in
+                switch result {
+                case .success(let response):
+                    print("회원가입 성공: \(response)")
+                    continuation.resume(returning: response.statusCode)
+                case .failure(let error):
+                    print("회원가입 실패. 상세 오류:")
+                    print("- 오류 유형: \(type(of: error))")
+                    print("- 오류 설명: \(error.localizedDescription)")
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+    
     @objc private func nextButtonTapped() {
-        let lastVC = LastRegisterViewController()
-        lastVC.modalPresentationStyle = .overFullScreen
-        self.navigationController?.pushViewController(lastVC, animated: true)
+        
+        Task {
+            do {
+                let status = try await getJoinStatus()
+                if status == "OK" {
+                    let lastVC = LastRegisterViewController()
+                    lastVC.modalPresentationStyle = .overFullScreen
+                    self.navigationController?.pushViewController(lastVC, animated: true)
+                } else {
+                    print("회원가입 실패 status code: \(status)")
+                }
+            } catch {
+                print("회원가입 실패 \(error)")
+            }
+        }
+        
     }
     
     @objc private func backButtonTapped() {

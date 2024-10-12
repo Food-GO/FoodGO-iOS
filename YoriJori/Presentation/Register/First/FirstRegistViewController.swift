@@ -196,6 +196,22 @@ class FirstRegistViewController: UIViewController {
    
     @objc private func nextButtonTapped() {
         let nextVC = SecondRegistViewController()
+        if let id = self.idTextField.text {
+            UserDefaultsManager.shared.id = id
+        } else {
+            print("id 값 없음")
+        }
+        
+        if let pw = self.pwValidateTextField.text {
+            UserDefaultsManager.shared.password = pw
+        } else {
+            print("pw 값 없음")
+        }
+        
+        print("username: \(UserDefaultsManager.shared.id)")
+        print("password: \(UserDefaultsManager.shared.password)")
+        
+        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
