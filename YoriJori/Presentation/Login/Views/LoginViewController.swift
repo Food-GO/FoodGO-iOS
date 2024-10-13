@@ -6,13 +6,13 @@
 //
 
 import UIKit
+
 import Then
 import SnapKit
 import RxSwift
 import RxCocoa
 
-
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     
     private let loginViewModel = LoginViewModel()
     private let disposeBag = DisposeBag()
@@ -114,10 +114,8 @@ class LoginViewController: UIViewController {
             .subscribe(onNext: { [weak self] result in
                 switch result {
                 case .success:
-                    print("로그인 성공")
                     self?.loginSucceed()
                 case .failure(let errorMessage):
-                    print("로그인 실패: \(errorMessage)")
                     self?.showLoginFailedAlert()
                 }
             })
@@ -136,13 +134,18 @@ class LoginViewController: UIViewController {
                 self?.loginViewModel.requestLogin()
             }
             .disposed(by: disposeBag)
-        
     }
     
     private func showLoginFailedAlert() {
-        print("로그인 실패")
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "로그인 실패", message: "아이디 또는 비밀번호가 올바르지 않습니다.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let viewController = windowScene.windows.first?.rootViewController {
+                viewController.present(alert, animated: true, completion: nil)
+            }
+        }
     }
-    
     
     @objc private func loginSucceed() {
         let mainVC = TabBarController()

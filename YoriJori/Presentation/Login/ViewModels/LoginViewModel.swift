@@ -9,23 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct LoginResponse: Codable {
-    let statusCode: String
-    let message: String
-    let content: Token
-}
-
-struct Token: Codable {
-    let accessToken: String
-    let refreshToken: String
-}
-
-
-enum LoginError: Error {
-    case badRequest
-    case serverError
-}
-
 enum LoginResult {
     case success
     case failure(message: String)
@@ -60,14 +43,10 @@ class LoginViewModel {
             case .success(let response):
                 UserDefaultsManager.shared.accesstoken = response.content.accessToken
                 UserDefaultsManager.shared.refreshtoken = response.content.refreshToken
-                print("액세스 토큰 \(UserDefaultsManager.shared.accesstoken)")
-                print("리프레쉬 토큰 \(UserDefaultsManager.shared.refreshtoken)")
                 self.loginResult.onNext(.success)
             case .failure(let error):
-                self.loginResult.onNext(.failure(message: "실패"))
+                self.loginResult.onNext(.failure(message: "\(error)"))
             }
         }
     }
-    
-    
 }
