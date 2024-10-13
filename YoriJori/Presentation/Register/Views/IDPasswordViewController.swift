@@ -6,15 +6,15 @@
 //
 
 import UIKit
-import Then
-import SnapKit
+
 import RxSwift
 import RxCocoa
+import SnapKit
+import Then
 
-
-class FirstRegistViewController: UIViewController {
+class IDPasswordViewController: BaseViewController {
     
-    private let viewModel = FirstRegistViewModel()
+    private let viewModel = IDPasswordViewModel()
     private let disposeBag = DisposeBag()
     
     private let progressBar = UISlider().then {
@@ -46,6 +46,7 @@ class FirstRegistViewController: UIViewController {
         $0.setTitle("중복확인", for: .normal)
         $0.setTitleColor(DesignSystemColor.white, for: .normal)
         $0.layer.cornerRadius = 12
+        $0.titleLabel?.font = DesignSystemFont.semibold14
         $0.backgroundColor = DesignSystemColor.gray500
     }
     
@@ -74,6 +75,7 @@ class FirstRegistViewController: UIViewController {
     private lazy var nextButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
         $0.setTitle("다음", for: .normal)
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        $0.layer.cornerRadius = 12
         $0.isEnabled = false
     }
     
@@ -85,9 +87,6 @@ class FirstRegistViewController: UIViewController {
         setupNavigationBar()
         setUI()
         bindViewModel()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {       self.view.endEditing(true)
     }
     
     private func setupNavigationBar() {
@@ -170,9 +169,7 @@ class FirstRegistViewController: UIViewController {
             .disposed(by: disposeBag)
         
         idValidateButton.rx.tap
-            .bind { [weak self] in
-                self?.viewModel.requestIdDuplicated()
-            }
+            .bind(to: viewModel.validateIDTrigger)
             .disposed(by: disposeBag)
         
         viewModel.isValidateIdButtonEnabled
@@ -192,8 +189,29 @@ class FirstRegistViewController: UIViewController {
             .map { $0 ? DesignSystemColor.yorijoriPink : DesignSystemColor.gray400 }
             .bind(to: nextButton.rx.backgroundColor)
             .disposed(by: disposeBag)
+        
+        viewModel.isIDDuplicated
+            .subscribe(onNext: { [weak self] isDuplicated in
+                self?.updateUIForDuplicationCheck(isDuplicated)
+            })
+            .disposed(by: disposeBag)
     }
-   
+    
+    private func updateUIForDuplicationCheck(_ isDuplicated: Bool) {
+        if isDuplicated {
+            idValidateButton.backgroundColor = DesignSystemColor.yorijoriPink
+            idValidateButton.setTitle("중복 확인", for: .normal)
+            
+            AlertManager.shared.showAlert(
+                on: self,
+                title: "이미 사용중인 아이디입니다.",
+                message: "다른 아이디를 입력해주세요."
+            )
+        } else {
+            idValidateButton.setTitle("사용 가능", for: .normal)
+        }
+    }
+    
     @objc private func nextButtonTapped() {
         let nextVC = SecondRegistViewController()
         if let id = self.idTextField.text {
@@ -211,12 +229,10 @@ class FirstRegistViewController: UIViewController {
         print("username: \(UserDefaultsManager.shared.id)")
         print("password: \(UserDefaultsManager.shared.password)")
         
-        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
-
 }

@@ -168,9 +168,8 @@ class LoginViewController: BaseViewController {
     }
     
     @objc private func registerDidTap() {
-        let firstVC = FirstRegistViewController()
-        firstVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(firstVC, animated: true)
+        let idPasswordVC = IDPasswordViewController()
+        idPasswordVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(idPasswordVC, animated: true)
     }
-    
 }
