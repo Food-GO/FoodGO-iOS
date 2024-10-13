@@ -1,4 +1,4 @@
-# 👨‍👩‍👦‍👦 인공지능 유사도를 활용한 식재료 기반 음식 추천 AR 서비스 프로젝트 👨‍👩‍👦‍👦 
+# 인공지능 유사도를 활용한 식재료 기반 음식 추천 AR 서비스 프로젝트
 
 
 ![](https://github.com/user-attachments/assets/e5570d54-a0d3-4341-bf8b-7a73eac62981)
@@ -10,11 +10,11 @@
     <img src="https://github.com/user-attachments/assets/f5267fef-3e23-4f12-9cef-582a942cec18" width=200 />
     <img src="https://github.com/user-attachments/assets/10d1bfdd-0d52-475a-93ae-f385c6aad9d5" width=200 />
     <img src="https://github.com/user-attachments/assets/8203e914-ab1e-489e-8132-015cd6e71152" width=200 />
-    <img src="https://github.com/user-attachments/assets/fd683e92-f599-42ff-beaf-dddfb2356c22" width=200 />
-    <img src="https://github.com/user-attachments/assets/2f4a01ab-2fa4-46ec-83c2-694d38cc30a5" width=200 />
     <img src="https://github.com/user-attachments/assets/83c4af7d-b299-46db-9ec5-57bf38b9806c" width=200 />
-    <img src="https://github.com/user-attachments/assets/5c1eacf7-0112-422c-861a-b002b3fca944" width=200 />
     <img src="https://github.com/user-attachments/assets/3e9132ee-0e79-41f5-b703-7cf97a3bbc17" width=200 />
+    <img src="https://github.com/user-attachments/assets/5c1eacf7-0112-422c-861a-b002b3fca944" width=200 />
+    <img src="https://github.com/user-attachments/assets/2f4a01ab-2fa4-46ec-83c2-694d38cc30a5" width=200 />
+    <img src="https://github.com/user-attachments/assets/fd683e92-f599-42ff-beaf-dddfb2356c22" width=200 />
 </p>
 
 ## ⭐ Main Feature
