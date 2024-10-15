@@ -213,7 +213,7 @@ class IDPasswordViewController: BaseViewController {
     }
     
     @objc private func nextButtonTapped() {
-        let nextVC = SecondRegistViewController()
+        let nextVC = ProfileNicknameViewController()
         if let id = self.idTextField.text {
             UserDefaultsManager.shared.id = id
         } else {

@@ -54,8 +54,10 @@ class IngredientsReportViewController: UIViewController {
     
     private lazy var chartView = IngredientsReportView()
     
-    private let recommendFoodButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
+    private lazy var recommendFoodButton = YorijoriFilledButton(bgColor: DesignSystemColor.yorijoriPink, textColor: DesignSystemColor.white).then {
         $0.text = "음식 추천 받기"
+        $0.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
+        $0.isUserInteractionEnabled = true
     }
     
     override func viewDidLoad() {
@@ -177,6 +179,12 @@ class IngredientsReportViewController: UIViewController {
     
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func moveToHome() {
+        let vc = RecommendFoodViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

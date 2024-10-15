@@ -62,7 +62,9 @@ class IngredientTableCell: UITableViewCell {
         nameLabel.text = item.name
         quantityLabel.text = "수량 | \(item.quantity)"
         
-        if let url = URL(string: item.imageUrl) {
+        guard let imageUrl = item.imageUrl else { return }
+        
+        if let url = URL(string: imageUrl) {
             image.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_image"))
             image.contentMode = .scaleToFill
         } else {

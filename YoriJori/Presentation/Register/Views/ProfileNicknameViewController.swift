@@ -6,14 +6,15 @@
 //
 
 import UIKit
+
 import Then
 import SnapKit
 import RxSwift
 import RxCocoa
 
-class SecondRegistViewController: UIViewController {
+class ProfileNicknameViewController: BaseViewController {
 
-    private let viewModel = SecondRegistViewModel()
+    private let viewModel = ProfileNicknameViewModel()
     private var disposeBag = DisposeBag()
     
     private let progressBar = UISlider().then {
@@ -27,6 +28,8 @@ class SecondRegistViewController: UIViewController {
     
     private let profileImageLabel = UILabel().then {
         $0.text = "프로필사진"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.bold16
     }
     
     private let addProfileImageButton = UIButton().then {
@@ -34,7 +37,9 @@ class SecondRegistViewController: UIViewController {
     }
     
     private let nicknameLabel = UILabel().then {
-        $0.text = "아이디"
+        $0.text = "닉네임"
+        $0.textColor = DesignSystemColor.gray900
+        $0.font = DesignSystemFont.bold16
     }
     
     private let nicknameStackView = UIStackView().then {
@@ -44,23 +49,27 @@ class SecondRegistViewController: UIViewController {
     }
     
     private let nicknameTextField = UITextField().then {
-        $0.placeholder = "아이디를 입력해주세요"
+        $0.placeholder = "닉네임을 입력해주세요"
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
+        $0.backgroundColor = DesignSystemColor.gray150
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
+        $0.font = DesignSystemFont.medium14
+        $0.textColor = DesignSystemColor.gray500
     }
     
     private let nicknameValidateButton = UIButton().then {
-        $0.setTitle("중복확인", for: .normal)
+        $0.setTitle("중복 확인", for: .normal)
         $0.backgroundColor = .red.withAlphaComponent(0.5)
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
+        $0.titleLabel?.font = DesignSystemFont.semibold14
+        $0.backgroundColor = DesignSystemColor.gray500
     }
     
     private lazy var nextButton = UIButton().then {
         $0.setTitle("다음", for: .normal)
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = 12
+        $0.titleLabel?.font = DesignSystemFont.semibold16
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
 
@@ -161,7 +170,7 @@ class SecondRegistViewController: UIViewController {
     }
 
     @objc private func nextButtonTapped() {
-        let nextVC = ThirdRegistViewController()
+        let nextVC = UserPersonalDataViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

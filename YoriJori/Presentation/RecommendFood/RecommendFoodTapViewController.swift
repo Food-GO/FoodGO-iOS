@@ -26,7 +26,7 @@ struct FoodList: Codable {
     let ingredientId: Int
     let name: String
     let quantity: String
-    let imageUrl: String
+    let imageUrl: String?
 }
 
 struct TasteTestContent: Codable {
@@ -315,7 +315,8 @@ class RecommendFoodTapViewController: UIViewController {
         if let result = testResult {
             switch result {
             case .none:
-                typeLabel.text = "요리조리님의 음식 취향은\n어떤 취향 일까요?"
+//                typeLabel.text = "요리조리님의 음식 취향은\n어떤 취향 일까요?"
+                return
             case .social:
                 typeLabel.text = "사회적 미식가"
                 

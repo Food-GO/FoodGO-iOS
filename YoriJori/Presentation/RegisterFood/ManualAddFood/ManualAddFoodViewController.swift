@@ -238,7 +238,7 @@ class ManualAddFoodViewController: UIViewController {
         
         let (_, response) = try await URLSession.shared.upload(for: request, from: imageData)
         
-        print("결과 \(response)")
+        print("s3 업로드 결과 \(response)")
         guard let httpResponse = response as? HTTPURLResponse,
               (200...299).contains(httpResponse.statusCode) else {
             throw URLError(.badServerResponse)
@@ -262,6 +262,8 @@ class ManualAddFoodViewController: UIViewController {
             "quantity": "\(self.countView.count)개",
             "imageUrl": self.s3Url
         ]
+        
+        print("s3 Url \(self.s3Url)")
         
         let header: HTTPHeaders = [
             "Authorization": "Bearer \(UserDefaultsManager.shared.accesstoken)"
@@ -304,7 +306,7 @@ extension ManualAddFoodViewController: UIImagePickerControllerDelegate, UINaviga
         Task {
             do {
                 let presignedUrl = try await getPresignedUrl()
-                print("\(presignedUrl)")
+                print("프리 사인드 url \(presignedUrl)")
                 try await uploadImageToS3(imageData: imageData, presignedUrl: URL(string: presignedUrl)!)
                 print("Image uploaded successfully to S3")
                 // Update UI or perform any other actions after successful upload

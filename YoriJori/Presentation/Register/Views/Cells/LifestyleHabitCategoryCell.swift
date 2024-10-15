@@ -1,8 +1,8 @@
 //
-//  DiseaseCategoryCell.swift
+//  LifestyleHabitCategoryCell.swift
 //  YoriJori
 //
-//  Created by 김강현 on 7/16/24.
+//  Created by 김강현 on 7/18/24.
 //
 
 import UIKit
@@ -11,19 +11,18 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class DiseaseCategoryCell: UICollectionViewCell {
+class LifestyleHabitCategoryCell: UICollectionViewCell {
     
-    static let identifier = "DiseaseCategoryCell"
+    static let identifier = "LifestyleHabitCategoryCell"
     var disposeBag = DisposeBag()
     
     let button = UIButton().then {
         $0.layer.borderColor = DesignSystemColor.borderColor.cgColor
         $0.layer.cornerRadius = 8
         $0.layer.borderWidth = 1
-        $0.titleLabel?.textAlignment = .center
-        $0.titleLabel?.font = DesignSystemFont.subTitle1
-        $0.titleLabel?.textColor = DesignSystemColor.gray900
-        $0.contentEdgeInsets = UIEdgeInsets(top: 11, left: 12, bottom: 11, right: 12)
+        $0.titleLabel?.textAlignment = .left
+        $0.titleLabel?.font = DesignSystemFont.semibold14
+        $0.setTitleColor(DesignSystemColor.gray900, for: .normal)
         $0.isUserInteractionEnabled = true
     }
     
@@ -43,15 +42,16 @@ class DiseaseCategoryCell: UICollectionViewCell {
         self.contentView.addSubview(button)
         
         button.snp.makeConstraints({
-            $0.center.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
         })
         
     }
     
     func configure(text: String, isSelected: Bool) {
         self.button.setTitle(text, for: .normal)
-        self.button.setTitleColor(isSelected ? .white : DesignSystemColor.textColor, for: .normal)
-        self.button.backgroundColor = isSelected ? DesignSystemColor.yorijoriPink : .white
+//        self.button.setTitleColor(isSelected ? .white : DesignSystemColor.textColor, for: .normal)
+        self.button.layer.borderColor = isSelected ? DesignSystemColor.yorijoriPink.cgColor : DesignSystemColor.borderColor.cgColor
     }
     
     override func prepareForReuse() {
@@ -59,5 +59,3 @@ class DiseaseCategoryCell: UICollectionViewCell {
         disposeBag = DisposeBag()
     }
 }
-
-

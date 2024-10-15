@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -22,9 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserDefaultsManager.shared.isFirstLaunched == true {
             rootViewController = OnboardingContainerViewController()
         } else {
-//            rootViewController = UINavigationController(rootViewController: LoginViewController())
-            rootViewController = TabBarController()
-//            rootViewController = TestARViewController()
+            rootViewController = UINavigationController(rootViewController: LoginViewController())
         }
         
         self.window?.rootViewController = rootViewController

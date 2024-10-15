@@ -15,7 +15,7 @@ class CommunityViewController: UIViewController {
     private var filteredFriendsDataSource = [FriendsListModel]()
     
     var isFiltering: Bool {
-       return searchBar.text?.isEmpty == false
+        return searchBar.text?.isEmpty == false
     }
     
     private lazy var searchBar = UISearchBar().then {
@@ -80,18 +80,18 @@ class CommunityViewController: UIViewController {
     }
     
     private func loadData() {
-        friendsDataSource.append(.init(name: "칼로리", currentChallenge: "1,500 kcal", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "단백질", currentChallenge: "단백질 50g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "이름", currentChallenge: "지방 20g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "지방", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "지방2", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "kcal", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "fat", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "name", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "Name", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "Fat", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "protein", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
-        friendsDataSource.append(.init(name: "Protein", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "이름1", currentChallenge: "1,500 kcal", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "이름2", currentChallenge: "단백질 50g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "이름3", currentChallenge: "지방 20g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "이름4", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name1", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name2", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name3", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name4", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name5", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name6", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name7", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
+        friendsDataSource.append(.init(name: "name8", currentChallenge: "단백질 100g", profileImage: UIImage(named: "friend2")))
     }
     
 }
@@ -115,8 +115,43 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
             cell.bind(model: friendsDataSource[indexPath.row])
         }
         
-        
+        cell.onReTestButtonTap = { [weak self] in
+            self?.showPopup(for: indexPath)
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedFriend: FriendsListModel
+        if isFiltering {
+            selectedFriend = filteredFriendsDataSource[indexPath.row]
+        } else {
+            selectedFriend = friendsDataSource[indexPath.row]
+        }
+        
+        let challengeVC = ChallengeCreationViewController()
+        
+        // 선택된 친구의 이름만 새 뷰 컨트롤러에 전달합니다.
+        challengeVC.friendName = selectedFriend.name
+        
+        // 새 뷰 컨트롤러로 이동합니다.
+        navigationController?.pushViewController(challengeVC, animated: true)
+                
+    }
+    
+    private func showPopup(for indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "친구 신청이 완료되었습니다.", message: "친구가 신청을 수락하면 목록에서 확인할 수 있어요", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            self?.updateCellAppearance(at: indexPath)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func updateCellAppearance(at indexPath: IndexPath) {
+        if let cell = friendListTableView.cellForRow(at: indexPath) as? FriendsListTableViewCell {
+            cell.updateButtonAppearance()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -57,4 +57,32 @@ class UserDefaultsManager {
         }
     }
     
+    private let idKey = "idKey"
+    var id: String {
+        set(newValue) {
+            userDefaults.setValue(newValue, forKey: idKey)
+        }
+        get {
+            if let id = userDefaults.string(forKey: idKey) {
+                return id
+            } else {
+                return ""
+            }
+        }
+    }
+    
+    private let passwordKey = "passwordKey"
+    var password: String {
+        set(newValue) {
+            userDefaults.setValue(newValue, forKey: passwordKey)
+        }
+        get {
+            if let password = userDefaults.string(forKey: passwordKey) {
+                return password
+            } else {
+                return ""
+            }
+        }
+    }
+    
 }

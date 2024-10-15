@@ -90,6 +90,10 @@ class ReportViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         setCalendar()
         setUI()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(moveToFoodRegister))
+        self.emptyRecordView.addGestureRecognizer(gesture)
+        self.emptyRecordView.isUserInteractionEnabled = true
     }
     
     private func setCalendar() {
@@ -166,6 +170,12 @@ class ReportViewController: UIViewController {
         let weeklyReportVC = WeeklyReportViewController()
         weeklyReportVC.modalPresentationStyle = .overFullScreen
         self.navigationController?.pushViewController(weeklyReportVC, animated: true)
+    }
+    
+    @objc private func moveToFoodRegister() {
+        let vc = ManualAddFoodViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

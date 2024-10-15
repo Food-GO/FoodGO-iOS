@@ -1,8 +1,8 @@
 //
-//  UsageCategoryCell.swift
+//  DiseaseCategoryCell.swift
 //  YoriJori
 //
-//  Created by 김강현 on 7/15/24.
+//  Created by 김강현 on 7/16/24.
 //
 
 import UIKit
@@ -11,9 +11,9 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class UsageCategoryCell: UICollectionViewCell {
+class DiseaseCategoryCell: UICollectionViewCell {
     
-    static let identifier = "UsageCategoryCell"
+    static let identifier = "DiseaseCategoryCell"
     var disposeBag = DisposeBag()
     
     let button = UIButton().then {
@@ -21,9 +21,8 @@ class UsageCategoryCell: UICollectionViewCell {
         $0.layer.cornerRadius = 8
         $0.layer.borderWidth = 1
         $0.titleLabel?.textAlignment = .center
-        $0.titleLabel?.font = DesignSystemFont.subTitle1
-        $0.titleLabel?.textColor = DesignSystemColor.gray900
-        $0.contentEdgeInsets = UIEdgeInsets(top: 11, left: 12, bottom: 11, right: 12)
+        $0.titleLabel?.font = DesignSystemFont.semibold14
+        $0.setTitleColor(DesignSystemColor.gray900, for: .normal)
         $0.isUserInteractionEnabled = true
     }
     
@@ -34,7 +33,6 @@ class UsageCategoryCell: UICollectionViewCell {
         setupButton()
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -43,19 +41,22 @@ class UsageCategoryCell: UICollectionViewCell {
         self.contentView.addSubview(button)
         
         button.snp.makeConstraints({
-            $0.center.equalToSuperview()
+            $0.edges.equalToSuperview()
         })
         
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     func configure(text: String, isSelected: Bool) {
         self.button.setTitle(text, for: .normal)
-        self.button.setTitleColor(isSelected ? .white : DesignSystemColor.gray900, for: .normal)
-        self.button.backgroundColor = isSelected ? DesignSystemColor.yorijoriPink : .white
+//        self.button.setTitleColor(isSelected ? .white : DesignSystemColor.textColor, for: .normal)
+        self.button.layer.borderColor = isSelected ? DesignSystemColor.yorijoriPink.cgColor : DesignSystemColor.borderColor.cgColor
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        disposeBag = DisposeBag() 
+        disposeBag = DisposeBag()
     }
 }
+
+

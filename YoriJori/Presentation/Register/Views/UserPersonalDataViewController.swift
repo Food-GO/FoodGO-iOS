@@ -30,9 +30,9 @@ struct JoinData: Codable {
 }
 
 
-class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class UserPersonalDataViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    private let viewModel = ThirdRegistViewModel()
+    private let viewModel = UserPersonalDataViewModel()
     private var disposeBag = DisposeBag()
     
     private let scrollView = UIScrollView().then {
@@ -56,7 +56,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let usageLabel = UILabel().then {
         $0.text = "용도"
         $0.textColor = DesignSystemColor.gray900
-        $0.font = DesignSystemFont.title1
+        $0.font = DesignSystemFont.bold16
     }
     
     private var usageCollectionView: UICollectionView!
@@ -64,52 +64,42 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     private let diseaseLabel = UILabel().then {
         $0.text = "유병 질환"
         $0.textColor = DesignSystemColor.gray900
-        $0.font = DesignSystemFont.title1
+        $0.font = DesignSystemFont.bold16
     }
     
     private var diseaseCollectionView: UICollectionView!
     
-    private let diseaseTextField = UITextField().then {
-        $0.placeholder = "기타 입력..."
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        $0.leftViewMode = .always
-    }
-    
     private let lifestyleHabitLabel = UILabel().then {
         $0.text = "생활습관"
         $0.textColor = DesignSystemColor.gray900
-        $0.font = DesignSystemFont.title1
+        $0.font = DesignSystemFont.bold16
     }
     
     private var lifestyleHabitCollectionView: UICollectionView!
     
-    private let lifestyleHabitTextField = UITextField().then {
-        $0.placeholder = "기타 입력..."
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        $0.leftViewMode = .always
-    }
-    
     private let allergyLabel = UILabel().then {
         $0.text = "알레르기"
         $0.textColor = DesignSystemColor.gray900
-        $0.font = DesignSystemFont.title1
+        $0.font = DesignSystemFont.bold16
     }
     
-    private let allergyTextField = UITextField().then {
+    private lazy var allergyTextField = UITextField().then {
         $0.placeholder = "알레르기를 입력해 주세요"
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = DesignSystemColor.gray400
+        $0.backgroundColor = DesignSystemColor.gray150
+        $0.textColor = DesignSystemColor.gray500
+        $0.font = DesignSystemFont.medium14
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
         $0.leftViewMode = .always
+        $0.returnKeyType = .done
+        $0.delegate = self
     }
     
     private lazy var nextButton = UIButton().then {
         $0.backgroundColor = DesignSystemColor.yorijoriPink
         $0.setTitle("다음", for: .normal)
+        $0.layer.cornerRadius = 12
+        $0.titleLabel?.font = DesignSystemFont.semibold16
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
     
@@ -125,9 +115,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         bindViewModel()
     }
     
-    
     private func setupNavigationBar() {
-        
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
         backButton.tintColor = DesignSystemColor.gray900
         self.navigationItem.leftBarButtonItem = backButton
@@ -150,9 +138,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     
     private func setCollectionView() {
         let usageCollectionlayout = UICollectionViewFlowLayout()
-        usageCollectionlayout.minimumLineSpacing = 8
         usageCollectionlayout.minimumInteritemSpacing = 8
-        usageCollectionlayout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         self.usageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: usageCollectionlayout)
         self.usageCollectionView.delegate = self
         self.usageCollectionView.register(UsageCategoryCell.self, forCellWithReuseIdentifier: UsageCategoryCell.identifier)
@@ -160,9 +146,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         self.usageCollectionView.isUserInteractionEnabled = true
         
         let diseaseCollectionlayout = UICollectionViewFlowLayout()
-        diseaseCollectionlayout.minimumLineSpacing = 8
         diseaseCollectionlayout.minimumInteritemSpacing = 8
-        diseaseCollectionlayout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         self.diseaseCollectionView = UICollectionView(frame: .zero, collectionViewLayout: diseaseCollectionlayout)
         self.diseaseCollectionView.delegate = self
         self.diseaseCollectionView.register(DiseaseCategoryCell.self, forCellWithReuseIdentifier: DiseaseCategoryCell.identifier)
@@ -170,8 +154,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         self.diseaseCollectionView.isUserInteractionEnabled = true
         
         let lifestyleHabitCollectionlayout = UICollectionViewFlowLayout()
-        lifestyleHabitCollectionlayout.minimumInteritemSpacing = 8
-        lifestyleHabitCollectionlayout.sectionInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+        lifestyleHabitCollectionlayout.minimumLineSpacing = 16
         self.lifestyleHabitCollectionView = UICollectionView(frame: .zero, collectionViewLayout: lifestyleHabitCollectionlayout)
         self.lifestyleHabitCollectionView.delegate = self
         self.lifestyleHabitCollectionView.register(LifestyleHabitCategoryCell.self, forCellWithReuseIdentifier: LifestyleHabitCategoryCell.identifier)
@@ -181,7 +164,7 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     
     private func setUI() {
         
-        [progressBar, usageLabel, usageCollectionView, diseaseLabel, diseaseCollectionView, diseaseTextField, lifestyleHabitLabel, lifestyleHabitCollectionView, lifestyleHabitTextField, allergyLabel, allergyTextField, nextButton].forEach({self.contentView.addSubview($0)})
+        [progressBar, usageLabel, usageCollectionView, diseaseLabel, diseaseCollectionView, lifestyleHabitLabel, lifestyleHabitCollectionView, allergyLabel, allergyTextField, nextButton].forEach({self.contentView.addSubview($0)})
         
         progressBar.snp.makeConstraints({
             $0.top.equalToSuperview().offset(12)
@@ -196,9 +179,8 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
         
         usageCollectionView.snp.makeConstraints({
             $0.top.equalTo(self.usageLabel.snp.bottom).offset(6)
-            $0.leading.equalToSuperview().offset(15)
-            $0.trailing.equalToSuperview().offset(-43)
-            $0.height.equalTo(150)
+            $0.leading.trailing.equalToSuperview().inset(18)
+            $0.height.equalTo(100)
         })
         
         diseaseLabel.snp.makeConstraints({
@@ -212,38 +194,26 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
             $0.height.equalTo(40)
         })
         
-        diseaseTextField.snp.makeConstraints({
-            $0.top.equalTo(self.diseaseCollectionView.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(15)
-            $0.height.equalTo(40)
-        })
-        
         lifestyleHabitLabel.snp.makeConstraints({
-            $0.top.equalTo(self.diseaseTextField.snp.bottom).offset(22)
+            $0.top.equalTo(self.diseaseCollectionView.snp.bottom).offset(18)
             $0.leading.equalToSuperview().offset(15)
         })
         
         lifestyleHabitCollectionView.snp.makeConstraints({
             $0.top.equalTo(self.lifestyleHabitLabel.snp.bottom).offset(6)
             $0.leading.trailing.equalToSuperview().inset(15)
-            $0.height.equalTo(144)
-        })
-        
-        lifestyleHabitTextField.snp.makeConstraints({
-            $0.top.equalTo(self.lifestyleHabitCollectionView.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(15)
-            $0.height.equalTo(40)
+            $0.height.equalTo(150)
         })
         
         allergyLabel.snp.makeConstraints({
-            $0.top.equalTo(self.lifestyleHabitTextField.snp.bottom).offset(22)
+            $0.top.equalTo(self.lifestyleHabitCollectionView.snp.bottom).offset(18)
             $0.leading.equalToSuperview().offset(15)
         })
         
         allergyTextField.snp.makeConstraints({
             $0.top.equalTo(self.allergyLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(15)
-            $0.height.equalTo(40)
+            $0.height.equalTo(46)
         })
         
         nextButton.snp.makeConstraints({
@@ -324,20 +294,19 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.usageCollectionView {
             let text = viewModel.usageCategories[indexPath.item]
-            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.subTitle1])
-            let width = textSize.width + 24
-            let height = textSize.height + 22
+            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.semibold14])
+            let width = textSize.width + 40
+            let height = textSize.height + 20
             return CGSize(width: width, height: height)
         } else if collectionView == self.lifestyleHabitCollectionView {
             return CGSize(width: self.lifestyleHabitCollectionView.frame.width, height: 40)
         } else {
             let text = viewModel.diseaseCategories[indexPath.item]
-            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.subTitle1])
-            let width = textSize.width + 24
-            let height = textSize.height + 22
+            let textSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: DesignSystemFont.semibold14])
+            let width = textSize.width + 40
+            let height = textSize.height + 20
             return CGSize(width: width, height: height)
         }
-        
     }
     
     private func getJoinStatus() async throws -> String {
@@ -351,27 +320,37 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
             "allergy": "새우"
         ]
         
-        print("username: \(UserDefaultsManager.shared.id)")
-        print("password: \(UserDefaultsManager.shared.password)")
-        
-        return try await withCheckedThrowingContinuation { continuation in
-            NetworkService.shared.postMultipartWithJSON(.join, parameters: requestData) { result in
-                switch result {
-                case .success(let response):
-                    print("회원가입 성공: \(response)")
-                    continuation.resume(returning: response.statusCode)
-                case .failure(let error):
-                    print("회원가입 실패. 상세 오류:")
-                    print("- 오류 유형: \(type(of: error))")
-                    print("- 오류 설명: \(error.localizedDescription)")
-                    continuation.resume(throwing: error)
+        do {
+            return try await withCheckedThrowingContinuation { continuation in
+                NetworkService.shared.postMultipartWithJSON(.join, parameters: requestData) { result in
+                    switch result {
+                    case .success(let response):
+                        continuation.resume(returning: response.statusCode)
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                    }
                 }
             }
+        } catch {
+            await MainActor.run {
+                let errorMessage: String
+                if let networkError = error as? NetworkError {
+                    errorMessage = networkError.localizedDescription
+                } else {
+                    errorMessage = error.localizedDescription
+                }
+                
+                AlertManager.shared.showAlert(
+                    on: self,
+                    title: "회원가입 실패",
+                    message: errorMessage
+                )
+            }
+            return "Error"
         }
     }
     
     @objc private func nextButtonTapped() {
-        
         Task {
             do {
                 let status = try await getJoinStatus()
@@ -380,18 +359,33 @@ class ThirdRegistViewController: UIViewController, UICollectionViewDelegate, UIC
                     lastVC.modalPresentationStyle = .overFullScreen
                     self.navigationController?.pushViewController(lastVC, animated: true)
                 } else {
-                    print("회원가입 실패 status code: \(status)")
                 }
             } catch {
                 print("회원가입 실패 \(error)")
             }
         }
-        
     }
     
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc override func keyboardUp(notification:NSNotification) {
+        if let keyboardFrame:NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            
+            let adjustment: CGFloat = keyboardRectangle.height * 0.3
+            
+            UIView.animate(withDuration: 0.3) {
+                self.view.transform = CGAffineTransform(translationX: 0, y: -adjustment)
+            }
+        }
+    }
 }
 
+extension UserPersonalDataViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

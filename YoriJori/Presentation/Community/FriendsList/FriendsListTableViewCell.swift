@@ -10,6 +10,8 @@ import SnapKit
 
 class FriendsListTableViewCell: UITableViewCell {
     
+    var onReTestButtonTap: (() -> Void)?
+    
     static let identifier = "FriendsListTableViewCell"
     
     private let container = UIView().then {
@@ -42,9 +44,16 @@ class FriendsListTableViewCell: UITableViewCell {
         $0.font = DesignSystemFont.medium12
     }
     
+    private lazy var reTestButton: YorijoriFilledButton = {
+        let button = YorijoriFilledButton(bgColor: DesignSystemColor.gray150, textColor: DesignSystemColor.gray800)
+        button.text = "친구 신청"
+        button.addTarget(self, action: #selector(reTestButtonTapped), for: .touchUpInside)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setUI()
     }
     
@@ -54,8 +63,11 @@ class FriendsListTableViewCell: UITableViewCell {
     
     private func setUI() {
         self.backgroundColor = DesignSystemColor.gray150
-        
+        self.selectionStyle = .none
         self.addSubview(container)
+        
+        self.contentView.isUserInteractionEnabled = false
+        self.isUserInteractionEnabled = true
         
         container.snp.makeConstraints({
             $0.top.equalToSuperview().offset(10)
@@ -63,7 +75,7 @@ class FriendsListTableViewCell: UITableViewCell {
             $0.bottom.equalToSuperview().offset(-10)
         })
         
-        [profileImage, nameLabel, currentDoneChallengeTitle, divider, currentDoneChallengeLabel].forEach({self.container.addSubview($0)})
+        [profileImage, nameLabel, currentDoneChallengeTitle, divider, currentDoneChallengeLabel, reTestButton].forEach({self.container.addSubview($0)})
         
         profileImage.snp.makeConstraints({
             $0.centerY.equalToSuperview()
@@ -92,8 +104,29 @@ class FriendsListTableViewCell: UITableViewCell {
             $0.leading.equalTo(self.divider.snp.trailing).offset(4)
             $0.centerY.equalTo(self.currentDoneChallengeTitle.snp.centerY)
         })
+        
+        reTestButton.snp.makeConstraints({
+            $0.trailing.equalToSuperview().offset(-18)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(89)
+            $0.height.equalTo(29)
+        })
+        
+        self.container.bringSubviewToFront(reTestButton)
     }
     
+    @objc private func reTestButtonTapped() {
+        print("Button tapped!")
+        onReTestButtonTap?()
+    }
+    
+    func updateButtonAppearance() {
+        reTestButton.backgroundColor = DesignSystemColor.yorijoriGreen
+        reTestButton.setTextColor(DesignSystemColor.white)
+        reTestButton.text = "친구 신청됨"
+        reTestButton.layer.cornerRadius = 12
+        reTestButton.isEnabled = false
+    }
 }
 
 extension FriendsListTableViewCell {

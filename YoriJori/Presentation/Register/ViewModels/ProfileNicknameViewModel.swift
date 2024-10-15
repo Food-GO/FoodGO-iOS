@@ -9,9 +9,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SecondRegistViewModel {
+class ProfileNicknameViewModel {
     let nicknameRelay = BehaviorRelay<String>(value: "")
-    
     private let requestNicknameDuplicatedRelay = BehaviorRelay<Bool>(value: true)
     
     var isValidateButtonEnabled: Observable<Bool> {
