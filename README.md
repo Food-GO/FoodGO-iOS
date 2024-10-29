@@ -33,7 +33,7 @@
 
 ## 🔧 Stack
 - **Language**: Swift
-- **Library & Framework** : Alamofire, Kingfisher, RxSwift, SnapKit, Then
+- **Library & Framework** : Vision, Alamofire, Kingfisher, RxSwift, SnapKit, Then
 
 ## Project Structure
 ```markdown
@@ -87,3 +87,5 @@
 
 
 ## 🏅 Award
+- 2024 한국정보처리학회 학술대회 우수상(한국정보처리학회장상)
+- 2024 한이음 은상(정보통신기획평가원장상)
